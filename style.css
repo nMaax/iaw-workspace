@@ -195,7 +195,9 @@ aside > .aside-content {
 }
 
 .img-post {
-    width: 10rem;
+    display: flex;
+    justify-content: space-around;
+    width: auto;
 }
 
 /* BUTTON */
@@ -216,7 +218,7 @@ aside > .aside-content {
 }
 
 /*Tablet*/
-@media screen and (/*743px <=*/ width <= 1000px) {    
+@media screen and (git width <= 1000px) {    
 
     /* HEADER (Title + navbar) */
 
@@ -295,7 +297,7 @@ aside > .aside-content {
         width: 30px;
     }
     */
-    .time-ago-post {
+    .user-data > .time-ago-post {
         width: auto;
     }
 
@@ -310,6 +312,13 @@ aside > .aside-content {
     }
 
 }
+
+/*
+@media screen and (743px <= width) {
+    .time-ago-post {
+        width: none; 
+    }
+}*/
 
 /* Smartphone */
 @media screen and (width <= 400px) {    
