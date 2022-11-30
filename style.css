@@ -275,15 +275,8 @@ body > .content {
 /* GENERAL CORRECTIONS AND OTHERS */
 
 .plus-button {
-    
     border-style: solid;
     border-color: black;
-}
-
-img {
-    /*
-    min-width: 30px;
-    max-width: 100px;*/
 }
 
 p {
