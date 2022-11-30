@@ -105,7 +105,7 @@ body > .content {
         margin: 0.5%;
     }
         aside > .aside-links {
-            display: flex;
+            display: flex;  
             flex-direction: column;
             flex-wrap: wrap;
 
@@ -116,7 +116,16 @@ body > .content {
 
         }
 
-            .aside-links > p {}
+            .aside-links > p {
+                display: block;
+
+                text-align: center;
+
+                padding: 0.5%;
+                border-style: solid;
+                border-color: black;
+                margin: 0.5%;
+            }
 
     /* ARTICLES */
 
