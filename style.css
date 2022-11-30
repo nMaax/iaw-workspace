@@ -347,6 +347,10 @@ aside > .aside-content {
         flex-wrap: wrap;
     }
 
+    .content > aside {
+        width: 96%;
+    }
+
     main > article {
         display: flex;
         flex-direction: column;
