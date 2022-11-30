@@ -1,121 +1,203 @@
+/*
+
+STRUCTURE
+
+element {
+    parent-display-options
+
+    display-type
+    display-options
+        columns
+        rows
+
+    width
+    height
+
+    text
+    font
+    background
+
+    padding
+    border
+    margin
+        top
+        bottom
+        right
+        left
+ }
+
+*/
+
 body {
     font-family: sans-serif;
+    
 }
 
-header {
-    display: block;
-    position: relative;
-    padding: 1%;
-    margin: 1%;
-    border-style: solid;
-    border-color: black;
-    height: 180px;
-}
+/* HEADER */
 
-main {
-    display: block;
-    position: relative;
-    margin: 1%;
-    float: right;
-    width: 70%;
+body > header {
+    display: flex;
+    justify-content: space-between;
+
     border-style: solid;
     border-color: black;
 }
 
-
-article {
+header > .title {
     display: block;
-    position: relative;
-    float: left;
+
+    width: 30%;
+
+    margin-left: 20px;
+}
+
+.title > h1 {
+    display: block;
+}
+
+.title > h4 {
+    display: block;
+}
+
+header > nav {
+    display: block;
+
+    text-align: right;
+}
+
+nav > p {
+    display: block;
+
+    margin-top: 3rem;
+    margin-right: 20px;
+}
+
+/* CONTENT */
+
+body > .content {
+    display: flex;
+    justify-content: space-between;
+
+    border-style: solid;
+    border-color: black;
+
+    margin: 10px 0px;
+}
+
+.content > main {
+    order: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    border-style: solid;
+    border-color: black;
+
+    margin: 10px;
+}
+
+main > article {
+    display: grid;
+    grid-template-columns: 3;
+    grid-template-rows: 1;
+    
     border-bottom: 3px;
     border-bottom-style: solid;
     border-bottom-color: black;
+
+    margin: 10px;
 }
 
-.title {
-    display: inline-block;
-    position: relative;
-    width: 30%;
+article > .img-post {
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    margin: 10px;
 }
 
-.main-title {
+article > .info-post {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    
+    display: grid;
+    grid-template-rows: 2;
+
+    margin: 10px;
+}
+
+.info-post > .text-post {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.info-post > .user-data {
+    display: grid;
+    grid-template-columns: 50px 200px 1fr 200px;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.user-data > .propic {
+    margin: 10px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.user-data > .name {
+    margin: 10px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.user-data > .time-ago-post {
+    margin: 10px;
     display: block;
-    position: relative;
-}
-
-.sub-title {
-    display: block;
-    position: relative;
-}
-
-.nav-header {
-    display: block;
-    position: relative;
-    margin-top: 11%;
-    float: right;
     text-align: right;
-    width: 15%;
+    width: 200px;
+    grid-column-start: 4;
+    grid-column-end: 5;
 }
 
-.left-sidebar {
-    display: block;
-    position: relative;
-    float: left;
-    width: 20%;
+.content > aside {
+    order: 1;
+
+    width: 50%;
+    margin: 10px;
+}
+
+aside > .aside-content {
+
     border-style: solid;
-    margin: 1%;
+    border-color: black;
 }
 
-.right-sidebar {
-    display: block;
-    position: relative;
-    float: right;
-    width: auto;
-
+.aside-content > p {
+    margin: 10px;
 }
+
+/* POST */
 
 .name {
-    display: block;
-    position: relative;
-    margin: auto;
-    float: left;
     width: 50%;
-    margin: 1%
 }
 
 .propic {
-    display: block;
-    position: relative;
-    margin: auto;
-    float: left;
     width: 30px;
-    margin-top: 1%;
 }
 
 .time-ago-post {
-    display: block;
-    position: relative;
-    padding: 1%;
-    margin: 1%;
-    float:right;
     width: 7%;
 }
 
 .text-post {
-    display: flex;
-    position: relative;
-    margin: 1%;
     width: 77%;
-    margin-top: 1%;
 }
 
 .img-post {
-    display: block;
-    position: relative;
-    margin: 1%;
-    float: left;
     width: 10rem;
 }
+
+/* BUTTON */
 
 .plus-button {
     display: block;
@@ -131,4 +213,51 @@ article {
     bottom: 30px;
     right: 30px;
 }
-  
+
+/*Tablet*/
+/*@media screen and ( 500 < width < 900) {
+
+    
+}*/
+
+/*Smartphone*/
+@media screen and (width <= 900px) {    
+
+    body > .content {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .content > aside {
+        width: auto;
+    }
+
+    aside > .aside-content {
+        display: grid;
+        grid-template-rows: 40px 40px 40px ;
+        border-style: solid;
+        border-color: black;
+    }
+    
+
+    .name {
+        width: 50%;
+    }
+    
+    .propic {
+        width: 30px;
+    }
+    
+    .time-ago-post {
+        width: 7%;
+    }
+    
+    .text-post {
+        width: 77%;
+    }
+    
+    .img-post {
+        width: 10rem;
+    }
+
+}
