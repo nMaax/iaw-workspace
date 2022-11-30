@@ -275,8 +275,18 @@ body > .content {
 /* GENERAL CORRECTIONS AND OTHERS */
 
 .plus-button {
-    border-style: solid;
+    display: block;
+    position: fixed;
+    background-color: white;
+    border: solid;
+    border-radius: 50%;
     border-color: black;
+    color: black;
+    font-size: 60px;
+    text-align: center;
+    padding: 15px 32px;
+    bottom: 30px;
+    right: 30px;
 }
 
 p {
@@ -318,10 +328,16 @@ p {
                 grid-template-columns: 1fr 1fr 4fr 1fr;
             }
 
+    .plus-button {
+        font-size: 25px;
+        padding: 18px 28px;
+    }
+
 }
 
 /* SMARTPHONE */
 @media only screen and (width <= 500px) {
+
     header > nav {
         display: none;
     }
@@ -346,7 +362,12 @@ p {
             border-style: solid;
             border-color: black;
             margin: 0.5%;
-        }     
+        }
+
+    .plus-button {
+        font-size: 20px;
+        padding: 16px 24px;
+    }
 }
 
 /* TOO-SMALL */
