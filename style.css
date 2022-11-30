@@ -146,7 +146,7 @@ body > .content {
     .content > main {
         order: 2;
 
-        /*overflow:auto = scroll dove compare la barra di scroll solo se necessario*/
+        /*overflow: auto = come scroll ma compare la barra di scroll solo se necessario*/
         overflow: auto;
 
         /*width: 80%;*/
@@ -206,43 +206,52 @@ body > .content {
                 margin: 0.5%;       
             }
 
-                .post-metadata > .user-propic {
-                    grid-column-start: 1;
-                    grid-column-end: 2;
-
-                    /*
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-around;
-                    */
-
-                    overflow: hidden;
-
-                    max-width: 50px;
-
-                    padding: 0.5%;
-                    border-style: solid;
-                    border-color: black;
-                    margin: 0.5%; 
-                }
-
-                .post-metadata > .user-name {
-                    grid-column-start: 2;
-                    grid-column-end: 3;
+                .post-metadata > .post-left-metadata {
+                    order: 1;
 
                     display: flex;
                     flex-direction: row;
-                    justify-content: center;
+                    flex-wrap: nowrap;
+                    /*justify-content: space-between;*/
 
-                    overflow: hidden;
+                    min-width: 150px;
 
-                    /*padding: 0.5%;
-                    /*border-style: solid;
-                    border-color: black;
-                    margin: 0.5%; */
                 }
+
+                    .post-left-metadata > .user-propic {
+
+                        /*
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        */
+
+                        overflow: hidden;
+
+                        max-width: 50px;
+
+                        padding: 0.5%;
+                        border-style: solid;
+                        border-color: black;
+                        margin: 0.5%; 
+                    }
+
+                    .post-left-metadata > .user-name {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+
+                        overflow: hidden;
+
+                        /*padding: 0.5%;
+                        /*border-style: solid;
+                        border-color: black;
+                        margin: 0.5%; */
+                    }
 
                 .post-metadata > .post-time-ago {
+                    order: 2;
+
                     grid-column-start: 4;
                     grid-column-end: 5;
 
