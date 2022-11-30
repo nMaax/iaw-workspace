@@ -1,0 +1,134 @@
+body {
+    font-family: sans-serif;
+}
+
+header {
+    display: block;
+    position: relative;
+    padding: 1%;
+    margin: 1%;
+    border-style: solid;
+    border-color: black;
+    height: 180px;
+}
+
+main {
+    display: block;
+    position: relative;
+    margin: 1%;
+    float: right;
+    width: 70%;
+    border-style: solid;
+    border-color: black;
+}
+
+
+article {
+    display: block;
+    position: relative;
+    float: left;
+    border-bottom: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+}
+
+.title {
+    display: inline-block;
+    position: relative;
+    width: 30%;
+}
+
+.main-title {
+    display: block;
+    position: relative;
+}
+
+.sub-title {
+    display: block;
+    position: relative;
+}
+
+.nav-header {
+    display: block;
+    position: relative;
+    margin-top: 11%;
+    float: right;
+    text-align: right;
+    width: 15%;
+}
+
+.left-sidebar {
+    display: block;
+    position: relative;
+    float: left;
+    width: 20%;
+    border-style: solid;
+    margin: 1%;
+}
+
+.right-sidebar {
+    display: block;
+    position: relative;
+    float: right;
+    width: auto;
+
+}
+
+.name {
+    display: block;
+    position: relative;
+    margin: auto;
+    float: left;
+    width: 50%;
+    margin: 1%
+}
+
+.propic {
+    display: block;
+    position: relative;
+    margin: auto;
+    float: left;
+    width: 30px;
+    margin-top: 1%;
+}
+
+.time-ago-post {
+    display: block;
+    position: relative;
+    padding: 1%;
+    margin: 1%;
+    float:right;
+    width: 7%;
+}
+
+.text-post {
+    display: flex;
+    position: relative;
+    margin: 1%;
+    width: 77%;
+    margin-top: 1%;
+}
+
+.img-post {
+    display: block;
+    position: relative;
+    margin: 1%;
+    float: left;
+    width: 10rem;
+}
+
+.plus-button {
+    display: block;
+    position: fixed;
+    background-color: white;
+    border: solid;
+    border-radius: 50%;
+    border-color: black;
+    color: black;
+    font-size: 60px;
+    text-align: center;
+    padding: 15px 32px;
+    bottom: 30px;
+    right: 30px;
+}
+  
