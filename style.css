@@ -247,7 +247,7 @@ p {
     max-width: 1200px;
 }
 
-/* MEDIA QUERIES*/
+/* RESPONSIVE MEDIA QUERIES*/
 
 /* TABLET */
 @media only screen and (width <= 900px) {
