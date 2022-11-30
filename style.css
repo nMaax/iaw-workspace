@@ -30,10 +30,9 @@ element {
 
 body {
     font-family: sans-serif;
-    
 }
 
-/* HEADER */
+/* HEADER (Title + navbar) */
 
 body > header {
     display: flex;
@@ -72,13 +71,13 @@ nav > p {
     margin-right: 20px;
 }
 
-/* CONTENT */
+/* CONTENT (Articles + sidebar) */
 
 body > .content {
     display: flex;
     justify-content: space-between;
 
-    border-style: solid;
+    border-style: none;
     border-color: black;
 
     margin: 10px 0px;
@@ -215,15 +214,10 @@ aside > .aside-content {
 }
 
 /*Tablet*/
-/*@media screen and ( 500 < width < 900) {
-
-    
-}*/
-
-/*Smartphone*/
-@media screen and (width <= 900px) {    
+@media screen and (width <= 1200px) {    
 
     body > .content {
+        display: flex;
         flex-direction: column;
         flex-wrap: wrap;
     }
@@ -233,11 +227,13 @@ aside > .aside-content {
     }
 
     aside > .aside-content {
-        display: grid;
-        grid-template-rows: 40px 40px 40px ;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
         border-style: solid;
         border-color: black;
     }
+    
     
 
     .name {
@@ -259,5 +255,52 @@ aside > .aside-content {
     .img-post {
         width: 10rem;
     }
+
+}
+
+/* Smartphone */
+@media screen and (width <= 375px) {    
+
+    body > header {
+        
+    }
+
+    body > .content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .content > aside {
+        width: 330px;
+    }  
+
+    aside > .aside-content {
+        width: 330px;
+    }
+
+    aside > .aside-content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        border-style: solid;
+        border-color: black;
+    }
+
+    main > article {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    article > .info-post {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info-post > .user-data {
+
+    }
+
+    
 
 }
