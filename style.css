@@ -285,7 +285,7 @@ p {
 /* RESPONSIVE MEDIA QUERIES*/
 
 /* TABLET */
-@media only screen and (width <= 900px) {
+@media only screen and (width <= 1000px) {
     
     body > .content {
         flex-direction: column;
@@ -319,7 +319,7 @@ p {
 }
 
 /* SMARTPHONE */
-@media only screen and (width <= 450px) {
+@media only screen and (width <= 500px) {
     header > nav {
         display: none;
     }
