@@ -197,9 +197,8 @@ body > .content {
             .post-info > .post-metadata {
                 order: 1;
 
-                display: grid;
-                grid-auto-rows: 1fr;
-                grid-template-columns: 1fr 2fr 8fr 1fr;
+                display: flex;
+                justify-content: space-between;
 
                 padding: 0.5%;
                 border-style: solid;
@@ -345,14 +344,7 @@ p {
             border-style: solid;
             border-color: black;
             margin: 0.5%;
-        }
-
-        article > .post-info > .post-metadata {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        
+        }     
 }
 
 /* TOO-SMALL */
