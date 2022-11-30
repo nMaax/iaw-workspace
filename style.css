@@ -10,6 +10,8 @@ parent-element > element {
         columns
         rows
 
+    overflow
+
     width
     height
 
@@ -68,6 +70,8 @@ body > header {
         flex-direction: column;
         justify-content: center;
 
+        width: 10%;
+
         padding: 0.5%;
         border-style: solid;
         border-color: black;
@@ -76,6 +80,13 @@ body > header {
 
         nav > p {
             display: block;
+
+            text-align: center;
+
+            padding: 0.5%;
+            border-style: solid;
+            border-color: black;
+            margin: 0.5%;
         }
 
 /* CONTENT: aside and articles*/
@@ -96,6 +107,8 @@ body > .content {
 
     .content > aside {
         order: 1;
+
+        overflow: auto;
 
         width: 15%;
         
@@ -131,6 +144,9 @@ body > .content {
 
     .content > main {
         order: 2;
+
+        /*overflow:auto = scroll dove compare la barra di scroll solo se necessario*/
+        overflow: auto;
 
         /*width: 80%;*/
 
@@ -231,6 +247,8 @@ body > .content {
 
             .post-info > .post-text {
                 order: 2;
+
+                text-align: justify;
 
                 padding: 0.5%;
                 border-style: solid;
