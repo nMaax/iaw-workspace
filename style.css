@@ -216,7 +216,38 @@ aside > .aside-content {
 }
 
 /*Tablet*/
-@media screen and (width <= 800px) {    
+@media screen and (width <= 1000px) {    
+
+    /* HEADER (Title + navbar) */
+
+    body > header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 10px;
+    }
+
+    header > .title {
+        width: auto;
+        margin: 10px;
+    }
+
+    .title > h4 {
+        display: none;
+    }
+
+    header > nav {
+        display: block;
+        margin: 10px;
+    }
+
+    nav > p {
+        display: block;
+        margin-top: 30px;
+        margin-right: auto;
+      }
+
+    /* CONTENT (Articles + sidebar) */
 
     body > .content {
         display: flex;
@@ -229,20 +260,23 @@ aside > .aside-content {
     }
 
     aside > .aside-content {
+
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-between;
         border-style: solid;
         border-color: black;
     }
-    
-    
 
+     
+
+    /*
     .name {
         width: 50%;
     }
     
-    .propic {
+    .propic {   
         width: 30px;
     }
     
@@ -256,7 +290,7 @@ aside > .aside-content {
     
     .img-post {
         width: 10rem;
-    }
+    }*/
 
 }
 
@@ -294,22 +328,6 @@ aside > .aside-content {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-    }
-
-    .content > aside {
-        width: 360px;
-    }  
-
-    aside > .aside-content {
-        width: 360px;
-    }
-
-    aside > .aside-content {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        border-style: solid;
-        border-color: black;
     }
 
     main > article {
