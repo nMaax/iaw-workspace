@@ -1,6 +1,6 @@
 /*
 
-STRUCTURE
+FORMAT OF THIS STYLE-SHEET 
 
 element {
     parent-display-options
@@ -28,10 +28,151 @@ element {
 
 */
 
+/* BODY */
+
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-justify: distribute;
+    line-height: 1.3;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
 }
+
+/* HEADER: title and navbar*/
+
+body > header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+    
+}
+
+header > .title {
+    
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
+
+header > nav {
+
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
+
+/* CONTENT: aside and articles*/
+
+body > .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
+
+.content > aside {
+    order: 1;
+
+    width: 15%;
+    
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
+
+.content > main {
+    order: 2;
+
+    /*width: 70%;
+    */
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
+
+main > article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
+
+article > .post-img {
+    order: 1;
+
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
+
+article > .post-info {
+    order: 2;
+
+    max-width: 1200px;
+
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;   
+}
+
+/* ASIDE */
+
+.content > aside {
+
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
+
+/* ARTICLES */
+
+.content > main {
+
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
+
+/* GENERAL CORRECTIONS AND OTHERS */
+
+.plus-button {
+    
+    border-style: solid;
+    border-color: black;
+}
+
+img {
+    max-width: 100px;
+}
+
+
 
 @media screen (width <= 800px) {
     
