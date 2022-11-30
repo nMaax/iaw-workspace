@@ -218,7 +218,7 @@ aside > .aside-content {
 }
 
 /*Tablet*/
-@media screen and (git width <= 1000px) {    
+@media screen and (width <= 1000px) {    
 
     /* HEADER (Title + navbar) */
 
@@ -368,10 +368,6 @@ aside > .aside-content {
     article > .info-post {
         display: flex;
         flex-direction: column;
-    }
-
-    .info-post > .user-data {
-
     }
 
     .img-post {
