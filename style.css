@@ -38,6 +38,8 @@ body > header {
     display: flex;
     justify-content: space-between;
 
+    margin: 10px;
+
     border-style: solid;
     border-color: black;
 }
@@ -214,7 +216,7 @@ aside > .aside-content {
 }
 
 /*Tablet*/
-@media screen and (width <= 1200px) {    
+@media screen and (width <= 800px) {    
 
     body > .content {
         display: flex;
@@ -259,10 +261,33 @@ aside > .aside-content {
 }
 
 /* Smartphone */
-@media screen and (width <= 375px) {    
+@media screen and (width <= 400px) {    
 
     body > header {
-        
+        display: flex;
+        flex-direction: column;
+        width: 360px;
+        margin: 10px;
+    }
+
+    header > .title {
+        width: auto;
+        margin: 10px;
+    }
+
+    .title > h4 {
+        display: none;
+    }
+
+    header > nav {
+        display: none;
+        text-align: left;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    nav > p {
+        margin-top: 10px;
     }
 
     body > .content {
@@ -272,11 +297,11 @@ aside > .aside-content {
     }
 
     .content > aside {
-        width: 330px;
+        width: 360px;
     }  
 
     aside > .aside-content {
-        width: 330px;
+        width: 360px;
     }
 
     aside > .aside-content {
