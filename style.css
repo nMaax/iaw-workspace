@@ -70,7 +70,7 @@ body > header {
         flex-direction: column;
         justify-content: center;
 
-        width: 10%;
+        /*width: 10%;*/
 
         padding: 0.5%;
         border-style: solid;
@@ -81,6 +81,7 @@ body > header {
         nav > p {
             display: block;
 
+            white-space: nowrap;
             text-align: center;
 
             padding: 0.5%;
@@ -216,6 +217,8 @@ body > .content {
                     justify-content: space-around;
                     */
 
+                    overflow: hidden;
+
                     max-width: 50px;
 
                     padding: 0.5%;
@@ -232,6 +235,8 @@ body > .content {
                     flex-direction: row;
                     justify-content: center;
 
+                    overflow: hidden;
+
                     /*padding: 0.5%;
                     /*border-style: solid;
                     border-color: black;
@@ -242,6 +247,9 @@ body > .content {
                     grid-column-start: 4;
                     grid-column-end: 5;
 
+                    overflow: hidden;
+
+                    white-space: nowrap;
                     text-align: right;
                 }
 
@@ -265,8 +273,9 @@ body > .content {
 }
 
 img {
+    /*
     min-width: 30px;
-    max-width: 100px;
+    max-width: 100px;*/
 }
 
 p {
@@ -303,6 +312,11 @@ p {
         .content > main {
             width: auto;
         }
+
+            main > .post-info > .post-metadata {
+                grid-template-columns: 1fr 1fr 4fr 1fr;
+            }
+
 }
 
 /* SMARTPHONE */
@@ -310,6 +324,35 @@ p {
     header > nav {
         display: none;
     }
+
+    main > article {
+        flex-direction: column;
+    }
+
+        article > .post-img {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+        }
+
+        article > .post-img > img {
+            order: 1;
+
+            width: 300px;
+        
+            padding: 0.5%;
+            border-style: solid;
+            border-color: black;
+            margin: 0.5%;
+        }
+
+        article > .post-info > .post-metadata {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        
 }
 
 /* TOO-SMALL */
