@@ -121,7 +121,7 @@ article > .info-post {
     grid-column-end: 3;
     
     display: grid;
-    grid-template-rows: 2;
+    grid-template-rows: 20% 7fr;
 
     margin: 10px;
 }
@@ -176,7 +176,7 @@ aside > .aside-content {
     margin: 10px;
 }
 
-/* POST */
+/* ARTICLES */
 
 .name {
     width: 50%;
@@ -216,7 +216,7 @@ aside > .aside-content {
 }
 
 /*Tablet*/
-@media screen and (width <= 1000px) {    
+@media screen and (/*743px <=*/ width <= 1000px) {    
 
     /* HEADER (Title + navbar) */
 
@@ -265,11 +265,26 @@ aside > .aside-content {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-        border-style: solid;
+        border-style: solid; /*none;*/
         border-color: black;
     }
 
-     
+    .aside-content > p {
+        margin: 10px;
+    }
+
+    /* ARTICLES */  
+
+    .info-post > .user-data {
+        display: grid;
+        grid-template-columns: 1fr 1fr 5fr 5fr;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .info-post > .text-post {
+        width: auto;
+    }
 
     /*
     .name {
@@ -279,18 +294,20 @@ aside > .aside-content {
     .propic {   
         width: 30px;
     }
-    
+    */
     .time-ago-post {
-        width: 7%;
+        width: auto;
     }
-    
+
+    /*
     .text-post {
         width: 77%;
     }
+    */
     
     .img-post {
-        width: 10rem;
-    }*/
+        width: 300px;
+    }
 
 }
 
@@ -342,6 +359,10 @@ aside > .aside-content {
 
     .info-post > .user-data {
 
+    }
+
+    .img-post {
+        width: 300px;
     }
 
     
