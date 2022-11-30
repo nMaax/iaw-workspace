@@ -73,7 +73,7 @@ body > header {
         /*width: 10%;*/
 
         padding: 0.5%;
-        border-style: solid;
+        border-style: none;
         border-color: black;
         margin: 0.5%;
     }
@@ -85,7 +85,7 @@ body > header {
             text-align: center;
 
             padding: 0.5%;
-            border-style: solid;
+            border-style: none;
             border-color: black;
             margin: 0.5%;
         }
@@ -114,10 +114,11 @@ body > .content {
         width: 15%;
         
         padding: 0.5%;
-        border-style: solid;
+        border-style: none;
         border-color: black;
         margin: 0.5%;
     }
+
         aside > .aside-links {
             display: flex;  
             flex-direction: column;
@@ -136,7 +137,7 @@ body > .content {
                 text-align: center;
 
                 padding: 0.5%;
-                border-style: solid;
+                border-style: none;
                 border-color: black;
                 margin: 0.5%;
             }
@@ -164,7 +165,8 @@ body > .content {
             justify-content: space-between;
 
             padding: 0.5%;
-            border-style: solid;
+            border-style: none;
+            border-bottom: solid;
             border-color: black;
             margin: 0.5%;
         }
@@ -175,7 +177,7 @@ body > .content {
                 /*width: 15%;*/
             
                 padding: 0.5%;
-                border-style: solid;
+                border-style: none;
                 border-color: black;
                 margin: 0.5%;
             }
@@ -189,7 +191,7 @@ body > .content {
                 /*width: 80%;*/
 
                 padding: 0.5%;
-                border-style: solid;
+                border-style: none;
                 border-color: black;
                 margin: 0.5%;   
             }
@@ -201,7 +203,7 @@ body > .content {
                 justify-content: space-between;
 
                 padding: 0.5%;
-                border-style: solid;
+                border-style: none;
                 border-color: black;
                 margin: 0.5%;       
             }
@@ -231,9 +233,10 @@ body > .content {
                         max-width: 50px;
 
                         padding: 0.5%;
-                        border-style: solid;
+                        border-style: none;
                         border-color: black;
                         margin: 0.5%; 
+                        margin-right: 5%;
                     }
 
                     .post-left-metadata > .user-name {
@@ -267,7 +270,7 @@ body > .content {
                 text-align: justify;
 
                 padding: 0.5%;
-                border-style: solid;
+                border-style: none;
                 border-color: black;
                 margin: 0.5%;   
             }
@@ -314,7 +317,7 @@ p {
                 justify-content: space-between;
 
                 padding: 0.5%;
-                border-style: solid;
+                border-style: none;
                 border-color: black;
                 margin: 0.5%;
 
@@ -359,7 +362,7 @@ p {
             width: 300px;
         
             padding: 0.5%;
-            border-style: solid;
+            border-style: none;
             border-color: black;
             margin: 0.5%;
         }
