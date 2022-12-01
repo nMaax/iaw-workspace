@@ -1,3 +1,383 @@
-img {
-    max-width: 300px;
+/*
+
+FORMAT OF THIS STYLE-SHEET 
+
+parent-element > element {
+    parent-display-options
+
+    display-type
+    display-options
+        columns
+        rows
+
+    overflow
+
+    width
+    height
+
+    text
+    font
+    background
+
+    padding
+    border
+    margin
+        top
+        bottom
+        right
+        left
+ }
+
+*/
+
+/* BODY */
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-justify: distribute;
+    line-height: 1.3;
 }
+
+/* HEADER: title and navbar*/
+
+body > header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    padding: 0.5%;
+    border-style: solid;
+    border-color: black;
+    margin: 0.5%;
+    
+}
+
+    header > .title {
+        
+        padding: 0.5%;
+        border-style: solid;
+        border-color: black;
+        margin: 0.5%;
+    }
+
+    header > nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        /*width: 10%;*/
+
+        padding: 0.5%;
+        border-style: none;
+        border-color: black;
+        margin: 0.5%;
+    }
+
+        nav > p {
+            display: block;
+
+            white-space: nowrap;
+            text-align: center;
+
+            padding: 0.5%;
+            border-style: none;
+            border-color: black;
+            margin: 0.5%;
+        }
+
+/* CONTENT: aside and articles*/
+
+body > .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    padding: 0.5%;
+    border-style: solid;
+    border-color: black;
+    margin: 0.5%;
+}
+
+    /* ASIDE */
+
+    .content > aside {
+        order: 1;
+
+        overflow: auto;
+
+        width: 15%;
+        
+        padding: 0.5%;
+        border-style: none;
+        border-color: black;
+        margin: 0.5%;
+    }
+
+        aside > .aside-links {
+            display: flex;  
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            padding: 0.5%;
+            border-style: solid;
+            border-color: black;
+            margin: 0.5%;
+
+        }
+
+            .aside-links > p {
+                display: block;
+
+                text-align: center;
+
+                padding: 0.5%;
+                border-style: none;
+                border-color: black;
+                margin: 0.5%;
+            }
+
+    /* ARTICLES */
+
+    .content > main {
+        order: 2;
+
+        /*overflow: auto = come scroll ma compare la barra di scroll solo se necessario*/
+        overflow: auto;
+
+        /*width: 80%;*/
+
+        padding: 0.5%;
+        border-style: solid;
+        border-color: black;
+        margin: 0.5%;
+    }
+
+        main > article {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+
+            padding: 0.5%;
+            border-style: none;
+            border-bottom: solid;
+            border-color: black;
+            margin: 0.5%;
+        }
+
+            article > .post-img {
+                order: 1;
+
+                /*width: 15%;*/
+            
+                padding: 0.5%;
+                border-style: none;
+                border-color: black;
+                margin: 0.5%;
+            }
+
+            article > .post-info {
+                order: 2;
+
+                display: flex;
+                flex-direction: column;
+
+                /*width: 80%;*/
+
+                padding: 0.5%;
+                border-style: none;
+                border-color: black;
+                margin: 0.5%;   
+            }
+
+            .post-info > .post-metadata {
+                order: 1;
+
+                display: flex;
+                justify-content: space-between;
+
+                padding: 0.5%;
+                border-style: none;
+                border-color: black;
+                margin: 0.5%;       
+            }
+
+                .post-metadata > .post-left-metadata {
+                    order: 1;
+
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    /*justify-content: space-between;*/
+
+                    min-width: 150px;
+
+                }
+
+                    .post-left-metadata > .user-propic {
+
+                        /*
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        */
+
+                        overflow: hidden;
+
+                        max-width: 50px;
+
+                        padding: 0.5%;
+                        border-style: none;
+                        border-color: black;
+                        margin: 0.5%; 
+                        margin-right: 5%;
+                    }
+
+                    .post-left-metadata > .user-name {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+
+                        overflow: hidden;
+
+                        /*padding: 0.5%;
+                        /*border-style: solid;
+                        border-color: black;
+                        margin: 0.5%; */
+                    }
+
+                .post-metadata > .post-time-ago {
+                    order: 2;
+
+                    grid-column-start: 4;
+                    grid-column-end: 5;
+
+                    overflow: hidden;
+
+                    white-space: nowrap;
+                    text-align: right;
+                }
+
+            .post-info > .post-text {
+                order: 2;
+
+                text-align: justify;
+
+                padding: 0.5%;
+                border-style: none;
+                border-color: black;
+                margin: 0.5%;   
+            }
+
+/* GENERAL CORRECTIONS AND OTHERS */
+
+.plus-button {
+    display: block;
+    position: fixed;
+    background-color: white;
+    border: solid;
+    border-radius: 50%;
+    border-color: black;
+    color: black;
+    font-size: 60px;
+    text-align: center;
+    padding: 15px 32px;
+    bottom: 30px;
+    right: 30px;
+}
+
+p {
+    min-width: 30px;
+    max-width: 1200px;
+}
+
+/* RESPONSIVE MEDIA QUERIES*/
+
+/* TABLET */
+@media only screen and (width <= 1000px) {
+    
+    body > .content {
+        flex-direction: column;
+    }
+
+        .content > aside {
+            width: auto;
+        }
+
+            aside > .aside-links {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                padding: 0.5%;
+                border-style: none;
+                border-color: black;
+                margin: 0.5%;
+
+            }
+
+        .content > main {
+            width: auto;
+        }
+
+            main > .post-info > .post-metadata {
+                grid-template-columns: 1fr 1fr 4fr 1fr;
+            }
+
+    .plus-button {
+        font-size: 25px;
+        padding: 18px 28px;
+    }
+
+}
+
+/* SMARTPHONE */
+@media only screen and (width <= 500px) {
+
+    header > nav {
+        display: none;
+    }
+
+    main > article {
+        flex-direction: column;
+    }
+
+        article > .post-img {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+        }
+
+        article > .post-img > img {
+            order: 1;
+
+            width: 300px;
+        
+            padding: 0.5%;
+            border-style: none;
+            border-color: black;
+            margin: 0.5%;
+        }
+
+    .plus-button {
+        font-size: 20px;
+        padding: 16px 24px;
+    }
+}
+
+/* TOO-SMALL */
+/*
+@media only screen and (width <= 280px) {
+    body {
+        display: none;
+    }
+}
+*/
