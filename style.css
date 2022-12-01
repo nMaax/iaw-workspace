@@ -16,14 +16,18 @@
 }*/
 
 .post-img > img {
-    width: 100px;
+    width: 100%;
 }
 
-.user-propic {
-    width: 30px;
+.user-propic > img {
+    width: 100%;
 }
 
-p {
+.post-left-metadata > p {
+    /*width: 100%;*/
+}
+
+/*p {
     min-width: 10px;
     max-width: 1200px;
 }
@@ -31,4 +35,4 @@ p {
 img {
     min-width: 10px;
     max-width: 300px;
-}
+}*/

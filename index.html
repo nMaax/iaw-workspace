@@ -9,7 +9,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body class="container-fluid p-1 m-1 border border-2 border-dark">
+    <body class="container-fluid">
         <!-- Header: contains the main title of the page and a nav bar on the right-->
         <header class="row container-fluid m-2 border border-2 border-dark">
             <div class="titles">
@@ -24,7 +24,7 @@
         <!-- Content: contains the main content of the page, it comprehands both the aside bar and the articles-->
         <div class="row container-fluid m-2 border border-2 border-dark">
 
-            <aside class="col-4 border border-2 border-dark">
+            <aside class="col-2 border border-2 border-dark">
                 <div class="aside-links border border-2 border-dark">
                     <p><a href="url">Oggi</a></p>
                     <p><a href="url">Questa settimana</a></p>
@@ -32,87 +32,83 @@
                 </div>
             </aside>
 
-            <main class="col-8">
-                <article class="row border border-2 border-dark">
+            <main class="col-9 offset-1">
+                <article class="row border-bottom border-dark">
 
-                    <div class="post-img col-2 align-items-center border border-2 border-dark">
-                        <img  src="src/content.png">
+                    <div class="post-img col-2 my-3">
+                        <img src="src/content.png">
                     </div>
 
-                    <div class="post-info col-8 offset-2 border border-2 border-dark">
-                        <div class="post-metadata">
-                            <div class="post-left-metadata">
-                                <img class="user-propic" src="src/ikari.jpeg">
-                                <p class="user-name"><b>Signor luigi</b></p>
+                    <div class="post-info col-9 offset-1 my-3">
+                        <div class="post-metadata row">
+                            <div class="post-left-metadata col-6 row">
+                                <div class="user-propic col-2"><img src="src/ikari.jpeg"></div>
+                                <div class="user-name col"><p><b>Signor luigi</b></p></div>
                             </div>  
-                            <p class="post-time-ago">2 giorni fa</p>
+                            <div class="col-2 offset-4"><p>2 giorni fa</p></div>                            
                         </div>
-                        <p class="post-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus, erat quis laoreet porttitor, magna orci tempor mi, id dictum erat elit non libero. Sed volutpat nulla ut metus interdum pharetra. Nunc luctus justo a magna gravida vestibulum. Vivamus condimentum neque ac tortor rutrum, quis imperdiet diam porttitor. Etiam in bibendum turpis. Duis et facilisis nisi. Nulla venenatis eget elit nec efficitur. Nam a sem in lacus malesuada vulputate. Fusce vestibulum arcu vel ligula vestibulum hendrerit.
-                        </p>
+                        <div class="post-text row my-2"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus, erat quis laoreet porttitor, magna orci tempor mi, id dictum erat elit non libero. Sed volutpat nulla ut metus interdum pharetra. Nunc luctus justo a magna gravida vestibulum. Vivamus condimentum neque ac tortor rutrum, quis imperdiet diam porttitor. Etiam in bibendum turpis. Duis et facilisis nisi. Nulla venenatis eget elit nec efficitur. Nam a sem in lacus malesuada vulputate. Fusce vestibulum arcu vel ligula vestibulum hendrerit.</p></div>
+                        
                     </div>
 
                 </article>
 
-                <article class="row border border-2 border-dark">
+                <article class="row border-bottom border-dark">
 
-                    <div class="post-img col-2 align-items-center border border-2 border-dark">
-                        <img  src="src/content.png">
+                    <div class="post-img col-2 my-3">
+                        <img src="src/content.png">
                     </div>
 
-                    <div class="post-info col-8 offset-2 border border-2 border-dark">
-                        <div class="post-metadata">
-                            <div class="post-left-metadata">
-                                <img class="user-propic" src="src/ikari.jpeg">
-                                <p class="user-name"><b>Signor luigi</b></p>
-                            </div>
-                            <p class="post-time-ago">2 giorni fa</p>
+                    <div class="post-info col-9 offset-1 my-3">
+                        <div class="post-metadata row">
+                            <div class="post-left-metadata col-6 row">
+                                <div class="user-propic col-2"><img src="src/ikari.jpeg"></div>
+                                <div class="user-name col"><p><b>Signor luigi</b></p></div>
+                            </div>  
+                            <div class="col-2 offset-4"><p>2 giorni fa</p></div>                            
                         </div>
-                        <p class="post-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus, erat quis laoreet porttitor, magna orci tempor mi, id dictum erat elit non libero. Sed volutpat nulla ut metus interdum pharetra. Nunc luctus justo a magna gravida vestibulum. Vivamus condimentum neque ac tortor rutrum, quis imperdiet diam porttitor. Etiam in bibendum turpis. Duis et facilisis nisi. Nulla venenatis eget elit nec efficitur. Nam a sem in lacus malesuada vulputate. Fusce vestibulum arcu vel ligula vestibulum hendrerit.
-                        </p>
+                        <div class="post-text row my-2"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus, erat quis laoreet porttitor, magna orci tempor mi, id dictum erat elit non libero. Sed volutpat nulla ut metus interdum pharetra. Nunc luctus justo a magna gravida vestibulum. Vivamus condimentum neque ac tortor rutrum, quis imperdiet diam porttitor. Etiam in bibendum turpis. Duis et facilisis nisi. Nulla venenatis eget elit nec efficitur. Nam a sem in lacus malesuada vulputate. Fusce vestibulum arcu vel ligula vestibulum hendrerit.</p></div>
+                        
                     </div>
 
                 </article>
 
-                <article class="row border border-2 border-dark">
+                <article class="row border-bottom border-dark">
 
-                    <div class="post-img col-2 align-items-center border border-2 border-dark">
-                        <img  src="src/content.png">
+                    <div class="post-img col-2 my-3">
+                        <img src="src/content.png">
                     </div>
 
-                    <div class="post-info col-8 offset-2 border border-2 border-dark">
-                        <div class="post-metadata">
-                            <div class="post-left-metadata">
-                                <img class="user-propic" src="src/ikari.jpeg">
-                                <p class="user-name"><b>Signor luigi</b></p>
-                            </div>
-                            <p class="post-time-ago">2 giorni fa</p>
+                    <div class="post-info col-9 offset-1 my-3">
+                        <div class="post-metadata row">
+                            <div class="post-left-metadata col-6 row">
+                                <div class="user-propic col-2"><img src="src/ikari.jpeg"></div>
+                                <div class="user-name col"><p><b>Signor luigi</b></p></div>
+                            </div>  
+                            <div class="col-2 offset-4"><p>2 giorni fa</p></div>                            
                         </div>
-                        <p class="post-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus, erat quis laoreet porttitor, magna orci tempor mi, id dictum erat elit non libero. Sed volutpat nulla ut metus interdum pharetra. Nunc luctus justo a magna gravida vestibulum. Vivamus condimentum neque ac tortor rutrum, quis imperdiet diam porttitor. Etiam in bibendum turpis. Duis et facilisis nisi. Nulla venenatis eget elit nec efficitur. Nam a sem in lacus malesuada vulputate. Fusce vestibulum arcu vel ligula vestibulum hendrerit.
-                        </p>
+                        <div class="post-text row my-2"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus, erat quis laoreet porttitor, magna orci tempor mi, id dictum erat elit non libero. Sed volutpat nulla ut metus interdum pharetra. Nunc luctus justo a magna gravida vestibulum. Vivamus condimentum neque ac tortor rutrum, quis imperdiet diam porttitor. Etiam in bibendum turpis. Duis et facilisis nisi. Nulla venenatis eget elit nec efficitur. Nam a sem in lacus malesuada vulputate. Fusce vestibulum arcu vel ligula vestibulum hendrerit.</p></div>
+                        
                     </div>
 
                 </article>
 
-                <article class="row border border-2 border-dark">
+                <article class="row border-bottom border-dark">
 
-                    <div class="post-img col-2 align-items-center border border-2 border-dark">
-                        <img  src="src/content.png">
+                    <div class="post-img col-2 my-3">
+                        <img src="src/content.png">
                     </div>
 
-                    <div class="post-info col-8 offset-2 border border-2 border-dark">
-                        <div class="post-metadata">
-                            <div class="post-left-metadata">
-                                <img class="user-propic" src="src/ikari.jpeg">
-                                <p class="user-name"><b>Signor luigi</b></p>
-                            </div>
-                            <p class="post-time-ago">2 giorni fa</p>
+                    <div class="post-info col-9 offset-1 my-3">
+                        <div class="post-metadata row">
+                            <div class="post-left-metadata col-6 row">
+                                <div class="user-propic col-2"><img src="src/ikari.jpeg"></div>
+                                <div class="user-name col"><p><b>Signor luigi</b></p></div>
+                            </div>  
+                            <div class="col-2 offset-4"><p>2 giorni fa</p></div>                            
                         </div>
-                        <p class="post-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus, erat quis laoreet porttitor, magna orci tempor mi, id dictum erat elit non libero. Sed volutpat nulla ut metus interdum pharetra. Nunc luctus justo a magna gravida vestibulum. Vivamus condimentum neque ac tortor rutrum, quis imperdiet diam porttitor. Etiam in bibendum turpis. Duis et facilisis nisi. Nulla venenatis eget elit nec efficitur. Nam a sem in lacus malesuada vulputate. Fusce vestibulum arcu vel ligula vestibulum hendrerit.
-                        </p>
+                        <div class="post-text row my-2"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus, erat quis laoreet porttitor, magna orci tempor mi, id dictum erat elit non libero. Sed volutpat nulla ut metus interdum pharetra. Nunc luctus justo a magna gravida vestibulum. Vivamus condimentum neque ac tortor rutrum, quis imperdiet diam porttitor. Etiam in bibendum turpis. Duis et facilisis nisi. Nulla venenatis eget elit nec efficitur. Nam a sem in lacus malesuada vulputate. Fusce vestibulum arcu vel ligula vestibulum hendrerit.</p></div>
+                        
                     </div>
 
                 </article>
