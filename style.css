@@ -14,16 +14,8 @@
     right: 30px;
 }*/
 
-.post-img > img {
-    width: 100%;
-}
-
-.user-propic > img {
-    width: 100%;
-}
-
-.post-text {
-    text-align: justify;
+.mynavbar {
+    height: 10rem;
 }
 
 p {
