@@ -14,6 +14,10 @@
     right: 30px;
 }*/
 
+.post-txt {
+    text-align: justify;
+}
+
 p {
     min-width: 10px;
     max-width: 1200px;
