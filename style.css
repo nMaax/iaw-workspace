@@ -23,3 +23,9 @@ img {
     min-width: 10px;
     max-width: 500px;
 }
+
+@media only screen and (width < 992px) {
+    .aside-paragraph {
+        text-align: center;
+    }
+}
