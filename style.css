@@ -14,8 +14,6 @@
     right: 30px;
 }*/
 
-
-
 .propic {
     vertical-align: middle;
 }
@@ -30,8 +28,10 @@ p {
 }
 
 img {
+    min-height: 10px;
     min-width: 10px;
-    max-width: 500px;
+    max-height: 1000px;
+    max-width: 1000px;
 }
 
 @media only screen and (width < 992px) {
