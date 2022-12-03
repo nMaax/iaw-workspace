@@ -14,6 +14,8 @@
     right: 30px;
 }*/
 
+
+
 .propic {
     vertical-align: middle;
 }
@@ -33,7 +35,18 @@ img {
 }
 
 @media only screen and (width < 992px) {
+
     .aside-paragraph {
         text-align: center;
     }
+
 }
+
+@media only screen and (width < 768px) {
+
+    .post-img {
+        max-width: 600px;
+    }
+
+}
+
