@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
-    <body>
+    <body class="container-fluid">
 
         <!-- 
             
@@ -25,7 +25,7 @@
                 - Manage how this tag rapports with child tags (tipically: row, d-flex, ...) 
                 - You personal classes
 
-            * * * BOOTSTRAP DOCU * * *
+            * * * BOOTSTRAP QUICK-ACCESS DOCU * * *
 
             Bootstrap doc: https://getbootstrap.com/docs/5.2/getting-started/introduction/
 
@@ -43,29 +43,26 @@
 
             * * * TIPS * * *
 
-            always prefer a d-flex option (justify, alig-item, ...) instead of a "manual" padding/margin style
+            - always prefer a d-flex option (justify, alig-item, ...) instead of a "manual" padding/margin style
             
-            should I go for a "manual col handling" or using the col (col-auto) class as the last element whenever is possible?
+            - should I go for a "manual col handling" or using the col (col-auto) class as the last element whenever is possible?
 
-            when in doubt, always specify the 'obvious' classes like col-12
+            - when in doubt, always specify the 'obvious' classes like col-12
 
-            tag.class1.class2.class3*N + TAB for generating N tags (div if tag not specified) with specified classes
+            - tag.class1.class2.class3*N + TAB for generating N tags (div if tag not specified) with specified classes
 
-            e.g.    tag.class1.class2.class3*3
-                    <tag class="class1 class2 class3"></tag>
-                    <tag class="class1 class2 class3"></tag>
-                    <tag class="class1 class2 class3"></tag>
+                e.g.    tag.class1.class2.class3*3
+                        <tag class="class1 class2 class3"></tag>
+                        <tag class="class1 class2 class3"></tag>
+                        <tag class="class1 class2 class3"></tag>
+            
+            - ! + TAB for generating standard html skeleton (doctype and meta viewport included)
 
-        -->
+            * * * TODO * * *
 
-        <!--
-            TODO
                 . imparare tutte le classi che ti mancano ma che hai usato nella bootstrap doc
-                . commentare ogni parte, ti tornerá utile in futuro (eventualmente fai anche un file notes.MD)
-        -->
 
-        
-        <div class="container-fluid"></div>
+        -->
 
             <!-- NAVBAR -->
             <!-- copy-pasted from https://getbootstrap.com/docs/5.2/components/navbar/#nav but with the navbar-brand sobstituted by a h1, h5 -->
@@ -92,7 +89,7 @@
             </header>
 
             <!-- ASIDE + ARTICLES -->
-            <div class="row container-fluid m-auto">
+            <div class="row m-auto">
                 
                 <!-- ASIDE BAR -->
                 <!-- To nest a new grid into a specifc cell (col) of another grid add a new .row -->
@@ -110,38 +107,6 @@
                     
                     <!-- ARTICLE -->
                     
-                    <article class="row justify-content-between p-2 border mx-2 mx-md-0 my-3 g-5 g-md-3">
-                        
-                        <!-- Con d-flex imposto un display flex e con justify/align lo centro -->
-                        <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
-                        <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
-                            <img class="img-fluid post-img rounded-2" alt="Immagine del post" src="src/content.jpg">
-                        </div>
-
-
-
-                        <div class="col-12 col-md-8 col-lg-9 col-xl-10">
-
-                            <div class="row justify-content-between">
-                                <div class="col-7 col-sm-9 col-lg-6 row">
-                                    <div class="col-3 col-md-2 d-flex justify-content-center align-items-center"><img class="propic img-fluid rounded-3" alt="Immagine del profilo dell'utente" src="src/ikari.jpeg"></div>
-                                    <div class="col-9 col-md-10"><h5><b>イカリさん</b></h5></div>
-                                </div>  
-                                <div class="col-5 col-sm-3 col-lg-2">
-                                    <p style="text-align: right;">2 giorni fa</p>
-                                </div>                            
-                            </div>
-
-                            <div class="row">
-                                <p class="post-txt my-3" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus assumenda dolorum eum accusantium vero dicta, dolores dolore facere est nobis quasi labore alias. Deserunt tempora possimus provident. Sunt, aut laborum.
-                                Error ipsa eos id itaque debitis veritatis nisi vitae! Vel eos voluptas eligendi non ab fuga voluptatibus molestiae ex? Amet exercitationem tempora magnam veniam fugit minima architecto illo cum necessitatibus.
-                                Explicabo et nisi quos voluptates hic saepe nesciunt maiores repudiandae earum perferendis iste quas quisquam ea at minima velit excepturi incidunt laborum provident voluptatum sapiente tempora, expedita reiciendis! A, quia!
-                                </p>
-                            </div>
-
-                        </div>
-                    </article>
-
                     <article class="row justify-content-between p-2 border mx-2 mx-md-0 my-3 g-5 g-md-3">
                         
                         <!-- Con d-flex imposto un display flex e con justify/align lo centro -->
