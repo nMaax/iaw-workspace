@@ -6,72 +6,119 @@
         <meta name="keywords" content="HTML, LAB1, BLOG, SOCIAL, INTERFACE">
         <meta name="description" content="Esercizio di laboratorio">
         <meta name="viewport" content="width=device-width, initial-scale=1">    
-        <title>Faccialibro, il social che ama i tuoi dati, te e i tuoi dati</title>
+        <title>Faccialibro, il social che ama te, i tuoi cari, i tuoi dati, i tuoi amici e i tuoi dati</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
     <body>
 
+        <!-- 
+            
+            * * * FORMAT * * *
+
+            <tag class="parent-tag-setup padding border margin child-tag-setup gutter personalClass" id="..." style="..." href/src="..."></tag>
+            
+            The scheme of classes is basically: 
+                - Manage how this tag rapports with parent tag (tipically: col, nav-item, ...)
+                - Manage the styling of this tag (other padding, border, margin - in this order)
+                - Manage how this tag rapports with child tags (tipically: row, d-flex, ...) 
+                - You personal classes
+
+            * * * BOOTSTRAP DOCU * * *
+
+            Bootstrao doc: https://getbootstrap.com/docs/5.2/getting-started/introduction/
+
+            Layouts: https://getbootstrap.com/docs/5.2/layout/breakpoints/
+                Gutters: https://getbootstrap.com/docs/5.2/layout/gutters/
+                Images: https://getbootstrap.com/docs/5.2/content/images/
+
+            Content: https://getbootstrap.com/docs/5.2/content/reboot/
+                Typography: https://getbootstrap.com/docs/5.2/content/typography/
+
+            Utilites: https://getbootstrap.com/docs/5.2/utilities/api/
+                Margin and Pagging: https://getbootstrap.com/docs/5.2/utilities/spacing/#margin-and-padding
+                Borders: https://getbootstrap.com/docs/5.2/utilities/borders/#border
+                
+
+            * * * TIPS * * *
+
+            always prefer a d-flex option (justify, alig-item, ...) instead of a "manual" padding/margin style
+            
+            should I go for a "manual col handling" or using the col (col-auto) class as the last element whenever is possible?
+
+            when in doubt, always specify the 'obvious' classes like col-12
+
+            tag.class1.class2.class3*N + TAB for generating N tags (div if tag not specified) with specified classes
+
+            e.g.    tag.class1.class2.class3*3
+                    <tag class="class1 class2 class3"></tag>
+                    <tag class="class1 class2 class3"></tag>
+                    <tag class="class1 class2 class3"></tag>
+
+        -->
+
         <!--
             TODO
-
-            x usare d-flex align justify invece di row
-            X fare il botton +
-            . imparare tutte le classi che ti mancano ma che hai usato nella bootstrap doc
-            . commentare ogni parte, ti tornerá utile in futuro (eventualmente fai anche un file notes.MD)
-            X metti gli attributi alt="" 
-            . prova a fare una nav bar nera
-            . combina display-5 e h1 per testare
-            X metti un sottotitolo in header
-            X fai si che in smartphone il time-ago non vada a capo
-
+                . imparare tutte le classi che ti mancano ma che hai usato nella bootstrap doc
+                . commentare ogni parte, ti tornerá utile in futuro (eventualmente fai anche un file notes.MD)
         -->
 
         
         <div class="container-fluid"></div>
 
-            <!-- Header: contains the main title of the page and a nav bar on the right-->
+            <!-- NAVBAR -->
+            <!-- https://getbootstrap.com/docs/5.2/components/navbar/#nav but with the navbar-brand sobstituted by a h1, h5 -->
             <header class="row">    
                 <nav class="navbar navbar-expand-lg" style="height: 8rem; background-color: #e1e1d3;">
                     <div class="container-fluid">
-                      <h1 class="display-5 mx-2" >Faccialibro</h1>
-                      <h5 class="d-none d-lg-block ms-2 mt-3" style="color: #737373;">Ci prendiamo cura dei tuoi dati</h5>
-                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 mx-2">
-                          <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#" style="float: end;">Home</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#" style="float: end;">Chi siamo</a>
-                          </li>
+                        <h1 class="display-5 mx-2" >Faccialibro</h1>
+                        <h5 class="d-none d-lg-block ms-2 mt-3" style="color: #737373;">Ci prendiamo cura dei tuoi dati</h5>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 mx-2">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#" style="float: end;">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" style="float: end;">Chi siamo</a>
+                            </li>
                         </ul>
                       </div>
                     </div>
                   </nav>
             </header>
 
-            <!-- Content: contains the main content of the page, it comprehands both the aside bar and the articles-->
+            <!-- ASIDE + ARTICLES -->
             <div class="row container-fluid m-auto">
                 
+                <!-- ASIDE BAR -->
+                <!-- To nest a new grid into a specifc cell (col) of another grid add a new .row -->
+                <!-- https://getbootstrap.com/docs/5.2/layout/grid/#nesting -->
                 <aside class="col-12 col-lg-2">
                     <div class="row py-3">
                         <div class="col-4 col-lg-12"><p class="aside-paragraph"><a href="url">Oggi</a></p></div>
                         <div class="col-4 col-lg-12"><p class="aside-paragraph"><a href="url">Questa settimana</a></p></div>
-                        <div class="col-4 col-lg-12"><p class="aside-paragraph" ><a href="url">Questo mese</a></p></div>
+                        <div class="col-4 col-lg-12"><p class="aside-paragraph"><a href="url">Questo mese</a></p></div>
                     </div>
                 </aside>
 
+                <!-- ARTICLES -->
                 <main class="col-12 col-lg-10">
+                    
+                    <!-- ARTICLE -->
                     
                     <article class="row justify-content-between p-2 border mx-2 mx-md-0 my-3 g-5 g-md-3">
                         
+                        <!-- Con d-flex imposto un display flex e con justify/align lo centro -->
+                        <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
                         <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
                             <img class="img-fluid post-img rounded-2" alt="Immagine del post" src="src/content.jpg">
                         </div>
+
+
 
                         <div class="col-12 col-md-8 col-lg-9 col-xl-10">
 
@@ -97,9 +144,13 @@
 
                     <article class="row justify-content-between p-2 border mx-2 mx-md-0 my-3 g-5 g-md-3">
                         
+                        <!-- Con d-flex imposto un display flex e con justify/align lo centro -->
+                        <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
                         <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
                             <img class="img-fluid post-img rounded-2" alt="Immagine del post" src="src/content.jpg">
                         </div>
+
+
 
                         <div class="col-12 col-md-8 col-lg-9 col-xl-10">
 
@@ -125,9 +176,13 @@
 
                     <article class="row justify-content-between p-2 border mx-2 mx-md-0 my-3 g-5 g-md-3">
                         
+                        <!-- Con d-flex imposto un display flex e con justify/align lo centro -->
+                        <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
                         <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
                             <img class="img-fluid post-img rounded-2" alt="Immagine del post" src="src/content.jpg">
                         </div>
+
+
 
                         <div class="col-12 col-md-8 col-lg-9 col-xl-10">
 
@@ -153,9 +208,13 @@
 
                     <article class="row justify-content-between p-2 border mx-2 mx-md-0 my-3 g-5 g-md-3">
                         
+                        <!-- Con d-flex imposto un display flex e con justify/align lo centro -->
+                        <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
                         <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
                             <img class="img-fluid post-img rounded-2" alt="Immagine del post" src="src/content.jpg">
                         </div>
+
+
 
                         <div class="col-12 col-md-8 col-lg-9 col-xl-10">
 
@@ -181,37 +240,13 @@
 
                     <article class="row justify-content-between p-2 border mx-2 mx-md-0 my-3 g-5 g-md-3">
                         
+                        <!-- Con d-flex imposto un display flex e con justify/align lo centro -->
+                        <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
                         <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
                             <img class="img-fluid post-img rounded-2" alt="Immagine del post" src="src/content.jpg">
                         </div>
 
-                        <div class="col-12 col-md-8 col-lg-9 col-xl-10">
 
-                            <div class="row justify-content-between">
-                                <div class="col-7 col-sm-9 col-lg-6 row">
-                                    <div class="col-3 col-md-2 d-flex justify-content-center align-items-center"><img class="propic img-fluid rounded-3" alt="Immagine del profilo dell'utente" src="src/ikari.jpeg"></div>
-                                    <div class="col-9 col-md-10"><h5><b>イカリさん</b></h5></div>
-                                </div>  
-                                <div class="col-5 col-sm-3 col-lg-2">
-                                    <p style="text-align: right;">2 giorni fa</p>
-                                </div>                            
-                            </div>
-
-                            <div class="row">
-                                <p class="post-txt my-3" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus assumenda dolorum eum accusantium vero dicta, dolores dolore facere est nobis quasi labore alias. Deserunt tempora possimus provident. Sunt, aut laborum.
-                                Error ipsa eos id itaque debitis veritatis nisi vitae! Vel eos voluptas eligendi non ab fuga voluptatibus molestiae ex? Amet exercitationem tempora magnam veniam fugit minima architecto illo cum necessitatibus.
-                                Explicabo et nisi quos voluptates hic saepe nesciunt maiores repudiandae earum perferendis iste quas quisquam ea at minima velit excepturi incidunt laborum provident voluptatum sapiente tempora, expedita reiciendis! A, quia!
-                                </p>
-                            </div>
-
-                        </div>
-                    </article>
-
-                    <article class="row justify-content-between p-2 border mx-2 mx-md-0 my-3 g-5 g-md-3">
-                        
-                        <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
-                            <img class="img-fluid post-img rounded-2" alt="Immagine del post" src="src/content.jpg">
-                        </div>
 
                         <div class="col-12 col-md-8 col-lg-9 col-xl-10">
 
