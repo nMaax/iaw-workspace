@@ -1,5 +1,33 @@
 /*
-    
+
+FORMAT
+
+Order is based on gerarchy since this is a *CASCADE* style sheet
+
+element {
+    parent-display-options
+
+    display-type
+    display-options
+        columns
+        rows
+
+    width
+    height
+
+    text
+    font
+    background
+
+    padding
+    border
+    margin
+        top
+        bottom
+        right
+        left
+ }
+
 */
 
 .plus-button {
