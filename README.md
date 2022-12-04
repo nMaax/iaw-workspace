@@ -57,10 +57,10 @@ element {
 * Always prefer a d-flex option (justify, alig-item, ...) instead of a "manual" padding/margin style
 * Should I go for a "manual col handling" or using the col (col-auto) class as the last element whenever is possible?
 * Tag.class1.class2.class3*N + TAB for generating N tags (div if tag not specified) with specified classes
-    ```html
-        <!--e.g.    tag.class1.class2.class3*3 generates:-->
-        <tag class="class1 class2 class3"></tag>
-        <tag class="class1 class2 class3"></tag>
-        <tag class="class1 class2 class3"></tag>
-    ```
+```html
+<!--e.g.    tag.class1.class2.class3*3 generates:-->
+<tag class="class1 class2 class3"></tag>
+<tag class="class1 class2 class3"></tag>
+<tag class="class1 class2 class3"></tag>
+```
 * ! + TAB for generating standard html skeleton (doctype and meta viewport included)
