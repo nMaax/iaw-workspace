@@ -66,22 +66,34 @@
 
             * * * TODO * * *
 
-                . imparare tutte le classi che ti mancano ma che hai usato nella bootstrap doc
+                Nulla da fare, tutto completato! :)
         -->
 
             <!-- NAVBAR -->
             <!-- copy-pasted from https://getbootstrap.com/docs/5.2/components/navbar/#nav but with the navbar-brand sobstituted by a h1, h5 -->
             <header class="row">    
-                <nav class="navbar navbar-expand-lg" style="height: 8rem; background-color: #e1e1d3;">
+                <!-- navbar-expand-bp indica da quale breakpoint (bp) non deve esserci il menú hamburger -->
+                <!-- attivo il menu hamburger solo in smartphone (<md) e tablet (md< ... <lg) -->
+                <nav class="navbar navbar-expand-lg " style="height: 8rem; background-color: #e1e1d3;">
+                    <!-- div che indica tutto il contenuto della navbar, se fluid il conenuto va da bordo a bordo, altrimenti c'é un margine invisibile -->
                     <div class="container-fluid">
                         <!-- Invece di usare navbar-brand ho usato h1 e h5, questo puó causare un overflow degli elementi nel menú a tendina-->
                         <h1 class="display-5 mx-2" >Faccialibro</h1>
                         <h5 class="d-none d-lg-block ms-2 mt-3" style="color: #737373;">Ci prendiamo cura dei tuoi dati</h5>
+                        <!-- bottone hamburget, si attiva in base al bp impostato in navbar-expand-bp precedentemente -->
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
+                        <!-- contenuto che collasserá dentro il menú hamburger -->
+                        <!-- se togli solo l'id il contenuto collasserá ma non sará apribile con menu hamburger-->
+                        <!-- se togli solo collapse il contenuto non collassa, ma il bottone hamburger comaprirá lo stesso -->
+                        <!-- se togli navbar-collapse il contenuto collassa lo stesso ma non si posiziona sotto la navbar, bensí accanto ad essa (e oltre il bp do collasso gli elementi non compariranno) -->
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <!-- la unordered list indica tutti gli elementi che vogliamo avere dentro il menu hamburger (esclusi form di ricerca)-->
+                            <!-- se togli la classe navbar-nav la ul diventerá una "stock ul" con i puntini accanto, se lo tieni i puntini vanno via -->
+                            <!-- nota che se togli navbar-nav tutto funziona ancora, ma oltre il bp di collasso gli elementi saranno uno sopra l'altro e in collasso non faranno overflow se hai usato qualcos-altro al posto del navbar-brand precedentemente -->
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 mx-2">
+                            <!-- indica un semplice item della navbar, se la <a> che contiene é active il colore del testo sará nero, grigio altrimenti-->
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#" style="float: end;">Home</a>
                             </li>
