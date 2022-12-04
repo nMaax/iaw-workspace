@@ -17,8 +17,13 @@
             
             * * * FORMAT * * *
 
-            <tag class="parent-tag-setup padding border margin child-tag-setup gutter personalClass" id="..." style="..." href/src="..."></tag>
-            
+            <always indent>
+                <tag class="parent-tag-setup padding border margin child-tag-setup gutter personalClass" id="..." style="..." href/src="..."></tag>
+            <eventually with some spaces>
+
+            <if the innested tag is pretty simple (like p, a, h1, img, ...)> <p></p> <you can eventually skip the indentation>
+            and always remember to comment the sections and other stuff!
+
             The scheme of classes is basically: 
                 - Manage how this tag rapports with parent tag (tipically: col, nav-item, ...)
                 - Manage the styling of this tag (other, padding, border, margin - in this order)
