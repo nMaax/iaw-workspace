@@ -14,8 +14,21 @@
     right: 30px;
 }*/
 
-.propic {
+.plus-button {
+    background-color: #e1e1d3d2;
+    border: solid;
+    border-color: #82828281 ;
+    border-width: 1px;
+    border-radius: 50%;
+    bottom: 30px;
+    color: #82828281;
+    height: 60px;
+    position: fixed;
+    right: 30px;
+    text-align: center;
+    text-decoration: none;
     vertical-align: middle;
+    width: 60px;
 }
 
 .post-txt {
