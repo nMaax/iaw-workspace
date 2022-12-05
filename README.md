@@ -1,8 +1,9 @@
 # General Formatting Guidelines
 
-- [Bootstrap Documentation](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 - [Emmet Documentation](https://docs.emmet.io/)   
-- [Flask Documentation]()
+- [Bootstrap Documentation](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+- [Flask Documentation](https://flask.palletsprojects.com/en/2.2.x/)
+- [Jinja Documentation](https://jinja.palletsprojects.com/)
 
 ## Format of HTML/Bootstrap files
 
