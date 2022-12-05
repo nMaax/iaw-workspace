@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, LAB, BLOG, SOCIAL, SOCIALNETWORK, INTERFACE">
+    <meta name="description" content="Faccialibro - Chi siamo">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Faccialibro - Chi siamo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="container-fluid">
+
+        <!-- NAVBAR -->
+        <!-- copy-pasted from https://getbootstrap.com/docs/5.2/components/navbar/#nav but with the navbar-brand sobstituted by a h1, h5 -->
+        <header class="row">    
+        <!-- navbar-expand-bp indica da quale breakpoint (bp) non deve esserci il menú hamburger -->
+        <!-- attivo il menu hamburger solo in smartphone (<md) e tablet (md< ... <lg) -->
+        <nav class="navbar navbar-expand-lg " style="height: 8rem; background-color: #e1e1d3;">
+            <!-- div che indica tutto il contenuto della navbar, se fluid il conenuto va da bordo a bordo, altrimenti c'é un margine invisibile -->
+            <div class="container-fluid">
+                <!-- Invece di usare navbar-brand ho usato h1 e h5, questo puó causare un overflow degli elementi nel menú a tendina-->
+                <h1 class="display-5 mx-2" >Faccialibro</h1>
+                <h5 class="d-none d-lg-block ms-2 mt-3" style="color: #737373;">Ci prendiamo cura dei tuoi dati</h5>
+                <!-- bottone hamburget, si attiva in base al bp impostato in navbar-expand-bp precedentemente -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- contenuto che collasserá dentro il menú hamburger -->
+                <!-- se togli solo l'id il contenuto collasserá ma non sará apribile con menu hamburger-->
+                <!-- se togli solo collapse il contenuto non collassa, ma il bottone hamburger comaprirá lo stesso -->
+                <!-- se togli navbar-collapse il contenuto collassa lo stesso ma non si posiziona sotto la navbar, bensí accanto ad essa (e oltre il bp do collasso gli elementi non compariranno) -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- la unordered list indica tutti gli elementi che vogliamo avere dentro il menu hamburger (esclusi form di ricerca)-->
+                    <!-- se togli la classe navbar-nav la ul diventerá una "stock ul" con i puntini accanto, se lo tieni i puntini vanno via -->
+                    <!-- nota che se togli navbar-nav tutto funziona ancora, ma oltre il bp di collasso gli elementi saranno uno sopra l'altro e in collasso non faranno overflow se hai usato qualcos-altro al posto del navbar-brand precedentemente -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 mx-2">
+                    <!-- indica un semplice item della navbar, se la <a> che contiene é active il colore del testo sará nero, grigio altrimenti-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" style="float: end;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" style="float: end;">Chi siamo</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            </nav>
+        </header>
+        
+        <main class="row py-5 gy-3">
+            <div class="row gx-5">
+                <div class="col-3">
+                    <div class="card mb-3">
+                        <img src="src/Asuka_Soryu.jpeg" class="card-img-top img-fluid    " alt="Immagine sviluppatore 1">
+                        <div class="card-body">
+                            <h5 class="card-title fst-italic">Sono nata per pilotare gli eva!</h5>
+                            <p class="card-text"><small class="text-muted">Last updated 3 moths ago</small></p>
+                        </div>
+                    </div>
+                </div>
+                <!--div class="col-4 d-flex justify-content-center align-items-center">
+                    <img class="img-fluid rounded-3 propic" src="src/Asuka_Soryu.jpeg" alt="Immagine sviluppatore 1">
+                </div-->
+                <div class="col">
+                    <div class="row"><h3>Asuka Soryu Langley</h3></div>
+                    <div class="row dev-description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloribus fugiat magni quibusdam architecto nihil, et tempore doloremque ea dolores autem, deleniti enim aliquid fuga eveniet nemo est possimus quisquam?
+                    Ipsum quidem suscipit sed beatae. Id omnis error soluta ad consequuntur deleniti esse quas totam quia natus deserunt sunt fugit sed, officia reiciendis obcaecati aperiam at autem quod! Esse, dolorem?
+                    Dolores laboriosam, vel modi qui enim eligendi corporis tenetur et consequatur vitae harum amet animi, architecto dicta, cupiditate explicabo iure error autem quo perspiciatis hic expedita magni dolorem? Officia, voluptate!
+                    Non accusantium perspiciatis esse, quia consectetur ad quas hic sed praesentium ab aliquam adipisci at dolorem placeat! Unde autem maxime nemo numquam beatae. Exercitationem, quisquam dignissimos voluptate debitis magnam perspiciatis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim et, voluptate necessitatibus fuga dolore assumenda accusamus fugiat amet adipisci itaque? Ipsam commodi itaque, debitis qui laudantium error quaerat quia fugiat!
+                    Asperiores saepe laborum voluptates harum iusto quasi sed dicta autem aspernatur. Dolor magni asperiores commodi nostrum eligendi similique, laboriosam fuga molestiae. Obcaecati praesentium repellendus nisi non veritatis quasi, explicabo laudantium.
+                    Dicta perspiciatis neque itaque blanditiis veritatis vitae optio quod harum et iste, voluptate hic aspernatur accusamus temporibus molestias nobis? Perferendis quia cumque soluta aperiam minus, corrupti adipisci itaque reprehenderit tempore?
+                    Iste dicta commodi delectus perspiciatis omnis doloremque aspernatur, nostrum ducimus magni et rerum molestiae vel aliquid excepturi blanditiis maiores deleniti alias? Vero assumenda quidem ipsam vel provident tenetur explicabo qui!
+                    </p></div>
+                </div>
+            </div>
+        </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
