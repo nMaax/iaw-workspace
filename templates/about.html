@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>Faccialibro - Chi siamo</title>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="container-fluid">
 
@@ -38,7 +38,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 mx-2">
                     <!-- indica un semplice item della navbar, se la <a> che contiene é active il colore del testo sará nero, grigio altrimenti-->
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html" style="float: end;">Home</a>
+                        <a class="nav-link" href="{{ url_for('index') }}" style="float: end;">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#" style="float: end;">Chi siamo</a>
@@ -53,16 +53,13 @@
             <div class="row gx-5">
                 <div class="col-3">
                     <div class="card mb-3">
-                        <img src="static/src/Asuka_Soryu.jpeg" class="card-img-top img-fluid    " alt="Immagine sviluppatore 1">
+                        <img src="{{ url_for('static', filename='src/Asuka_Soryu.jpeg') }}" class="card-img-top img-fluid    " alt="Immagine sviluppatore 1">
                         <div class="card-body">
                             <h5 class="card-title fst-italic">Sono nata per pilotare gli eva!</h5>
                             <p class="card-text"><small class="text-muted">Last updated 3 moths ago</small></p>
                         </div>
                     </div>
                 </div>
-                <!--div class="col-4 d-flex justify-content-center align-items-center">
-                    <img class="img-fluid rounded-3 propic" src="static/src/Asuka_Soryu.jpeg" alt="Immagine sviluppatore 1">
-                </div-->
                 <div class="col">
                     <div class="row"><h3>Asuka Soryu Langley</h3></div>
                     <div class="row dev-description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloribus fugiat magni quibusdam architecto nihil, et tempore doloremque ea dolores autem, deleniti enim aliquid fuga eveniet nemo est possimus quisquam?
