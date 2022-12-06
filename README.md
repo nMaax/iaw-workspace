@@ -1,5 +1,7 @@
 # General Formatting Guidelines
+Use the following guidelines to make a clean code, so everyone else will be able to read it better and quickly
 
+## Documentation of tools used
 - [Emmet Documentation](https://docs.emmet.io/)   
 - [Bootstrap Documentation](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 - [Flask Documentation](https://flask.palletsprojects.com/en/2.2.x/)
@@ -55,6 +57,10 @@ element {
  }
 
 ```
+
+## Format of Python/Flask files
+
+## Format of Jinja statements in HTML Files
 
 ## Useful tips
 
