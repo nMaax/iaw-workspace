@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="font-family: Helvetica, sans-serif, Arial ;">
+    
+    <h1> Piloti di eva 🚀 </h1>
+
+
+    <h3>Piloti in totale</h3>
+    <ul>
+    {% for pilot in pilots %}
+        
+        <li> Nome: <i>{{ pilot.name |e }}</i>, Cognome: <i>{{ pilot.surname |e }}</i> </li>
+        
+    {% endfor %}
+    </ul>
+
+    <h3>Piloti attivi</h3>
+    
+    <ol>
+        {% for pilot in avaible_pilots %}
+            
+            <li> <b>Nome:</b> <i>{{ pilot.name |e }}</i>, <b>Cognome:</b> <i>{{ pilot.surname |e }}</i> </li>
+            </br>
+            
+        {% endfor %}
+    </ol>
+
+    <h3>Piloti attivi (e umani)</h3>
+
+    <ol>
+        
+        {% for pilot in pilots %}
+            
+            {% if pilot in human_pilots %}
+                <li> <b>Nome:</b> <i>{{ pilot.name |e }}</i>, <b>Cognome:</b> <i>{{ pilot.surname |e }}</i> </li>
+                </br>
+            {% else %}
+                <li> <b><i> Pilota non umano </i></b> </li>
+                </br>
+            {% endif %}
+            
+        {% endfor %}
+    </ol>
+
+</body>
+</html>
