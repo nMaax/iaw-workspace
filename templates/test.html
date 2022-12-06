@@ -10,7 +10,6 @@
     
     <h1> Piloti di eva 🚀 </h1>
 
-
     <h3>Piloti in totale</h3>
     <ul>
     {% for pilot in pilots %}
@@ -21,7 +20,6 @@
     </ul>
 
     <h3>Piloti attivi</h3>
-    
     <ol>
         {% for pilot in avaible_pilots %}
             
@@ -32,9 +30,7 @@
     </ol>
 
     <h3>Piloti attivi (e umani)</h3>
-
     <ol>
-        
         {% for pilot in pilots %}
             
             {% if pilot in human_pilots %}
