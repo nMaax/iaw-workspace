@@ -30,7 +30,7 @@ Use the following guidelines to make a clean code, so everyone else will be able
 
 ## Format of CSS files
 ```css
-/* Order of single elements and their attributes is based on gerarchy since this is a *CASCADE* style sheet */
+/* Indentation is important here too! Plus, order of single elements and their attributes is based on gerarchy since this is a *CASCADE* style sheet */
 
 element {
     parent-display-options: ... ;
@@ -59,7 +59,7 @@ element {
  }
  
  /*Always indicate what the following media query do*/
- @media querys {
+ @media query {
  
     element {
         ...
