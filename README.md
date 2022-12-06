@@ -20,11 +20,11 @@ Use the following guidelines to make a clean code, so everyone else will be able
 ```
 
 #### The scheme of classes is basically: 
-1. Manage how this tag rapports with parent tag (tipically: col, nav-item, ...)
-2. Manage the styling of this tag (other, padding, border, margin - in this order)
-3. Manage how this tag rapports with child tags (tipically: row, d-flex, ...) 
-4. You personal classes
-5. For breakpoit use S2G (From smaller (brekpoint) to greater (breakpoint))
+1. Manage how this tag rapports with _parent_ tag (tipically: col, nav-item, ...)
+2. Manage the styling of _this_ tag (other, padding, border, margin - in this order)
+3. Manage how this tag rapports with _child_ tags (tipically: row, d-flex, ...) 
+4. You _personal classes_
+5. For breakpoit use **S2G** (From smaller (brekpoint) to greater (breakpoint))
     * class class-sm class-md class-lg class-xl class-xxl
     * When in doubt, always specify the 'obvious' classes like col-12
 
