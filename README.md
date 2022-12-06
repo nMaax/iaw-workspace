@@ -57,6 +57,15 @@ element {
         right: ... ;
         left: ... ;
  }
+ 
+ /*Always indicate what the following media query do*/
+ @media querys {
+ 
+    element {
+        ...
+    }
+ 
+ }
 
 ```
 
