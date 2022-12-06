@@ -3,32 +3,33 @@
 {% block content %}
 
 {% for article in articles %}
-    <article class="rounded-2 p-2 border border-2 mx-2 mx-md-0 my-3 row justify-content-between g-5 g-md-3">
-                            
-        <!-- Con d-flex imposto un display flex e con justify/align lo centro -->
-        <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
-        <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
-            <img class="img-fluid rounded-2 post-img" alt="Immagine del post" src="{{ url_for('static', filename='src/content.jpg') }}">
+
+<article class="rounded-2 p-2 border border-2 mx-2 mx-md-0 my-3 row justify-content-between g-5 g-md-3">
+                        
+    <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
+    <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
+        <img class="img-fluid rounded-2 post-img" alt="Immagine del post" src="{{ url_for('static', filename='src/content.jpg') }}">
+    </div>
+
+    <div class="col-12 col-md-8 col-lg-9 col-xl-10">
+
+        <div class="row justify-content-between">
+            <div class="col-7 col-sm-9 col-lg-6 row">
+                <div class="col-3 col-md-2 d-flex justify-content-center align-items-center"><img class="img-fluid rounded-3" src="{{url_for('static', filename='src/Shinji_Ikari.jpeg')}}" alt="Immagine del profilo dell'utente"></div>
+                <div class="col-9 col-md-10"><h5><b>@{{ article.username }}</b></h5></div>
+            </div>  
+            <div class="col-5 col-sm-3 col-lg-2">
+                <p style="text-align: right;"> {{ article.daysago }} days ago </p>
+            </div>                            
         </div>
 
-        <div class="col-12 col-md-8 col-lg-9 col-xl-10">
-
-            <div class="row justify-content-between">
-                <div class="col-7 col-sm-9 col-lg-6 row">
-                    <div class="col-3 col-md-2 d-flex justify-content-center align-items-center"><img class="img-fluid rounded-3" src="{{url_for('static', filename='src/Shinji_Ikari.jpeg')}}" alt="Immagine del profilo dell'utente"></div>
-                    <div class="col-9 col-md-10"><h5><b>@{{ article.username }}</b></h5></div>
-                </div>  
-                <div class="col-5 col-sm-3 col-lg-2">
-                    <p style="text-align: right;"> {{ article.daysago }} days ago </p>
-                </div>                            
-            </div>
-
-            <div class="row">
-                <p class="my-3 post-txt" > {{ article.text }} </p>
-            </div>
-
+        <div class="row">
+            <p class="my-3 post-txt" > {{ article.text }} </p>
         </div>
-    </article>
+
+    </div>
+</article>
+
 {% endfor %}
 
 {% endblock %}

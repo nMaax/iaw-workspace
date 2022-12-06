@@ -9,9 +9,9 @@ app = Flask(__name__)
 def index():
 
     articles = [
-        {'username': 'ikarisan', 'daysago': 2, 'text': '🦉'},
-        {'username': 'soryuka', 'daysago': 3, 'text': 'Sono nata per pilotare gli eva!'},
-        {'username': 'kaoruni', 'daysago': 5, 'text': ':('},
+        {'username': 'ikarisan', 'daysago': 2, 'text': lorem6},
+        {'username': 'soryuka', 'daysago': 3, 'text': lorem6},
+        {'username': 'kaoruni', 'daysago': 5, 'text': lorem6},
     ]
     
     return render_template('index.html', page='home', articles=articles)
