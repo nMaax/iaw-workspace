@@ -4,11 +4,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    articles = [
+        {'username': 'ikarisan', 'daysago': 2, 'text': '🦉'},
+        {'username': 'soryuka', 'daysago': 3, 'text': 'Sono nata per pilotare gli eva!'},
+        {'username': 'kaoruni', 'daysago': 5, 'text': ':('},
+    ]
+    return render_template('index.html', page='home', articles=articles)
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', page='about')
 
 @app.route('/test')
 def test():
