@@ -47,6 +47,8 @@ element {
     font: ... ;
     background: ... ;
 
+    other styling attributes: ... ;
+
     padding: ... ;
     border: ... ;
     margin: ... ;
@@ -59,8 +61,15 @@ element {
 ```
 
 ## Format of Python/Flask files
+```python
+
+```
 
 ## Format of Jinja statements in HTML Files
+
+```html
+
+```
 
 ## Useful tips
 
