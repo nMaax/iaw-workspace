@@ -14,6 +14,7 @@
 
 <!-- and always remember to comment the various sections and other stuff! -->
 <if the innested tag is pretty simple (like p, a, h1, img, ...)> <p></p> <you can eventually skip the indentation>
+<you can skip indentation too with "skeleton" tags><like head, body and html>
 ```
 
 #### The scheme of classes is basically: 
@@ -21,13 +22,13 @@
 2. Manage the styling of this tag (other, padding, border, margin - in this order)
 3. Manage how this tag rapports with child tags (tipically: row, d-flex, ...) 
 4. You personal classes
-5. For breakpoit use FSTG (From smaller (brekpoint) to greater (breakpoint))
+5. For breakpoit use S2G (From smaller (brekpoint) to greater (breakpoint))
     * class class-sm class-md class-lg class-xl class-xxl
     * When in doubt, always specify the 'obvious' classes like col-12
 
 ## Format of CSS files
 ```css
-/* Order of single elements is based on gerarchy since this is a *CASCADE* style sheet */
+/* Order of single elements and their attributes is based on gerarchy since this is a *CASCADE* style sheet */
 
 element {
     parent-display-options: ... ;
@@ -57,6 +58,6 @@ element {
 
 ## Useful tips
 
-* Always prefer a d-flex option (justify, alig-item, ...) instead of a "manual" padding/margin style
-* Use _Emmet_!
+* Always prefer (if possible) a d-flex option (justify, alig-item, ...) instead of a "manual" padding/margin style
+* Use _Emmet_ in _VS-Code_!
 * If possible use the col-auto class to make one of the columns in certain row automatically responsive to the changes during breakpoint-switches
