@@ -28,6 +28,7 @@
             <!-- ARTICLES -->
             {% for article in articles %}
 
+                <a class='href-post' href="{{ url_for('post', id=article.id)}} ">
                 <article class="col-12 rounded-2 p-2 border border-2 mx-2 my-2 row justify-content-between g-3">
                                         
                     <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
@@ -53,6 +54,7 @@
 
                     </div>
                 </article>
+                </a>
 
             {% endfor %}
 

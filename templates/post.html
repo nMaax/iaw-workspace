@@ -6,27 +6,23 @@
 
 {% block main %} 
 
-    <article class="row border rounded-2 my-3  justify-content-center align-items-center">
+    <article class="row border rounded-3 my-3  justify-content-center align-items-center">
 
         <div class="row">
             <div class="col-8 d-flex justify-content-center align-items-center">
-                <img class="img-fluid" src="{{ url_for('static', filename='src/propics/Kaoru_Nagisa.jpeg') }}" alt="Immagine del post" >
+                <img class="img-fluid" src="{{ url_for('static', filename='src/contents/'+article.img) }}" alt="Immagine del post" >
             </div>
 
             <div class="col my-3 mx-2 d-flex flex-column justify-content-between">
                 <div class="row my-2">
                     <div class="col-6">
-                        <img class="img-fluid rounded-4" src="{{ url_for('static', filename='src/propics/Kaoru_Nagisa.jpeg') }}" alt="Immagine del post" >
+                        <img class="img-fluid rounded-4" src="{{ url_for('static', filename='src/propics/'+article.propic) }}" alt="Immagine del profilo" >
                     </div>
                     <div class="col d-flex align-items-center justify-content-center">
-                        <p class="h5">@nickname</p>
+                        <p class="h5">@{{ article.username }}</p>
                     </div>
                 </div>
-                <div class="row my-2 px-2 post-txt">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique assumenda dolores, ducimus at, officia voluptatem ea, vel ullam sint alias reprehenderit eaque laboriosam maxime voluptate quam porro vero error officiis?
-                    Pariatur ipsam accusantium, rem dolore maiores quod sint facilis maxime reiciendis earum, assumenda iusto excepturi? Nisi, nobis itaque repellendus sunt laborum voluptas saepe doloremque quas, asperiores quia molestias nesciunt dolorum!
-                    Dicta deserunt corrupti voluptates amet soluta? Suscipit modi voluptate enim excepturi animi itaque aut aperiam error natus deleniti quisquam distinctio hic, sequi veritatis et dignissimos. In aliquam sit facere iure.
-                </div>
+                <div class="row my-2 px-2 post-txt">{{ article.text }}</div>
             </div>
         </div>
 

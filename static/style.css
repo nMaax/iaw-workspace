@@ -15,6 +15,11 @@
     width: 60px;
 }
 
+.href-post:hover, .href-post:visited, .href-post:link, .href-post:active{
+    color: black;
+    text-decoration: none;
+}
+
 .motto {
     text-align: center;
 }
