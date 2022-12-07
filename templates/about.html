@@ -1,12 +1,5 @@
 {% extends 'template.html' %}
 
-{%block head%}
-    {{super()}}
-    {% for style in styles%}
-        <link href="{{ url_for('static', filename=style.name) }}" rel="stylesheet" type="text/css">
-    {% endfor %}
-{% endblock %}
-
 {% block title%}Chi siamo{% endblock %}
 
 {% block about_active %}active{% endblock %}

@@ -1,12 +1,5 @@
 {% extends 'template.html' %}
 
-{%block head%}
-    {{super()}}
-    {% for style in styles%}
-        <link href="{{ url_for('static', filename=style.name) }}" rel="stylesheet" type="text/css">
-    {% endfor %}
-{% endblock %}
-
 {% block title %}Homepage{% endblock %}
 
 {% block home_active %}active{% endblock %}
@@ -16,21 +9,23 @@
     <!-- ASIDE + ARTICLES -->
     <div class="row justify-content-around">
         
+        <!-- ASIDE BAR -->
+        <aside class="col-12 col-lg-2">
         {% block aside %}
-            <!-- ASIDE BAR -->
-            <aside class="col-12 col-lg-2">
+            
                 <div class="py-3 row">
                     <div class="col col-lg-12"><p class="aside-paragraph"><a href="#">Oggi</a></p></div>
                     <div class="col col-lg-12"><p class="aside-paragraph"><a href="#">Questa settimana</a></p></div>
                     <div class="col col-lg-12"><p class="aside-paragraph"><a href="#">Questo mese</a></p></div>
                 </div>
-            </aside>
+            
         {% endblock %}
+        </aside>
 
-        {% block articles %}
-        <!-- ARTICLES -->
         <main class="col col-lg-9 row justify-content-center">
+        {% block main %}
 
+            <!-- ARTICLES -->
             {% for article in articles %}
 
                 <article class="col-12 rounded-2 p-2 border border-2 mx-2 my-2 row justify-content-between g-3">
@@ -61,8 +56,9 @@
 
             {% endfor %}
 
-        </main>
+        
         {% endblock %}
+        </main>
 
     </div>
 

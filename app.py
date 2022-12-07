@@ -31,6 +31,10 @@ def about():
 
     return render_template('about.html', developers=developers)
 
+@app.route('/post')
+def post():
+    return render_template('post.html')
+
 @app.route('/contacts')
 def contacts():
     return render_template('contacts.html')
