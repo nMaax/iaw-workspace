@@ -1,11 +1,18 @@
 from flask import Flask, url_for, render_template
 
+# Various lenght lorem texts
+
 lorem3 = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, molestiae. Impedit rerum vero aperiam qui accusamus? Culpa deserunt veniam voluptatum aliquam, pariatur perferendis quae aperiam, repellat provident quasi vitae maiores? Eius suscipit repellat repudiandae modi sapiente quam eum facilis? Amet, iste quo. Aliquid adipisci optio accusantium voluptates recusandae consequatur ab placeat deserunt voluptatum soluta in hic voluptatem consequuntur, dolores molestiae. Reprehenderit accusamus numquam voluptatibus maiores doloribus, laudantium saepe. Beatae fuga quisquam deserunt vitae odit dolorem nihil facilis ratione velit rerum eaque sit fugit mollitia eos quas maxime magni, esse accusantium!' 
 lorem6 = lorem3*2
 
+# Paths for static content
+
 default_path = ''
 propics_path = '/src/propics/'
-content_path = '/src/content/'
+contents_path = '/src/contents/'
+styles_path = '/styles/'
+
+# Defining app
 
 app = Flask(__name__)
 
@@ -20,7 +27,7 @@ def index():
 
     for article in articles :
         article['propic'] = propics_path + article['propic']
-        article['img'] = content_path + article['img']
+        article['img'] = contents_path + article['img']
     
     return render_template('index.html', page='home', articles=articles)
 
