@@ -88,5 +88,5 @@ element {
 ## Useful tips
 
 - Always prefer (if possible) a ```d-flex``` option (```justify, alig-item,``` ...) instead of a "manual" ```padding/margin``` style
-- Use _Emmet_ in _VS-Code_!
+- Use _Emmet_ and _Flask Snippets_ in _VS-Code_!
 - If possible use the ```col-auto``` class to make one of the columns in certain row automatically responsive to the changes during breakpoint-switches
