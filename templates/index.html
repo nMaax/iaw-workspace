@@ -7,12 +7,14 @@
     {% endfor %}
 {% endblock %}
 
-{% block title%}Homepage{% endblock %}
+{% block title %}Homepage{% endblock %}
+
+{% block home_active %}active{% endblock %}
 
 {% block content %}
 
 <!-- ASIDE + ARTICLES -->
-<div class="row">
+<div class="row" style="margin-top: 6rem;">
                 
     <!-- ASIDE BAR -->
     <aside class="col-12 col-lg-2">
@@ -24,7 +26,7 @@
     </aside>
 
     <!-- ARTICLES -->
-    <main class="col-12 col-lg-10">
+    <main class="row col-12 col-lg-10">
 
     {% for article in articles %}
 
