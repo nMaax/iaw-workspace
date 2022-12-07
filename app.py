@@ -45,6 +45,10 @@ def about():
 
     return render_template('about.html', page='about', developers=developers)
 
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html')
+
 @app.route('/template')
 def templete():
     return render_template('template.html')
