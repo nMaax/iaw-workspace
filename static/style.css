@@ -19,11 +19,7 @@
     text-align: center;
 }
 
-.dev-description {
-    text-align: justify;
-}
-
-.post-txt {
+.dev-description, .post-txt{
     text-align: justify;
 }
 
