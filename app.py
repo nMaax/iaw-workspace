@@ -38,6 +38,10 @@ def about():
 
     return render_template('about.html', page='about', developers=developers)
 
+@app.route('/template')
+def templete():
+    return render_template('template.html')
+
 @app.route('/test')
 def test():
     

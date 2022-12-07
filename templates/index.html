@@ -1,5 +1,14 @@
 {% extends 'template.html' %}
+
+{%block head%}
+    {{super()}}
+    {% for style in styles%}
+        <link href="{{ url_for('static', filename=style.name) }}" rel="stylesheet" type="text/css">
+    {% endfor %}
+{% endblock %}
+
 {% block title%}Homepage{% endblock %}
+
 {% block content %}
 
 <!-- ASIDE + ARTICLES -->
@@ -50,7 +59,7 @@
     </main>
 </div>
 
-<!-- Plus Button fixed over page-->
+<!-- PLUS BUTTON -->
 <button class="plus-button">+</button>
 
 {% endblock %}
