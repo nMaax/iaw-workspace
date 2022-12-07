@@ -34,15 +34,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav navbar-nav-scroll ms-auto mb-2 mb-lg-0 mx-2" style="--bs-scroll-height: 200px;">
+                    <ul class="navbar-nav navbar-nav-scroll nav-pills ms-auto mb-2 mb-lg-0 mx-2" style="--bs-scroll-height: 200px; --bs-nav-pills-link-active-bg: #958a8759;">
                     <li class="nav-item">
-                        <a class="nav-link {% block home_active %}{% endblock %}" href="{{ url_for('index') }}" style="float: end;">Home</a>
+                        <a class="nav-link {% block home_active %}{% endblock %}" href="{{ url_for('index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% block about_active %}{% endblock %}" aria-current="page" href="{{ url_for('about') }}" style="float: end;">Chi siamo</a>
+                        <a class="nav-link {% block about_active %}{% endblock %}" aria-current="page" href="{{ url_for('about') }}">Chi siamo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% block contacts_active %}{% endblock %}" aria-current="page" href="{{ url_for('contacts') }}" style="float: end;">Contattaci</a>
+                        <a class="nav-link {% block contacts_active %}{% endblock %}" aria-current="page" href="{{ url_for('contacts') }}">Contattaci</a>
                     </li>
                 </ul>
                 </div>

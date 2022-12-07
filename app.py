@@ -4,12 +4,6 @@ from flask import Flask, url_for, render_template
 lorem3 = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, molestiae. Impedit rerum vero aperiam qui accusamus? Culpa deserunt veniam voluptatum aliquam, pariatur perferendis quae aperiam, repellat provident quasi vitae maiores? Eius suscipit repellat repudiandae modi sapiente quam eum facilis? Amet, iste quo. Aliquid adipisci optio accusantium voluptates recusandae consequatur ab placeat deserunt voluptatum soluta in hic voluptatem consequuntur, dolores molestiae. Reprehenderit accusamus numquam voluptatibus maiores doloribus, laudantium saepe. Beatae fuga quisquam deserunt vitae odit dolorem nihil facilis ratione velit rerum eaque sit fugit mollitia eos quas maxime magni, esse accusantium!' 
 lorem6 = lorem3*2
 
-# Paths for static content
-default_path = ''
-propics_path = '/src/propics/'
-contents_path = '/src/contents/'
-styles_path = '/styles/'
-
 # Defining app
 app = Flask(__name__)
 
@@ -23,10 +17,6 @@ def index():
         {'username': 'soryuka', 'daysago': 3, 'text': lorem6, 'propic':'Asuka_Soryu.jpeg', 'img':'post2.jpg'},
         {'username': 'kaoruni', 'daysago': 5, 'text': lorem6, 'propic':'Kaoru_Nagisa.jpeg', 'img':'post3.jpg'},
     ]
-
-    for article in articles :
-        article['propic'] = propics_path + article['propic']
-        article['img'] = contents_path + article['img']
     
     return render_template('index.html', articles=articles)
 
@@ -39,24 +29,17 @@ def about():
         {'fullname': 'Asuka Soryu Langley', 'description': lorem6, 'motto': 'Sono nata per pilotare gli eva', 'monthsago_update': 2, 'propic':'Asuka_Soryu.jpeg'}
     ]
 
-    for developer in developers :
-        developer['propic'] = propics_path + developer['propic']
-
     return render_template('about.html', developers=developers)
 
 @app.route('/contacts')
 def contacts():
-    return not_found(404)
+    return render_template('contacts.html')
 
 # OTHER ROUTES
 
 @app.errorhandler(404)
 def not_found(e):
     return render_template('404.html')
-
-@app.route('/template')
-def templete():
-    return render_template('template.html')
 
 @app.route('/test')
 def test():
