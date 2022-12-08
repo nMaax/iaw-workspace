@@ -20,6 +20,10 @@
     text-decoration: none;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: rgba(160, 160, 160, 0.6);
+}
+
 .motto {
     text-align: center;
 }
