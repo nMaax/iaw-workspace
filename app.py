@@ -1,5 +1,6 @@
-from flask import Flask, url_for, render_template
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_bootstrap import Bootstrap5
+from flask_session import Session
 
 # Various lenght lorem texts
 lorem3 = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, molestiae. Impedit rerum vero aperiam qui accusamus? Culpa deserunt veniam voluptatum aliquam, pariatur perferendis quae aperiam, repellat provident quasi vitae maiores? Eius suscipit repellat repudiandae modi sapiente quam eum facilis? Amet, iste quo. Aliquid adipisci optio accusantium voluptates recusandae consequatur ab placeat deserunt voluptatum soluta in hic voluptatem consequuntur, dolores molestiae. Reprehenderit accusamus numquam voluptatibus maiores doloribus, laudantium saepe. Beatae fuga quisquam deserunt vitae odit dolorem nihil facilis ratione velit rerum eaque sit fugit mollitia eos quas maxime magni, esse accusantium!' 
@@ -19,12 +20,15 @@ developers = [
     
 # Defining app
 app = Flask(__name__)
+app.secret_key="a@owji£je7329fé*oq2c9"
 bootstrap = Bootstrap5(app)
 
 # MAIN ROUTES
 
 @app.route('/')
 def index():
+    if not session.get('admin_name'):
+        session['admin_name'] = 'Accedi'
     return render_template('index.html', articles=articles)
 
 @app.route('/about')
@@ -34,6 +38,13 @@ def about():
 @app.route('/post/<int:id>')
 def post(id):
     return render_template('post.html', article=articles[id-1])
+
+@app.route('/admin_access', methods = ['POST'])
+def admin_access():
+    admin_data = request.form.to_dict()
+    session['admin'] = True
+    session['admin_name'] = admin_data.get('admin_name') 
+    return redirect(url_for('index'))
 
 @app.route('/contacts')
 def contacts():

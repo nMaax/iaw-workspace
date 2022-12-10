@@ -29,7 +29,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav navbar-nav-scroll nav-pills ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav navbar-nav-scroll nav-pills ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {% block home_active %}{% endblock %}" href="{{ url_for('index') }}">Home</a>
                     </li>
@@ -40,9 +40,33 @@
                         <a class="nav-link {% block contacts_active %}{% endblock %}" aria-current="page" href="{{ url_for('contacts') }}">Contattaci</a>
                     </li>
                 </ul>
-                </div>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    {% block admin_name %} 
+                        {{ session.admin_name }}
+                    {% endblock %}
+                </button>
             </div>
         </nav>
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Chi sei?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/admin_access" method="POST">
+                            <select name='admin_name' class="form-select mb-3" aria-label="Scelta admin">
+                                <option selected value="Asuka">Asuka</option>
+                                <option value="Ritsuko">Ritsuko</option> 
+                                <option value="Misato">Misato</option>
+                            </select>
+                            <button type="submit" class="btn btn-secondary">Conferma</button>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+        </div>
         {% endblock %}
 
     </header>

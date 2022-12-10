@@ -63,7 +63,9 @@
 
     </div>
 
-    <!-- PLUS BUTTON -->
-    <button class="plus-button">+</button>
+    {% if session.admin %}
+        <!-- PLUS BUTTON -->
+        <button class="plus-button">+</button>
+    {% endif %}
 
 {% endblock %}
