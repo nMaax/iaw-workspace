@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Ecco i nostri contatti:</h1>
-    <ul>
-        <li> Io </li>
-        <li> Tu </li>
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="my-3 py-3">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Indirizzo email</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">Non condivideremo mai, in nessun caso, il tuo indirizzo email</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputMessage" class="form-label">Cosa vuoi farci sapere?</label>
+      <input type="text" class="form-control" id="exampleInputMessage">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Importante!</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
