@@ -20,6 +20,7 @@
         {% block navbar %}
         <!-- NAVBAR -->
         <!-- copy-pasted from https://getbootstrap.com/docs/5.2/components/navbar/#nav but with the navbar-brand sobstituted by a h1, h5 -->
+        <!-- TODO Redefine colors for primary bs color-->
         <nav class="navbar navbar-expand-lg fixed-top" style="min-height: 5rem; background-color: #e1e1d3;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url_for('index') }}">
@@ -40,7 +41,7 @@
                         <a class="nav-link {% block contacts_active %}{% endblock %}" aria-current="page" href="{{ url_for('contacts') }}">Contattaci</a>
                     </li>
                 </ul>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
                     {% if session.logged_username %}
                         {{ session.logged_username }}
                     {% else %}
@@ -63,7 +64,7 @@
                                     <option value="{{user.username}}">{{user.username}}</option>
                                 {% endfor %}
                             </select>
-                            <button type="submit" class="btn btn-secondary">Conferma</button>
+                            <button type="submit" class="btn btn-primary">Conferma</button>
                         </form>
                     </div>
                 </div>

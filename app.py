@@ -53,7 +53,7 @@ def contacts():
 
 @app.route('/login', methods = ['POST'])
 def login():
-    #if request.method == "POST" :
+    # TODO define validation of data
     admin_data = request.form.to_dict()
     session['logged_username'] = admin_data.get('logged_username') 
     return redirect(url_for('index'))

@@ -64,7 +64,44 @@
 
     {% if session.logged_username %}
         <!-- PLUS BUTTON -->
-        <button class="plus-button">+</button>
+        <button class="plus-button" data-bs-toggle="modal" data-bs-target="#new-post-modal">+</button>
+        
+        <!-- TODO define validation of data -->
+        <div class="modal fade" id="new-post-modal" tabindex="-1" aria-labelledby="new-post-label" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="new-post-modalLabel">Crea un nuovo post!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- TODO define vincoli di input (anche su python) -->
+                    <form action="/new_post" method="POST">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-at-char">@</span>
+                            <input name="username" type="text" class="form-control" placeholder="{{session.logged_username}}" aria-label="Username" aria-describedby="basic-at-char">
+                        </div>                          
+                        
+                        <div class="mb-3">
+                            <label for="inputText" class="form-label">Cosa c'è di nuovo?</label>
+                            <textarea name="text" class="form-control" class="form-control" rows="3" id="inputText"></textarea>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input name="img" type="file" class="form-control" id="inputGroupFile02">
+                        </div>                          
+
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Data</label>
+                            <input name="date" type="date" class="form-control" aria-describedby="Data del post">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Crea post</button>                    
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+  
     {% endif %}
 
 {% endblock %}
