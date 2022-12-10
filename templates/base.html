@@ -41,9 +41,11 @@
                     </li>
                 </ul>
                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    {% block admin_name %} 
-                        {{ session.admin_name }}
-                    {% endblock %}
+                    {% if session.logged_username %}
+                        {{ session.logged_username }}
+                    {% else %}
+                        Accedi
+                    {% endif %}
                 </button>
             </div>
         </nav>
@@ -55,11 +57,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/admin_access" method="POST">
-                            <select name='admin_name' class="form-select mb-3" aria-label="Scelta admin">
-                                <option selected value="Asuka">Asuka</option>
-                                <option value="Ritsuko">Ritsuko</option> 
-                                <option value="Misato">Misato</option>
+                        <form action="/login" method="POST">
+                            <select name='logged_username' class="form-select mb-3" aria-label="Scelta admin">
+                                {% for user in users%}
+                                    <option value="{{user.username}}">{{user.username}}</option>
+                                {% endfor %}
                             </select>
                             <button type="submit" class="btn btn-secondary">Conferma</button>
                         </form>

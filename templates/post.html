@@ -16,10 +16,10 @@
             <div class="col my-3 mx-2 d-flex flex-column justify-content-between">
                 <div class="row my-2">
                     <div class="col-6">
-                        <img class="img-fluid rounded-4" src="{{ url_for('static', filename='src/propics/'+article.propic) }}" alt="Immagine del profilo" >
+                        <img class="img-fluid rounded-4" src="{{ url_for('static', filename='src/propics/'+article.user.propic) }}" alt="Immagine del profilo" >
                     </div>
                     <div class="col d-flex align-items-center justify-content-center">
-                        <p class="h5">@{{ article.username }}</p>
+                        <p class="h5">@{{ article.user.username }}</p>
                     </div>
                 </div>
                 <div class="row my-2 px-2 post-txt">{{ article.text }}</div>

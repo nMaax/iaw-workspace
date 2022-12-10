@@ -37,13 +37,13 @@
 
                     <div class="col-12 col-md">
 
-                        <div class="row justify-content-between">
+                        <div class="row justify-content-between" {% if article.user.username == session['logged_username'] %} style="background-color: rgba(189, 183, 107, 0.5);" {% endif %}>
                             <div class="col-8 col-md-10 col-lg-8 col-xl-7 col-xxl-6 row">
-                                <div class="col-3 col-md-2 d-flex justify-content-center align-items-center"><img class="img-fluid rounded-3" src="{{ url_for('static', filename='src/propics/'+article.propic) }}" alt="Immagine del profilo dell'utente"></div>
-                                <div class="col"><h5><b>@{{ article.username }}</b></h5></div>
+                                <div class="col-3 col-md-2 d-flex justify-content-center align-items-center"><img class="img-fluid rounded-3" src="{{ url_for('static', filename='src/propics/'+article.user.propic) }}" alt="Immagine del profilo dell'utente"></div>
+                                <div class="col"><h5><b>@{{ article.user.username }}</b></h5></div>
                             </div>  
                             <div class="col">
-                                <p style="text-align: right;"> {{ article.daysago }} days ago </p>
+                                <p style="text-align: right;">{{ article.daysago }} days ago</p>
                             </div>                            
                         </div>
 
@@ -56,14 +56,13 @@
                 </a>
 
             {% endfor %}
-
         
         {% endblock %}
         </main>
 
     </div>
 
-    {% if session.admin %}
+    {% if session.logged_username %}
         <!-- PLUS BUTTON -->
         <button class="plus-button">+</button>
     {% endif %}
