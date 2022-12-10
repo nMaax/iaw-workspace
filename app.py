@@ -58,6 +58,12 @@ def login():
     session['logged_username'] = admin_data.get('logged_username') 
     return redirect(url_for('index'))
 
+@app.route('/post/new', methods = ['POST'])
+def new_post():
+    # TODO define validation of data
+    # TODO define POST management
+    pass
+
 # OTHER ROUTES
 
 @app.errorhandler(404)

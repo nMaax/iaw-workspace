@@ -75,8 +75,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- TODO define vincoli di input (anche su python) -->
-                    <form action="/new_post" method="POST">
+                    <form action="/post/new" method="POST">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-at-char">@</span>
                             <input name="username" type="text" class="form-control" placeholder="{{session.logged_username}}" aria-label="Username" aria-describedby="basic-at-char">
