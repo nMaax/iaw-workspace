@@ -44,9 +44,8 @@ posts = [
 app = Flask(__name__)
 
 # Defining app attributes
-#app.secret_key = "admin"
-
 UPLOAD_FOLDER = './static/images/uploads/'
+
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
@@ -63,11 +62,11 @@ def index():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', admins=admins, users=users)
+    return render_template('about.html', admins=admins, users=users, utils=utils)
 
 @app.route('/contacts')
 def contacts():
-    return render_template('contacts.html', users=users)
+    return render_template('contacts.html', users=users, utils=utils)
 
 # No-html route, used only for elaboratig data
 @app.route('/login', methods = ['POST'])
@@ -81,7 +80,7 @@ def login():
 @app.route('/post/<int:id>')
 def post(id):
     index = id-1
-    return render_template('post.html', post=posts[index], users=users)
+    return render_template('post.html', post=posts[index], users=users, utils=utils)
 
 # No-html route, used only for elaboratig data
 @app.route('/post/new', methods=['POST'])
