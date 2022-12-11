@@ -9,35 +9,12 @@ from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap5
 from flask_session import Session
 
-# Simple lorem text for debugging purpose
-lorem = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum architecto ratione vero? Non quas quisquam tenetur repellendus nam, numquam velit accusantium voluptate animi? Blanditiis voluptas consectetur, nostrum quidem mollitia velit. '
-
 # Defining today as a string
 now = datetime.now()
 date_string = now.strftime('%Y-%m-%d')
 
 # Defining an utils dict to be used where needed
 utils = {'today': date_string, 'lorem': lorem}
-
-# Native users
-
-admins = [
-    {'username':'akai', 'name': 'Ritsuko', 'surname': 'Akagi', 'description': lorem*6, 'motto': 'Nessuno conosce il segreto degli eva...', 'monthsago_update': 3, 'propic':'Ritsuko_Akagi.jpeg'},
-    {'username':'penpen', 'name': 'Misato', 'surname': 'Katsuragi', 'description': lorem*6, 'motto': 'Cosa mi nasconde la NERV?', 'monthsago_update': 11, 'propic':'Misato_Katsuragi.jpeg'},
-    {'username':'soryuka', 'name': 'Asuka',  'surname':'Soryu Langley', 'description': lorem*6, 'motto': 'Sono nata per pilotare gli eva', 'monthsago_update': 2, 'propic':'Asuka_Soryu.jpeg'}
-]
-
-users = [
-    {'username':'ikarisan', 'name': 'Shinji', 'surname': 'Ikari', 'propic':'Shinji_Ikari.jpeg'},
-    {'username':'kaoruni', 'name': 'Kaoru', 'surname': 'Nagisa', 'propic':'Kaoru_Nagisa.jpeg'},
-] + admins
-
-# Native posts
-posts = [
-    {'id': 1, 'user': users[0], 'daysago': 2, 'text': lorem*2, 'img':'post1.jpg'},
-    {'id': 2, 'user': users[1], 'daysago': 3, 'text': lorem, 'img':'post2.jpg'},
-    {'id': 3, 'user': users[3], 'daysago': 5, 'text': lorem, 'img':'post3.jpg'},
-]
     
 # Defining app
 app = Flask(__name__)
