@@ -3,5 +3,6 @@ Thumbs.db
 venv/
 __pycache__/
 .vscode/
+flask_session/
 materiale/
 Materiale/

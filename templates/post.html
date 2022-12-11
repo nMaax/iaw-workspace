@@ -6,26 +6,26 @@
 
 {% block main %} 
     <!-- TODO Define better responsiveness for this page -->
-    <article class="row border rounded-3 my-3  justify-content-center align-items-center">
+    <post class="row border rounded-3 my-3  justify-content-center align-items-center">
 
         <div class="row">
             <div class="col-8 d-flex justify-content-center align-items-center">
-                <img class="img-fluid" src="{{ url_for('static', filename='src/contents/'+article.img) }}" alt="Immagine del post" >
+                <img class="img-fluid" src="{{ url_for('static', filename='images/uploads/'+post.img) }}" alt="Immagine del post" >
             </div>
 
             <div class="col my-3 mx-2 d-flex flex-column justify-content-between">
                 <div class="row my-2">
                     <div class="col-6">
-                        <img class="img-fluid rounded-4" src="{{ url_for('static', filename='src/propics/'+article.user.propic) }}" alt="Immagine del profilo" >
+                        <img class="img-fluid rounded-4" src="{{ url_for('static', filename='images/propics/'+post.user.propic) }}" alt="Immagine del profilo" >
                     </div>
                     <div class="col d-flex align-items-center justify-content-center">
-                        <p class="h5">@{{ article.user.username }}</p>
+                        <p class="h5">@{{ post.user.username }}</p>
                     </div>
                 </div>
-                <div class="row my-2 px-2 post-txt">{{ article.text }}</div>
+                <div class="row my-2 px-2 post-txt">{{ post.text }}</div>
             </div>
         </div>
 
-    </article>
+    </post>
 
 {% endblock %}

@@ -15,6 +15,7 @@
     width: 60px;
 }
 
+/* With this the a tags for articles arent going to color in blue */
 .href-post:hover, .href-post:visited, .href-post:link, .href-post:active{
     color: black;
     text-decoration: none;
@@ -30,6 +31,7 @@
 
 .dev-description, .post-txt{
     text-align: justify;
+    word-wrap: break-word;
 }
 
 p {

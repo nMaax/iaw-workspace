@@ -5,56 +5,53 @@
 
 {% block content %}
 
-    <!-- ASIDE + ARTICLES -->
+    <!-- Aside bar + Posts -->
     <div class="row justify-content-around">
         
-        <!-- ASIDE BAR -->
+        <!-- Aside bar -->
         <aside class="col-12 col-lg-2">
-        {% block aside %}
-            
-                <div class="py-3 row">
-                    <div class="col col-lg-12"><p class="aside-paragraph"><a href="#">Oggi</a></p></div>
-                    <div class="col col-lg-12"><p class="aside-paragraph"><a href="#">Questa settimana</a></p></div>
-                    <div class="col col-lg-12"><p class="aside-paragraph"><a href="#">Questo mese</a></p></div>
-                </div>
-            
+        {% block aside %}    
+            <div class="py-3 row">
+                <div class="col col-lg-12"><p class="aside-paragraph"><a href="#">Oggi</a></p></div>
+                <div class="col col-lg-12"><p class="aside-paragraph"><a href="#">Questa settimana</a></p></div>
+                <div class="col col-lg-12"><p class="aside-paragraph"><a href="#">Questo mese</a></p></div>
+            </div>
         {% endblock %}
         </aside>
 
         <main class="col col-lg-9 row justify-content-center">
         {% block main %}
 
-            <!-- ARTICLES -->
-            {% for article in articles %}
+            <!-- Posts -->
+            {% for post in posts %}
+            <a class='href-post' href="{{ url_for('post', id=post.id)}} ">
+            <article class="col-12 rounded-2 p-2 border border-2 mx-2 my-2 row justify-content-between g-3">
+                                    
+                <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
+                <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
+                    <img class="img-fluid rounded-2 post-img" alt="Immagine del post" src="{{ url_for('static', filename='images/uploads/'+post.img) }}">
+                </div>
 
-                <a class='href-post' href="{{ url_for('post', id=article.id)}} ">
-                <article class="col-12 rounded-2 p-2 border border-2 mx-2 my-2 row justify-content-between g-3">
-                                        
-                    <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
-                    <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
-                        <img class="img-fluid rounded-2 post-img" alt="Immagine del post" src="{{ url_for('static', filename='src/contents/'+article.img) }}">
+                <div class="col-12 col-md">
+
+                    <!-- TODO: Redefine borders of the yellow background, and change the color too -->
+                    <div class="row justify-content-between" {% if post.user.username == session['logged_username'] %} style="background-color: rgba(189, 183, 107, 0.5);" {% endif %}>
+                        <div class="col-8 col-md-10 col-lg-8 col-xl-7 col-xxl-6 row">
+                            <div class="col-3 col-md-2 d-flex justify-content-center align-items-center"><img class="img-fluid rounded-3" src="{{ url_for('static', filename='images/propics/'+post.user.propic) }}" alt="Immagine del profilo dell'utente"></div>
+                            <div class="col"><h5><b>@{{ post.user.username }}</b></h5></div>
+                        </div>  
+                        <div class="col">
+                            <p style="text-align: right;">{{ post.daysago }} days ago</p>
+                        </div>                            
                     </div>
 
-                    <div class="col-12 col-md">
-
-                        <div class="row justify-content-between" {% if article.user.username == session['logged_username'] %} style="background-color: rgba(189, 183, 107, 0.5);" {% endif %}>
-                            <div class="col-8 col-md-10 col-lg-8 col-xl-7 col-xxl-6 row">
-                                <div class="col-3 col-md-2 d-flex justify-content-center align-items-center"><img class="img-fluid rounded-3" src="{{ url_for('static', filename='src/propics/'+article.user.propic) }}" alt="Immagine del profilo dell'utente"></div>
-                                <div class="col"><h5><b>@{{ article.user.username }}</b></h5></div>
-                            </div>  
-                            <div class="col">
-                                <p style="text-align: right;">{{ article.daysago }} days ago</p>
-                            </div>                            
-                        </div>
-
-                        <div class="row">
-                            <p class="my-3 post-txt" > {{ article.text }} </p>
-                        </div>
-
+                    <div class="row my-3">
+                        <p class="my-3 post-txt overflow-hidden" > {{ post.text }} </p>
                     </div>
-                </article>
-                </a>
 
+                </div>
+            </article>
+            </a>
             {% endfor %}
         
         {% endblock %}
@@ -63,38 +60,44 @@
     </div>
 
     {% if session.logged_username %}
-        <!-- PLUS BUTTON -->
+        <!-- Plus button -->
         <button class="plus-button" data-bs-toggle="modal" data-bs-target="#new-post-modal">+</button>
         
         <!-- TODO define validation of data -->
+        <!-- New post modal -->
         <div class="modal fade" id="new-post-modal" tabindex="-1" aria-labelledby="new-post-label" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
+                <!-- Modal header: Title and close button X -->
                 <div class="modal-header">
                 <h1 class="modal-title fs-5" id="new-post-modalLabel">Crea un nuovo post!</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <!-- Modal body: form and submit button-->
                 <div class="modal-body">
-                    <form action="/post/new" method="POST">
+                    <form action="/post/new" method="POST" enctype="multipart/form-data">
+                        <!-- Username -->
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-at-char">@</span>
-                            <input name="username" type="text" class="form-control" placeholder="{{session.logged_username}}" aria-label="Username" aria-describedby="basic-at-char">
+                            <input name="username" type="text" class="form-control" value="{{session.logged_username}}" aria-label="Username" aria-describedby="basic-at-char" required readonly>
                         </div>                          
-                        
+                        <!-- Text -->
                         <div class="mb-3">
                             <label for="inputText" class="form-label">Cosa c'è di nuovo?</label>
-                            <textarea name="text" class="form-control" class="form-control" rows="3" id="inputText"></textarea>
+                            <textarea name="text" class="form-control" class="form-control" rows="3" id="inputText" minlength="30" maxlength="200" required></textarea>
                         </div>
-
+                        <!-- Image -->
                         <div class="input-group mb-3">
                             <input name="img" type="file" class="form-control" id="inputGroupFile02">
                         </div>                          
-
+                        <!-- Date -->
                         <div class="mb-3">
                             <label for="date" class="form-label">Data</label>
-                            <input name="date" type="date" class="form-control" aria-describedby="Data del post">
+                            <input name="date" type="date" class="form-control" aria-describedby="Data del post" value="{{utils.today}}" min="2021-01-01" max="{{utils.today}}" required>
                         </div>
+                        <!-- Submit button -->
                         <button type="submit" class="btn btn-primary">Crea post</button>                    
+                    
                     </form>
                 </div>
             </div>

@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>Faccialibro - {% block title %}Template{% endblock %}</title>
     {% block styles %}
-        <!-- Bootstrap CSS -->
+        <!-- Bootstrap stylesheets loaded with Bootstap-Flask -->
         {{ bootstrap.load_css() }}
         <!-- Personal CSS -->
-        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+        {% block personal_styles %}
+        <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" type="text/css">
+        {% endblock %}
     {% endblock %}
 </head>
 
@@ -18,9 +20,8 @@
     <header class="row">
 
         {% block navbar %}
-        <!-- NAVBAR -->
-        <!-- copy-pasted from https://getbootstrap.com/docs/5.2/components/navbar/#nav but with the navbar-brand sobstituted by a h1, h5 -->
-        <!-- TODO Redefine colors for primary bs color-->
+        <!-- Navigation bar -->
+        <!-- TODO Redefine BS theme colors: SASS needed -->
         <nav class="navbar navbar-expand-lg fixed-top" style="min-height: 5rem; background-color: #e1e1d3;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url_for('index') }}">
@@ -41,6 +42,7 @@
                         <a class="nav-link {% block contacts_active %}{% endblock %}" aria-current="page" href="{{ url_for('contacts') }}">Contattaci</a>
                     </li>
                 </ul>
+                <!-- Login button, redirects to modal define outisde the navbar -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
                     {% if session.logged_username %}
                         {{ session.logged_username }}
@@ -50,20 +52,26 @@
                 </button>
             </div>
         </nav>
+        <!-- TODO: Define form with Bootstrap-Flask -->
+        <!-- Modal for login -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
+                    <!-- Modal header: Title and Close button X -->
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Chi sei?</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <!-- Form for login -->
                     <div class="modal-body">
                         <form action="/login" method="POST">
+                            <!-- Select of accounts -->
                             <select name='logged_username' class="form-select mb-3" aria-label="Scelta admin">
                                 {% for user in users%}
                                     <option value="{{user.username}}">{{user.username}}</option>
                                 {% endfor %}
                             </select>
+                            <!-- Submit button -->
                             <button type="submit" class="btn btn-primary">Conferma</button>
                         </form>
                     </div>
@@ -74,13 +82,28 @@
 
     </header>
 
+    <!-- Div for impaginating the content (the navabar is fixed) -->
     <div style="margin-top: 6rem;">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show mt-2" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
+
         {% block content %}{% endblock %}
     </div>
 
 {% block scripts %}
-    <!-- Optional JavaScript -->
+    <!-- Bootstrap scripts loaded with Bootstap-Flask -->
     {{ bootstrap.load_js() }}
+    <!-- Personal scripts -->
+    {% block personal_scripts %}{% endblock %}
 {% endblock %}
 
 </body>

@@ -1,70 +1,155 @@
+# Vanilla Python libraries
+import os
+import re
+from datetime import datetime, date
+
+# Flask libraries
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap5
+#TODO : Usa le sessioni server-side
 from flask_session import Session
 
-# Various lenght lorem texts
-lorem3 = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, molestiae. Impedit rerum vero aperiam qui accusamus? Culpa deserunt veniam voluptatum aliquam, pariatur perferendis quae aperiam, repellat provident quasi vitae maiores? Eius suscipit repellat repudiandae modi sapiente quam eum facilis? Amet, iste quo. Aliquid adipisci optio accusantium voluptates recusandae consequatur ab placeat deserunt voluptatum soluta in hic voluptatem consequuntur, dolores molestiae. Reprehenderit accusamus numquam voluptatibus maiores doloribus, laudantium saepe. Beatae fuga quisquam deserunt vitae odit dolorem nihil facilis ratione velit rerum eaque sit fugit mollitia eos quas maxime magni, esse accusantium!' 
-lorem6 = lorem3*2
+# Simple lorem text for debugging purpose
+lorem = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum architecto ratione vero? Non quas quisquam tenetur repellendus nam, numquam velit accusantium voluptate animi? Blanditiis voluptas consectetur, nostrum quidem mollitia velit. '
+
+# Defining today as a string
+now = datetime.now()
+date_string = now.strftime('%Y-%m-%d')
+
+# Defining an utils dict to be used where needed
+utils = {'today': date_string, 'lorem': lorem}
+
+# Native users
 
 admins = [
-    {'username':'akai', 'name': 'Ritsuko', 'surname': 'Akagi', 'description': lorem6, 'motto': 'Nessuno conosce il segreto degli eva...', 'monthsago_update': 3, 'propic':'Ritsuko_Akagi.jpeg'},
-    {'username':'penpen', 'name': 'Misato', 'surname': 'Katsuragi', 'description': lorem3, 'motto': 'Cosa mi nasconde la NERV?', 'monthsago_update': 11, 'propic':'Misato_Katsuragi.jpeg'},
-    {'username':'soryuka', 'name': 'Asuka',  'surname':'Soryu Langley', 'description': lorem6, 'motto': 'Sono nata per pilotare gli eva', 'monthsago_update': 2, 'propic':'Asuka_Soryu.jpeg'}
+    {'username':'akai', 'name': 'Ritsuko', 'surname': 'Akagi', 'description': lorem*6, 'motto': 'Nessuno conosce il segreto degli eva...', 'monthsago_update': 3, 'propic':'Ritsuko_Akagi.jpeg'},
+    {'username':'penpen', 'name': 'Misato', 'surname': 'Katsuragi', 'description': lorem*6, 'motto': 'Cosa mi nasconde la NERV?', 'monthsago_update': 11, 'propic':'Misato_Katsuragi.jpeg'},
+    {'username':'soryuka', 'name': 'Asuka',  'surname':'Soryu Langley', 'description': lorem*6, 'motto': 'Sono nata per pilotare gli eva', 'monthsago_update': 2, 'propic':'Asuka_Soryu.jpeg'}
 ]
 
 users = [
     {'username':'ikarisan', 'name': 'Shinji', 'surname': 'Ikari', 'propic':'Shinji_Ikari.jpeg'},
     {'username':'kaoruni', 'name': 'Kaoru', 'surname': 'Nagisa', 'propic':'Kaoru_Nagisa.jpeg'},
+] + admins
+
+# Native posts
+posts = [
+    {'id': 1, 'user': users[0], 'daysago': 2, 'text': lorem*2, 'img':'post1.jpg'},
+    {'id': 2, 'user': users[1], 'daysago': 3, 'text': lorem, 'img':'post2.jpg'},
+    {'id': 3, 'user': users[3], 'daysago': 5, 'text': lorem, 'img':'post3.jpg'},
 ]
-
-users = users + admins
-
-articles = [
-        {'id': 1, 'user': users[0], 'daysago': 2, 'text': lorem6, 'img':'post1.jpg'},
-        {'id': 2, 'user': users[1], 'daysago': 3, 'text': lorem3, 'img':'post2.jpg'},
-        {'id': 3, 'user': users[3], 'daysago': 5, 'text': lorem3, 'img':'post3.jpg'},
-    ]
     
 # Defining app
 app = Flask(__name__)
-app.secret_key="a@owji£je7329fé*oq2c9"
+
+# Defining app attributes
+#app.secret_key = "admin"
+
+UPLOAD_FOLDER = './static/images/uploads/'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_PERMANENT'] = False
+
+# Generating objects for Flask extra libraries
+Session(app)
 bootstrap = Bootstrap5(app)
 
-# MAIN ROUTES
+# Main routes
 
 @app.route('/')
 def index():
-    #if not session.get('logged_username'):
-    #    session['logged_username'] = 'Accedi'
-    return render_template('index.html', articles=articles, users=users)
+    return render_template('index.html', posts=posts, users=users, utils=utils)
 
 @app.route('/about')
 def about():
     return render_template('about.html', admins=admins, users=users)
 
-@app.route('/post/<int:id>')
-def post(id):
-    index = id-1
-    return render_template('post.html', article=articles[index], users=users)
-
 @app.route('/contacts')
 def contacts():
     return render_template('contacts.html', users=users)
 
+# No-html route, used only for elaboratig data
 @app.route('/login', methods = ['POST'])
 def login():
-    # TODO define validation of data
     admin_data = request.form.to_dict()
     session['logged_username'] = admin_data.get('logged_username') 
+    flash('Login effettuato', 'success')
+    app.logger.debug('\n\n* * * LOGIN EFFETTUATO CORRETTAMENTE * * *\n')
     return redirect(url_for('index'))
 
-@app.route('/post/new', methods = ['POST'])
-def new_post():
-    # TODO define validation of data
-    # TODO define POST management
-    pass
+@app.route('/post/<int:id>')
+def post(id):
+    index = id-1
+    return render_template('post.html', post=posts[index], users=users)
 
-# OTHER ROUTES
+# No-html route, used only for elaboratig data
+@app.route('/post/new', methods=['POST'])
+def new_post():
+    # Retrive data from the form
+    data = request.form.to_dict()
+    img = request.files.get('img')
+    
+    # Default post values
+    id = posts[-1].get('id')+1
+    post = {'id': id, 'user': None, 'daysago': -1, 'text': 'NO_TEXT', 'img': 'NO_IMG'}
+    abort = False
+
+    # Searching for the user in the data structure
+    for user in users:
+        if user.get('username') == data.get('username'):
+            post['user'] = user
+
+    # The date must be in the right format
+    sDate = data.get('date')
+    if sDate != None and sDate != "":
+        dDate = datetime.strptime(sDate, '%Y-%m-%d')
+        daysago = (datetime.today() - dDate).days
+    else:
+        daysago = 0
+    # Date must be before or equal today
+    if (daysago >= 0):
+        post['daysago'] =  daysago
+    # Data is mandatory
+    else:
+        post['daysago'] = 'INVALID_DATE'
+        abort = True
+    
+    # The text must be in the right format
+    text = data.get('text')
+    post_lenght = len(text)
+    # Minimum 30 and maximum 200 character
+    if (post_lenght >= 1 and post_lenght <= 1000):
+        post['text'] = text
+    # Text is mandatory
+    else:
+        post['text'] = 'INVALID_TEXT'
+        abort = True
+
+    # Image is not mandatory
+    if img:
+        # Rename the image in order to don't have problems
+        filename = 'post'+str(id)+'.jpg'
+        # Save it in the right place with os.path.join()
+        img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    else:
+        # Default image in case it is not defined
+        filename = 'logo.png'
+    # Add it to the data structure    
+    post['img'] = filename
+    
+    # Debugging what happened
+    if not abort:
+        posts.append(post)
+        flash('Post creato correttamente', 'success')
+        app.logger.debug('Created post with:\n    > id: '+str(post.get('id'))+'\n    > user: '+post.get('user').get('username')+'\n    > text: '+post.get('text')+'\n    > image: '+post.get('img'))
+    else:
+        flash('Dati inseriti erronei, post non creato', 'danger')
+        app.logger.debug('\n\n* * * INVALID FORM, NO POST HAS BEEN CREATED * * *\n')
+    
+    return redirect(url_for('index'))
+
+# Other routes
 
 @app.errorhandler(404)
 def not_found(e):
