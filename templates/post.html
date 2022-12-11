@@ -9,20 +9,20 @@
     <post class="row border rounded-3 my-3  justify-content-center align-items-center">
 
         <div class="row">
-            <div class="col-8 d-flex justify-content-center align-items-center">
-                <img class="img-fluid" src="{{ url_for('static', filename='images/uploads/'+post.img) }}" alt="Immagine del post" >
+            <div class="col-12 col-lg-8 d-flex justify-content-center align-items-center">
+                <img class="img-fluid rounded-2 my-4" src="{{ url_for('static', filename='images/uploads/'+post.img) }}" alt="Immagine del post" >
             </div>
 
-            <div class="col my-3 mx-2 d-flex flex-column justify-content-between">
-                <div class="row my-2">
-                    <div class="col-6">
+            <div class="col my-2 mx-5 mx-lg-2 d-flex flex-column justify-content-between">
+                <div class="row my-2 justify-content-around">
+                    <div class="col-2 col-lg-6 d-flex justify-content-start">
                         <img class="img-fluid rounded-4" src="{{ url_for('static', filename='images/propics/'+post.user.propic) }}" alt="Immagine del profilo" >
                     </div>
-                    <div class="col d-flex align-items-center justify-content-center">
+                    <div class="col d-flex align-items-center justify-content-end">
                         <p class="h5">@{{ post.user.username }}</p>
                     </div>
                 </div>
-                <div class="row my-2 px-2 post-txt">{{ post.text }}</div>
+                <div class="row my-2  post-txt">{{ post.text }}</div>
             </div>
         </div>
 

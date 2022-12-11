@@ -7,7 +7,6 @@ from datetime import datetime, date
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap5
-#TODO : Usa le sessioni server-side
 from flask_session import Session
 
 # Simple lorem text for debugging purpose

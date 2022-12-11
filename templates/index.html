@@ -34,10 +34,9 @@
 
                 <div class="col-12 col-md">
 
-                    <!-- TODO: Redefine borders of the yellow background, and change the color too -->
-                    <div class="row justify-content-between" {% if post.user.username == session['logged_username'] %} style="background-color: rgba(189, 183, 107, 0.5);" {% endif %}>
+                    <div class="row justify-content-between rounded-2 py-2" {% if post.user.username == session['logged_username'] %} style="background-color: #e1e1d6" {% endif %}>
                         <div class="col-8 col-md-10 col-lg-8 col-xl-7 col-xxl-6 row">
-                            <div class="col-3 col-md-2 d-flex justify-content-center align-items-center"><img class="img-fluid rounded-3" src="{{ url_for('static', filename='images/propics/'+post.user.propic) }}" alt="Immagine del profilo dell'utente"></div>
+                            <div class="col-3 col-md-2 d-flex justify-content-center align-items-center ps-1"><img class="img-fluid rounded-3" src="{{ url_for('static', filename='images/propics/'+post.user.propic) }}" alt="Immagine del profilo dell'utente"></div>
                             <div class="col"><h5><b>@{{ post.user.username }}</b></h5></div>
                         </div>  
                         <div class="col">
@@ -63,7 +62,6 @@
         <!-- Plus button -->
         <button class="plus-button" data-bs-toggle="modal" data-bs-target="#new-post-modal">+</button>
         
-        <!-- TODO define validation of data -->
         <!-- New post modal -->
         <div class="modal fade" id="new-post-modal" tabindex="-1" aria-labelledby="new-post-label" aria-hidden="true">
             <div class="modal-dialog">
