@@ -2,6 +2,10 @@
 import os
 import re
 from datetime import datetime, date
+import sqlite3
+
+# External files
+import access_data as db
 
 # Flask libraries
 from flask import Flask, render_template, request, redirect, url_for, flash, session
@@ -14,7 +18,7 @@ now = datetime.now()
 date_string = now.strftime('%Y-%m-%d')
 
 # Defining an utils dict to be used where needed
-utils = {'today': date_string, 'lorem': lorem}
+utils = {'today': date_string}
     
 # Defining app
 app = Flask(__name__)
@@ -34,21 +38,34 @@ bootstrap = Bootstrap5(app)
 
 @app.route('/')
 def index():
+    users = db.get_users()
+    posts = db.get_posts()
+    for post in posts:
+        for user in users:
+            if user['id'] == post['user_id']:
+                connected_user = user
+        post['user'] = connected_user
+    
     return render_template('index.html', posts=posts, users=users, utils=utils)
 
 @app.route('/about')
 def about():
+    users=db.get_users()
+    admins=db.get_admins()
     return render_template('about.html', admins=admins, users=users, utils=utils)
 
 @app.route('/contacts')
 def contacts():
+    users=db.get_users()
     return render_template('contacts.html', users=users, utils=utils)
 
 # No-html route, used only for elaboratig data
 @app.route('/login', methods = ['POST'])
 def login():
     admin_data = request.form.to_dict()
-    session['logged_username'] = admin_data.get('logged_username') 
+    for user in db.get_users():
+        if user.get('username') == admin_data.get('logged_username') :
+            session['logged_user_id'] = user.get('id')
     flash('Login effettuato', 'success')
     app.logger.debug('\n\n* * * LOGIN EFFETTUATO CORRETTAMENTE * * *\n')
     return redirect(url_for('index'))
@@ -56,6 +73,8 @@ def login():
 @app.route('/post/<int:id>')
 def post(id):
     index = id-1
+    posts=db.get_posts()
+    users=db.get_users()
     return render_template('post.html', post=posts[index], users=users, utils=utils)
 
 # No-html route, used only for elaboratig data

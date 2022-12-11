@@ -7,6 +7,7 @@ DB_PATH = 'static/data/data.db'
 def get_posts():
 
     conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = dict_factory #sqlite3.Row
     cursor = conn.cursor()
     posts = False
 
@@ -26,6 +27,7 @@ def get_posts():
 def get_post(post_id):
     
     conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = dict_factory #sqlite3.Row
     cursor = conn.cursor()
     posts = False
 
@@ -44,6 +46,7 @@ def get_post(post_id):
 
 def get_comments(post_id):
     conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = dict_factory #sqlite3.Row
     cursor = conn.cursor()
     comments = False
 
@@ -66,6 +69,7 @@ def get_admins():
 def get_users(admin=False):
     
     conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = dict_factory #sqlite3.Row
     cursor = conn.cursor()
     users = False
 
@@ -83,6 +87,7 @@ def get_users(admin=False):
     cursor.close()
     conn.close()
 
+    print(type(users))
     return users
 
 def add_post(post):
@@ -100,7 +105,7 @@ def add_post(post):
         conn.rollback()
 
 def add_comment(comment):
-    
+
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
@@ -112,3 +117,9 @@ def add_comment(comment):
     except:
         print("Errore nell'accesso al database, non è stato possibile inserire il nuovo commento")        
         conn.rollback()
+
+def dict_factory(cursor, row):
+    d = {}
+    for idx, col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d
