@@ -1,6 +1,7 @@
 import sqlite3
+import data_utils.DATA_CONSTANTS as CONST
 
-DB_PATH = 'static/data/data.db'
+DB_PATH = CONST.DB_PATH
 
 def get_posts():
 
@@ -10,7 +11,7 @@ def get_posts():
     posts = False
 
     try:
-        sql = "SELECT * FROM POSTS"
+        sql = "SELECT * FROM POSTS ORDER BY date DESC"
         cursor.execute(sql)
         posts = cursor.fetchall()
     except:

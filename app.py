@@ -1,9 +1,9 @@
 # TODO
 # [ ] Add attributes restrictions on the database itself
-# [ ] Manage "days ago" 
-# [ ] Clean the code
+# [X] Manage "days ago" 
 # [ ] Are the session server or client side?
-# [ ] Test images uploads
+# [X] Test images uploads
+# [ ] Clean the code
 # [ ] Add comments
 
 # Vanilla Python libraries
@@ -13,7 +13,7 @@ from datetime import datetime, date
 import sqlite3
 
 # External files
-import access_data as db
+import data_utils.access_data as db
 
 # Flask libraries
 from flask import Flask, render_template, request, redirect, url_for, flash, session
@@ -39,6 +39,7 @@ app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
 
 # Generating objects for Flask extra libraries
+# TODO basta questo per avere sessioni server side?
 Session(app)
 bootstrap = Bootstrap5(app)
 
@@ -49,6 +50,7 @@ def index():
     users = db.get_users()
     posts = db.get_posts()
     add_user_to_posts(posts=posts, users=users)
+    add_daysago_to_posts(posts=posts)
     return render_template('index.html', posts=posts, users=users, utils=utils)
 
 @app.route('/about')
@@ -118,13 +120,9 @@ def new_post():
     
     # The date must be in the right format
     sDate = data.get('date')
-    if sDate != None and sDate != "":
-        dDate = datetime.strptime(sDate, '%Y-%m-%d')
-        daysago = (datetime.today() - dDate).days
-    else:
-        daysago = 0
+    daysago_ = daysago(sDate)
     # Date must be before or equal today
-    if (daysago >= 0):
+    if (daysago_ >= 0):
         post['date'] =  sDate
     # Data is mandatory
     else:
@@ -175,5 +173,15 @@ def add_user_to_posts(posts, users):
                 connected_user = user
         post['user'] = connected_user
 
-def daysago(date):
-    return None
+def add_daysago_to_posts(posts):
+    for post in posts:
+        post['daysago'] = daysago(post.get('date'))
+
+def daysago(sDate):
+    if sDate != None and sDate != "":
+        dDate = datetime.strptime(sDate, '%Y-%m-%d')
+        daysago = (datetime.today() - dDate).days
+    else:
+        daysago = 0
+
+    return daysago
