@@ -1,3 +1,8 @@
+# TODO
+# [ ] Add attributes restrictions on the database itself
+# [ ] Manage "days ago" 
+# [ ] Clean the code
+
 # Vanilla Python libraries
 import os
 import re
@@ -40,12 +45,7 @@ bootstrap = Bootstrap5(app)
 def index():
     users = db.get_users()
     posts = db.get_posts()
-    for post in posts:
-        for user in users:
-            if user['id'] == post['user_id']:
-                connected_user = user
-        post['user'] = connected_user
-    
+    add_user_to_posts(posts=posts, users=users)
     return render_template('index.html', posts=posts, users=users, utils=utils)
 
 @app.route('/about')
@@ -63,37 +63,56 @@ def contacts():
 @app.route('/login', methods = ['POST'])
 def login():
     admin_data = request.form.to_dict()
-    for user in db.get_users():
-        if user.get('username') == admin_data.get('logged_username') :
-            session['logged_user_id'] = user.get('id')
-    flash('Login effettuato', 'success')
-    app.logger.debug('\n\n* * * LOGIN EFFETTUATO CORRETTAMENTE * * *\n')
+
+    usernames = []
+    users=db.get_users()
+    for user in users:
+        usernames.append(user.get('username'))
+
+    if admin_data['logged_username'] in usernames:
+        session['logged_username'] = admin_data.get('logged_username')
+        flash('Login effettuato', 'success')
+        app.logger.info('\n\n* * * LOGIN EFFETTUATO CORRETTAMENTE * * *\n')
+        app.logger.info(' --> Username: ' + str(admin_data['logged_username']) )
+    else:
+        flash('Login non effetto, dati inseriti erronei', 'danger')
+        app.logger.error('\n\n* * * LOGIN NON EFFETTUATO * * *\n')
+
     return redirect(url_for('index'))
 
 @app.route('/post/<int:id>')
 def post(id):
     index = id-1
-    posts=db.get_posts()
     users=db.get_users()
+    posts=db.get_posts()
+    add_user_to_posts(posts=posts, users=users)
     return render_template('post.html', post=posts[index], users=users, utils=utils)
 
 # No-html route, used only for elaboratig data
 @app.route('/post/new', methods=['POST'])
 def new_post():
+    users=db.get_users()
+    posts=db.get_posts()
+    add_user_to_posts(posts=posts, users=users)
+
     # Retrive data from the form
     data = request.form.to_dict()
     img = request.files.get('img')
     
     # Default post values
     id = posts[-1].get('id')+1
-    post = {'id': id, 'user': None, 'daysago': -1, 'text': 'NO_TEXT', 'img': 'NO_IMG'}
+    post = {'id': id, 'user_id': -1, 'date': -1, 'text': 'NO_TEXT', 'img': 'NO_IMG'}
     abort = False
 
     # Searching for the user in the data structure
+    trovato = False
     for user in users:
         if user.get('username') == data.get('username'):
-            post['user'] = user
-
+            post['user_id'] = user.get('id')
+            trovato = True
+    if not trovato: 
+        abort = True
+    
     # The date must be in the right format
     sDate = data.get('date')
     if sDate != None and sDate != "":
@@ -103,12 +122,12 @@ def new_post():
         daysago = 0
     # Date must be before or equal today
     if (daysago >= 0):
-        post['daysago'] =  daysago
+        post['date'] =  sDate
     # Data is mandatory
     else:
-        post['daysago'] = 'INVALID_DATE'
+        post['date'] = 'INVALID_DATE'
         abort = True
-    
+
     # The text must be in the right format
     text = data.get('text')
     post_lenght = len(text)
@@ -132,38 +151,26 @@ def new_post():
     # Add it to the data structure    
     post['img'] = filename
     
-    # Debugging what happened
+    # Notificate if the where any errors
     if not abort:
-        posts.append(post)
+        db.add_post(post)
         flash('Post creato correttamente', 'success')
-        app.logger.debug('Created post with:\n    > id: '+str(post.get('id'))+'\n    > user: '+post.get('user').get('username')+'\n    > text: '+post.get('text')+'\n    > image: '+post.get('img'))
+        app.logger.info('* * * POST CREATO CORRETTAMENTE * * *')
+        app.logger.info(' --> post_id:'+str(post['id'])+', user_id:'+str(post['user_id']))
     else:
         flash('Dati inseriti erronei, post non creato', 'danger')
-        app.logger.debug('\n\n* * * INVALID FORM, NO POST HAS BEEN CREATED * * *\n')
-    
+        app.logger.error('* * * POST NON CREATO * * *')
+
     return redirect(url_for('index'))
 
-# Other routes
+# Utils functions
 
-@app.errorhandler(404)
-def not_found(e):
-    return render_template('404.html')
+def add_user_to_posts(posts, users):
+    for post in posts:
+        for user in users:
+            if user['id'] == post['user_id']:
+                connected_user = user
+        post['user'] = connected_user
 
-@app.route('/test')
-def test():
-    
-    # Lista di dizionari
-    pilots = [  {'name': 'Shinji', 'surname': 'Ikari'},
-                {'name': 'Rei', 'surname': 'Ayanami'},
-                {'name': 'Asuka', 'surname': 'Langley Soryu'},
-                {'name': 'Toji', 'surname': 'Suzuhara'},
-                {'name': 'Kaoru', 'surname': 'Nagisa'}
-            ]
-    
-    avaible_pilots = pilots.copy()
-    for avaible_pilot in avaible_pilots:
-        if (avaible_pilot.get('name') == 'Shinji' or avaible_pilot.get('surname') == 'Ikari'):
-            avaible_pilots.remove(avaible_pilot)
-
-    human_pilots=[{'name': 'Shinji', 'surname': 'Ikari'},{'name': 'Asuka', 'surname': 'Langley Soryu'},{'name': 'Toji', 'surname': 'Suzuhara'}]
-    return render_template('test.html', pilots = pilots, avaible_pilots=avaible_pilots, human_pilots=human_pilots)
+def daysago(date):
+    return None

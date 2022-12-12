@@ -62,10 +62,10 @@
                     </div>
                     <!-- Form for login -->
                     <div class="modal-body">
-                        <form action="/login" method="POST">
+                        <form action="{{ url_for('login') }}" method="POST">
                             <!-- Select of accounts -->
                             <select name='logged_username' class="form-select mb-3" aria-label="Scelta admin">
-                                {% for user in users%}
+                                {% for user in users %}
                                     <option value="{{user.username}}">{{user.username}}</option>
                                 {% endfor %}
                             </select>

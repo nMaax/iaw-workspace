@@ -27,7 +27,6 @@
             <a class='href-post' href="{{ url_for('post', id=post.id)}} ">
             <article class="col-12 rounded-2 p-2 border border-2 mx-2 my-2 row justify-content-between g-3">
                                     
-                <!-- https://getbootstrap.com/docs/5.2/utilities/flex/#enable-flex-behaviors -->
                 <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center align-items-center">
                     <img class="img-fluid rounded-2 post-img" alt="Immagine del post" src="{{ url_for('static', filename='images/uploads/'+post.img) }}">
                 </div>
@@ -73,7 +72,7 @@
                 </div>
                 <!-- Modal body: form and submit button-->
                 <div class="modal-body">
-                    <form action="/post/new" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url_for('new_post') }}" method="POST" enctype="multipart/form-data">
                         <!-- Username -->
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-at-char">@</span>

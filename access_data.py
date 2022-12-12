@@ -2,8 +2,6 @@ import sqlite3
 
 DB_PATH = 'static/data/data.db'
 
-#TODO: metti i return come dizionari row
-
 def get_posts():
 
     conn = sqlite3.connect(DB_PATH)
@@ -16,7 +14,7 @@ def get_posts():
         cursor.execute(sql)
         posts = cursor.fetchall()
     except:
-        print('Failed to retrive data in access_data.get_posts()')
+        print("Failed to retrive data in access_data.get_posts()")
         conn.rollback()
 
     cursor.close()
@@ -36,7 +34,7 @@ def get_post(post_id):
         cursor.execute(sql, (post_id,))
         posts = cursor.fetchall()
     except:
-        print('Failed to retrive data in access_data.get_post(post_id)')
+        print("Failed to retrive data in access_data.get_post(post_id)")
         conn.rollback()
 
     cursor.close()
@@ -55,7 +53,7 @@ def get_comments(post_id):
         cursor.execute(sql, (post_id,))
         comments = cursor.fetchall()
     except:
-        print('Failed to retrive data in access_data.get_comments(post_id)')
+        print("Failed to retrive data in access_data.get_comments(post_id)")
         conn.rollback()
 
     cursor.close()
@@ -81,13 +79,12 @@ def get_users(admin=False):
         cursor.execute(sql)
         users = cursor.fetchall()
     except:
-        print('Failed to retrive data in access_data.get_users(admin)')
+        print("Failed to retrive data in access_data.get_users(admin)")
         conn.rollback()
 
     cursor.close()
     conn.close()
 
-    print(type(users))
     return users
 
 def add_post(post):
@@ -118,6 +115,7 @@ def add_comment(comment):
         print("Errore nell'accesso al database, non è stato possibile inserire il nuovo commento")        
         conn.rollback()
 
+# Function to convert the values fetched by the db as MUTABLE dictionaries
 def dict_factory(cursor, row):
     d = {}
     for idx, col in enumerate(cursor.description):
