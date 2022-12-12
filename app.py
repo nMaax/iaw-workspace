@@ -1,11 +1,3 @@
-# TODO
-# [ ] Add attributes restrictions on the database itself
-# [X] Manage "days ago" 
-# [ ] Are the session server or client side?
-# [X] Test images uploads
-# [ ] Clean the code
-# [ ] Add comments
-
 # Vanilla Python libraries
 import os
 import re
