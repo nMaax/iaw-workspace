@@ -2,6 +2,9 @@
 # [ ] Add attributes restrictions on the database itself
 # [ ] Manage "days ago" 
 # [ ] Clean the code
+# [ ] Are the session server or client side?
+# [ ] Test images uploads
+# [ ] Add comments
 
 # Vanilla Python libraries
 import os
