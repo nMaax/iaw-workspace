@@ -79,11 +79,13 @@ def login():
 
 @app.route('/post/<int:id>')
 def post(id):
-    index = id-1
     users=db.get_users()
     posts=db.get_posts()
     add_user_to_posts(posts=posts, users=users)
-    return render_template('post.html', post=posts[index], users=users, utils=utils)
+    for post_ in posts:
+        if post_['id'] == id:
+            post = post_
+    return render_template('post.html', post=post, users=users, utils=utils)
 
 # No-html route, used only for elaboratig data
 @app.route('/post/new', methods=['POST'])

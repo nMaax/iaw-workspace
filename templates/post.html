@@ -5,7 +5,7 @@
 {% block home_active %}active{% endblock %}
 
 {% block main %} 
-    <post class="row border rounded-3 my-3  justify-content-center align-items-center">
+    <article class="row border rounded-3 my-3  justify-content-center align-items-center">
 
         <div class="row">
             <div class="col-12 col-lg-8 d-flex justify-content-center align-items-center">
@@ -23,8 +23,22 @@
                 </div>
                 <div class="row my-2  post-txt">{{ post.text }}</div>
             </div>
+
+            <div class="row">
+                <div class="row display-3">
+                    Commenti
+                </div>
+    
+                <div class="row my-5">
+                    Commenti
+                </div>
+    
+            </div>
+
         </div>
 
-    </post>
+        
+
+    </article>
 
 {% endblock %}
