@@ -1,13 +1,13 @@
 # How to use this repo
 
-Read the following file to understend how to use this
+A simple project developed during the IAW course at Politecnico di Torino :smiley:
 
 ## How to install
 
 ## Prerequisites
 
-- Python 3
-- A web browser
+- [Python3](https://www.python.org/) or above
+- A [web browser](https://www.mozilla.org/it/firefox/new/)
 
 ### Steps
 
@@ -17,7 +17,18 @@ Read the following file to understend how to use this
    2. Install ```Flask```, ```Flask-Session``` and ```Bootstrap-Flask```
    3. Run it
 
-Copy the following code to complete the step 2 in one shot
+Copy the following code to complete the step 2 in one shot :rocket:
+
+> For Mac and Linux machines:
+
+```terminal
+python3 -m venv venv 
+. venv/bin/activate 
+pip install Flask, Flask-Session, Bootstrap-Flask
+flask --debug run
+```
+
+> For Windows machines:
 
 ```terminal
 python3 -m venv venv 
@@ -31,6 +42,10 @@ flask --debug run
 ## General Formatting Guidelines
 
 Use the following guidelines to make a clean code, so everyone else will be able to read it better and quickly
+
+> ***Note***
+> In **html and css** files: Pretty much i use only kebab-case, except for some ids where i prefer #cammelCaseNotation
+> In **python** files: I use prevalently a snake_notation and hungarian notation (hNotation) when needed
 
 ### Documentation of tools used
 
@@ -51,15 +66,16 @@ Use the following guidelines to make a clean code, so everyone else will be able
 <you can skip indentation too with "skeleton" tags><like head, body and html>
 ```
 
-#### The scheme of classes is basically
+#### The scheme of class attribute in html tags basically follows this order
 
-1. Manage how this tag rapports with _parent_ tag (tipically: col, nav-item, ...)
-2. Manage the styling of _this_ tag (other, padding, border, margin - in this order)
-3. Manage how this tag rapports with _child_ tags (tipically: row, d-flex, ...)
-4. You _personal classes_
-5. For breakpoit use **S2G** (From smaller (brekpoint) to greater (breakpoint))
-    - class class-sm class-md class-lg class-xl class-xxl
-    - When in doubt, always specify the 'obvious' classes like col-12
+1. Classes that manage how this tag rapports with *parent* tag (tipically: col, nav-item, ...)
+2. Classes that manage the styling of *this* tag (other, padding, border, margin - in this order)
+3. Classes that manage how this tag rapports with *child* tags (tipically: row, d-flex, ...)
+4. Your *personal* classes
+
+> ***Note***
+> For breakpoit use **S2G** (From smaller (brekpoint) to greater (breakpoint))
+```class class-sm class-md class-lg class-xl class-xxl``` (When in doubt, always specify the 'obvious' classes like col-12)
 
 ### Format of CSS files
 
@@ -118,5 +134,5 @@ element {
 ### Useful tips
 
 - Always prefer (if possible) a ```d-flex``` option (```justify, alig-item,``` ...) instead of a "manual" ```padding/margin``` style
-- Use _Emmet_ and _Flask Snippets_ in _VS-Code_!
+- Use *Emmet* and *Flask Snippets* in *VS-Code*!
 - If possible use the ```col-auto``` class to make one of the columns in certain row automatically responsive to the changes during breakpoint-switches

@@ -1,8 +1,8 @@
 # Vanilla Python libraries
 import os
-import re
+#import re
 from datetime import datetime, date
-import sqlite3
+#import sqlite3
 
 # External files
 import data_utils.access_data as db
@@ -13,15 +13,22 @@ from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap5
 from flask_session import Session
 
-# Defining today as a string
-now = datetime.now()
-date_string = now.strftime('%Y-%m-%d')
+# Defining an utils dict to be used whenever is needed
 
-# Defining an utils dict to be used where needed
-utils = {'today': date_string}
+iso_day_format  = '%Y-%m-%d'
+
+#Today day value
+now = datetime.now()
+sNow = now.strftime(iso_day_format)
+
+utils = {'today': sNow}
     
 # Defining app
 app = Flask(__name__)
+
+# Generating objects for Flask extra libraries (Server-side sessions and Bootstrap)
+Session(app)
+bootstrap = Bootstrap5(app)
 
 # Defining app attributes
 UPLOAD_FOLDER = './static/images/uploads/'
@@ -30,13 +37,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
 
-# Generating objects for Flask extra libraries
-# TODO basta questo per avere sessioni server side?
-Session(app)
-bootstrap = Bootstrap5(app)
-
 # Main routes
-
 @app.route('/')
 def index():
     users = db.get_users()
@@ -158,8 +159,9 @@ def new_post():
 
     return redirect(url_for('index'))
 
-# Utils functions
+# Other functions
 
+# Functions to add new data to post dict
 def add_user_to_posts(posts, users):
     for post in posts:
         for user in users:
@@ -171,9 +173,10 @@ def add_daysago_to_posts(posts):
     for post in posts:
         post['daysago'] = daysago(post.get('date'))
 
+# Function that returns how many days are passed since the date passed as parameter as "YYYY-MM-DD"
 def daysago(sDate):
     if sDate != None and sDate != "":
-        dDate = datetime.strptime(sDate, '%Y-%m-%d')
+        dDate = datetime.strptime(sDate, iso_day_format)
         daysago = (datetime.today() - dDate).days
     else:
         daysago = 0
