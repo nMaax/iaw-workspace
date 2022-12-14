@@ -12,10 +12,10 @@ A simple project developed during the IAW course at Politecnico di Torino :smile
 ### Steps
 
 1. Clone this repo in a folder of yours
-2. Open a terminal
+2. Open a terminal in that folder, then, in the terminal
    1. Generate a python venv (virtual enviroment)
    2. Install ```Flask```, ```Flask-Session``` and ```Bootstrap-Flask```
-   3. Run it
+   3. Run flask with ```flask run``` (eventually add ```--debug``` for debugging)
 
 Copy the following code to complete the step 2 in one shot :rocket:
 
