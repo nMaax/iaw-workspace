@@ -1,6 +1,7 @@
 import sqlite3
 import data_utils.DATA_CONSTANTS as CONST
 
+#TODO: questi file non devono essere in static?
 DB_PATH = CONST.DB_PATH
 
 def get_posts():
@@ -50,7 +51,7 @@ def get_comments(post_id):
     comments = False
 
     try:
-        sql = "SELECT * FROM COMMENTS WHERE post_id = ?"
+        sql = "SELECT * FROM COMMENTS WHERE post_id = ? ORDER BY date DESC"
         cursor.execute(sql, (post_id,))
         comments = cursor.fetchall()
     except:
@@ -87,6 +88,27 @@ def get_users(admin=False):
     conn.close()
 
     return users
+
+def get_user(user_id):
+    
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = dict_factory #sqlite3.Row
+    cursor = conn.cursor()
+
+    user = False
+
+    try:
+        sql = "SELECT * FROM USERS WHERE id = ?"
+        cursor.execute(sql, (user_id,))
+        user = cursor.fetchone()
+    except:
+        print("Failed to retrive data in access_data.get_users(admin)")
+        conn.rollback()
+
+    cursor.close()
+    conn.close()
+    
+    return user
 
 def add_post(post):
 

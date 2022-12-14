@@ -24,16 +24,70 @@
                 <div class="row my-2  post-txt">{{ post.text }}</div>
             </div>
 
-            <div class="row">
-                <div class="row display-3">
+            
+
+            <div class="row d-flex flex-column justify-content-around">
+
+                <div class="row h4 d-flex justify-content-center">
                     Commenti
                 </div>
-    
-                <div class="row my-5">
-                    Commenti
+
+                
+
+                <div class="row d-flex justify-content-center">
+
+                    <div class="col-md-8 col-lg-6">
+
+                        <div class="card shadow-0 border my-3" style="background-color: #f0f2f5;">
+
+                            
+                            <div class="card-body p-4">
+
+                                {% if session.logged_username %}
+                            
+                                <div class="form-outline mb-4">
+                                    <form action="{{url_for('add_comment', post_id=post.id, username=session.logged_username)}}" method="POST">
+                                        <label class="form-label" for="addComment">Aggiungi un commento:</label>
+                                        <input name="text" type="text" id="addComment" class="form-control" placeholder="Il tuo commento..." />
+                                        <button type="submit" class="btn btn-primary mt-2">Pubblica</button>
+                                    </form>
+                                </div>
+
+                                {% endif %}
+
+                                {% if post.comments %}
+
+                                    {% for comment in post.comments %}
+                                    <div class="card mb-4">    
+                                        <div class="card-body">
+                                            <p>{{comment.text}}</p>
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <img src="{{ url_for('static', filename='images/propics/'+comment.user.propic) }}" alt="propic" width="25" eight="25" />
+                                                    <p class="small mb-0 ms-2">@{{comment.user.username}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                {% else %}
+                                    
+                                    <div class="h5 d-flex justify-content-center"> Nessun commento 😔 </div>
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
     
             </div>
+
+            
 
         </div>
 

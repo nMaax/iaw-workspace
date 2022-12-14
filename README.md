@@ -7,7 +7,7 @@ A simple project developed during the IAW course at Politecnico di Torino :smile
 ## Prerequisites
 
 - [Python3](https://www.python.org/) or above
-- A [web browser](https://www.mozilla.org/it/firefox/new/)
+- [A web browser](https://www.mozilla.org/it/firefox/new/)
 
 ### Steps
 

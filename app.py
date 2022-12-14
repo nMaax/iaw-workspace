@@ -27,7 +27,6 @@ utils = {'today': sNow}
 app = Flask(__name__)
 
 # Generating objects for Flask extra libraries (Server-side sessions and Bootstrap)
-Session(app)
 bootstrap = Bootstrap5(app)
 
 # Defining app attributes
@@ -36,6 +35,8 @@ UPLOAD_FOLDER = './static/images/uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
+
+Session(app)
 
 # Main routes
 @app.route('/')
@@ -86,7 +87,20 @@ def post(id):
     for post_ in posts:
         if post_['id'] == id:
             post = post_
+    add_comments_to_post(post)
     return render_template('post.html', post=post, users=users, utils=utils)
+
+@app.route('/post/<int:post_id>/new_comment/<username>', methods=['POST'])
+def add_comment(post_id, username):
+    new_comment = request.form.to_dict()
+    new_comment['post_id'] = post_id
+    new_comment['username'] = username
+    for user in db.get_users():
+        if user.get('username') == username:
+            new_comment['user_id'] = user.get('id')
+    new_comment['date'] = utils.get('today')
+    db.add_comment(new_comment)
+    return redirect(url_for('post', id=post_id))
 
 # No-html route, used only for elaboratig data
 @app.route('/post/new', methods=['POST'])
@@ -172,6 +186,19 @@ def add_user_to_posts(posts, users):
 def add_daysago_to_posts(posts):
     for post in posts:
         post['daysago'] = daysago(post.get('date'))
+
+def add_comments_to_post(post):
+    post_id = post.get('id')
+    comments = db.get_comments(post_id)
+    for comment in comments:
+        add_user_to_comment(comment)
+    app.logger.info(comments)
+    post['comments'] = comments
+
+def add_user_to_comment(comment):
+    commenter_id = comment.get('user_id')
+    commenter = db.get_user(commenter_id)
+    comment['user'] = commenter
 
 # Function that returns how many days are passed since the date passed as parameter as "YYYY-MM-DD"
 def daysago(sDate):
