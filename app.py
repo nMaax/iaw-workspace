@@ -192,13 +192,17 @@ def add_comments_to_post(post):
     comments = db.get_comments(post_id)
     for comment in comments:
         add_user_to_comment(comment)
-    app.logger.info(comments)
+        add_daysago_to_comment(comment)
     post['comments'] = comments
 
 def add_user_to_comment(comment):
     commenter_id = comment.get('user_id')
     commenter = db.get_user(commenter_id)
     comment['user'] = commenter
+
+def add_daysago_to_comment(comment):
+    daysago_ = daysago(comment.get('date'))
+    comment['daysago'] = daysago_
 
 # Function that returns how many days are passed since the date passed as parameter as "YYYY-MM-DD"
 def daysago(sDate):
