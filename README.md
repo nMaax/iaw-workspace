@@ -1,8 +1,4 @@
-# How to use this repo
-
-A simple project developed during the IAW course at Politecnico di Torino :smiley:
-
-## How to install
+# How to install
 
 ## Prerequisites
 
