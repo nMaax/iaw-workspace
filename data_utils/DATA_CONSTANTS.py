@@ -14,6 +14,13 @@ NON_ADMINS = [
     {'username':'kaoruni', 'name': 'Kaoru', 'surname': 'Nagisa', 'propic':'Kaoru_Nagisa.jpeg'},
 ]
 
+for admin in ADMINS:
+    admin['password'] = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
+
+for user in NON_ADMINS:
+    user['password'] = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
+
+
 POSTS = [
     {'id': 1, 'user': 1, 'date': '2022-12-10', 'text': LOREM*2, 'img':'post1.jpg'},
     {'id': 2, 'user': 2, 'date': '2022-12-10', 'text': LOREM, 'img':'post2.jpg'},

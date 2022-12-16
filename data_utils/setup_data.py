@@ -16,10 +16,10 @@ cursor = conn.cursor()
 # Inserting admind
 # Se provo a rompere un vincolo del database questo scatena un eccezione e il comando è annulato
 try:
-    sql = "INSERT INTO users(username, name, surname, propic, description, motto) VALUES (?, ?, ?, ?, ?, ?)"
+    sql = "INSERT INTO users(username, password, name, surname, propic, description, motto) VALUES (?, ?, ?, ?, ?, ?, ?)"
     for admin in ADMINS:
         # TODO: gestire months-ago update
-        data = (admin.get('username'), admin.get('name'), admin.get('surname'), admin.get('propic'), admin.get('description'), admin.get('motto'))
+        data = (admin.get('username'), admin.get('password'), admin.get('name'), admin.get('surname'), admin.get('propic'), admin.get('description'), admin.get('motto'))
         cursor.execute(sql, data)
         #TODO: Is it the same if i commmit just one time?
         conn.commit()

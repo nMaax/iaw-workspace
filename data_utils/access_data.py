@@ -4,26 +4,6 @@ import data_utils.DATA_CONSTANTS as CONST
 #TODO: questi file non devono essere in static?
 DB_PATH = CONST.DB_PATH
 
-def get_posts():
-
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = dict_factory #sqlite3.Row
-    cursor = conn.cursor()
-    posts = False
-
-    try:
-        sql = "SELECT * FROM POSTS ORDER BY date DESC"
-        cursor.execute(sql)
-        posts = cursor.fetchall()
-    except:
-        print("Failed to retrive data in access_data.get_posts()")
-        conn.rollback()
-
-    cursor.close()
-    conn.close()
-
-    return posts
-
 def get_post(post_id):
     
     conn = sqlite3.connect(DB_PATH)
@@ -37,6 +17,26 @@ def get_post(post_id):
         posts = cursor.fetchall()
     except:
         print("Failed to retrive data in access_data.get_post(post_id)")
+        conn.rollback()
+
+    cursor.close()
+    conn.close()
+
+    return posts
+
+def get_posts():
+
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = dict_factory #sqlite3.Row
+    cursor = conn.cursor()
+    posts = False
+
+    try:
+        sql = "SELECT * FROM POSTS ORDER BY date DESC"
+        cursor.execute(sql)
+        posts = cursor.fetchall()
+    except:
+        print("Failed to retrive data in access_data.get_posts()")
         conn.rollback()
 
     cursor.close()
@@ -62,6 +62,25 @@ def get_comments(post_id):
     conn.close()
 
     return comments
+
+def get_user_by_username(username):
+
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = dict_factory #sqlite3.Row
+    cursor = conn.cursor()
+
+    try:
+        sql = "SELECT * FROM users WHERE username = ?"
+        cursor.execute(sql, (username,))
+        user = cursor.fetchone()
+    except Exception as e:
+        print("Failed to retrive data in access_data.get_user_by_username(username)")
+        conn.rollback()
+
+    cursor.close()
+    conn.close()
+
+    return user
 
 def get_admins():
     return get_users(True)
@@ -96,17 +115,19 @@ def add_user(user, admin = False):
 
     try:
         if not admin:
-            sql = "INSERT INTO user(username, name, surname, propic) VALUES (?, ?, ?, ?)"
+            sql = "INSERT INTO users(username, name, surname, propic, password) VALUES (?, ?, ?, ?, ?)"
             propic = user.get('username') + '.jpeg'
-            data = (user.get('username'), user.get('name'), user.get('surname'), propic)
+            data = (user.get('username'), user.get('name'), user.get('surname'), propic, user.get('password'))
         else:
-            sql = "INSERT INTO user(username, name, surname, propic, description, motto) VALUES (?, ?, ?, ?, ?, ?)"
+            sql = "INSERT INTO users(username, admin, name, surname, propic, description, motto) VALUES (?, ?, ?, ?, ?, ?)"
             propic = user.get('username') + '.jpeg'
-            data = (user.get('username'), user.get('name'), user.get('surname'), propic, user.get('description'), user.get('motto'))
+            data = (user.get('username'), '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', user.get('name'), user.get('surname'), propic, user.get('description'), user.get('motto'))
         cursor.execute(sql, data)
         conn.commit()
-    except:
+    except Exception as e:
         print("Errore nell'accesso al database, non è stato possibile inserire il nuovo utente")        
+        print(e)
+        print(user)
         conn.rollback()
 
 def get_user(user_id):

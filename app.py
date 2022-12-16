@@ -29,12 +29,14 @@ app = Flask(__name__)
 
 # Defining app attributes and other setups
 UPLOAD_FOLDER = './static/images/uploads/'
+PROPIC_FOLDER = './static/images/propics/'
 SECRET_KEY = 'Z2KRu#3+5Ps?ngrxT&!icMR?pC$krH'
 SESSION_TYPE = 'filesystem'
 SESSION_PERMANENT = False
 
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['PROPIC_FOLDER'] = PROPIC_FOLDER
 app.config['SESSION_TYPE'] = SESSION_TYPE
 app.config['SESSION_PERMANENT'] = SESSION_PERMANENT
 
@@ -72,6 +74,37 @@ def signup():
 @app.route('/post_signup', methods=['POST'])
 def post_signup():
     #TODO post_signup
+    username = request.form.get('username')
+    name = request.form.get('name')
+    surname = request.form.get('surname')
+    password = request.form.get('password')
+
+    
+
+    user_in_db = db.get_user_by_username(username)
+    success = False
+
+    if not user_in_db:
+        user = {
+            'username': username,
+            'name': name,
+            'surname': surname,
+            'password': generate_password_hash(password, method='sha256')
+        }
+        db.add_user(user, admin = False)
+        success = True
+
+    #TODO flash
+    if success:
+        propic = request.files.get('propic')
+        filename = username+'.jpeg'
+        # Save it in the right place with os.path.join()
+        propic.save(os.path.join(app.config['PROPIC_FOLDER'], filename))
+        print(propic)
+        pass
+    else:
+        pass
+
     return redirect(url_for('index'))
 
 # No-html route, used only for elaboratig data
