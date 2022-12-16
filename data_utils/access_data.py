@@ -89,6 +89,26 @@ def get_users(admin=False):
 
     return users
 
+def add_user(user, admin = False):
+
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    try:
+        if not admin:
+            sql = "INSERT INTO user(username, name, surname, propic) VALUES (?, ?, ?, ?)"
+            propic = user.get('username') + '.jpeg'
+            data = (user.get('username'), user.get('name'), user.get('surname'), propic)
+        else:
+            sql = "INSERT INTO user(username, name, surname, propic, description, motto) VALUES (?, ?, ?, ?, ?, ?)"
+            propic = user.get('username') + '.jpeg'
+            data = (user.get('username'), user.get('name'), user.get('surname'), propic, user.get('description'), user.get('motto'))
+        cursor.execute(sql, data)
+        conn.commit()
+    except:
+        print("Errore nell'accesso al database, non è stato possibile inserire il nuovo utente")        
+        conn.rollback()
+
 def get_user(user_id):
     
     conn = sqlite3.connect(DB_PATH)

@@ -12,6 +12,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap5
 from flask_session import Session
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 # Defining an utils dict to be used whenever is needed
 
