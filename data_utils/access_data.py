@@ -82,6 +82,25 @@ def get_user_by_username(username):
 
     return user
 
+def get_user_by_id(id):
+
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = dict_factory #sqlite3.Row
+    cursor = conn.cursor()
+
+    try:
+        sql = "SELECT * FROM users WHERE id = ?"
+        cursor.execute(sql, (id,))
+        user = cursor.fetchone()
+    except Exception as e:
+        print("Failed to retrive data in access_data.get_user_by_id(id)")
+        conn.rollback()
+
+    cursor.close()
+    conn.close()
+
+    return user
+
 def get_admins():
     return get_users(True)
 

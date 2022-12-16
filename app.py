@@ -6,6 +6,7 @@ from datetime import datetime, date
 
 # External files
 import data_utils.access_data as db
+from models import User
 
 # Flask libraries
 from flask import Flask, render_template, request, redirect, url_for, flash, session
@@ -26,6 +27,7 @@ utils = {'today': sNow}
     
 # Defining app
 app = Flask(__name__)
+app.secret_key = '?c-xoV-Vkn2&E$q@-tQbX5kCZvve^5'
 
 # Defining app attributes and other setups
 UPLOAD_FOLDER = './static/images/uploads/'
@@ -40,10 +42,12 @@ app.config['PROPIC_FOLDER'] = PROPIC_FOLDER
 app.config['SESSION_TYPE'] = SESSION_TYPE
 app.config['SESSION_PERMANENT'] = SESSION_PERMANENT
 
+bootstrap = Bootstrap5(app)
+
 login_manager = LoginManager()
 login_manager.login_view = 'login'
-#login_manager.init_app(app)
-bootstrap = Bootstrap5(app)
+login_manager.init_app(app)
+
 Session(app)
 
 # Main routes
@@ -79,8 +83,6 @@ def post_signup():
     surname = request.form.get('surname')
     password = request.form.get('password')
 
-    
-
     user_in_db = db.get_user_by_username(username)
     success = False
 
@@ -94,17 +96,20 @@ def post_signup():
         db.add_user(user, admin = False)
         success = True
 
-    #TODO flash
     if success:
         propic = request.files.get('propic')
         filename = username+'.jpeg'
         # Save it in the right place with os.path.join()
         propic.save(os.path.join(app.config['PROPIC_FOLDER'], filename))
         print(propic)
-        pass
+        flash('Iscrizione effettuata', 'success')
+        app.logger.info('\n\n* * * ISCRIZIONE EFFETTUATA CORRETTAMENTE * * *\n')
+        
     else:
-        pass
+        flash('Iscrizione non effettuata, dati inseriti erronei', 'warning')
+        app.logger.error('\n\n* * * ISCRIZIONE NON EFFETTUATA * * *\n')
 
+    app.logger.info(' --> Username: ' + username)
     return redirect(url_for('index'))
 
 # No-html route, used only for elaboratig data
@@ -121,17 +126,40 @@ def login():
         session['logged_username'] = admin_data.get('logged_username')
         flash('Login effettuato', 'success')
         app.logger.info('\n\n* * * LOGIN EFFETTUATO CORRETTAMENTE * * *\n')
-        app.logger.info(' --> Username: ' + str(admin_data['logged_username']) )
     else:
-        flash('Login non effetto, dati inseriti erronei', 'danger')
+        flash('Login non effettuato, dati inseriti erronei', 'danger')
         app.logger.error('\n\n* * * LOGIN NON EFFETTUATO * * *\n')
+
+    app.logger.info(' --> Username: ' + str(admin_data['logged_username']) )
 
     return redirect(url_for('index'))
 
 # No-html route, used only for elaboratig data
 @app.route('/post_login', methods=['POST'])
 def post_login():
-    #TODO post_login
+    username = request.form.get('username') 
+    password = request.form.get('password')
+
+    user = db.get_user_by_username(username)
+
+    if user and check_password_hash(user.get('password'), password):
+        logged_user = User(id=user.get('id'), username=user.get('username'), password=user.get('password'),name=user.get('name'), surname=user.get('surname'))
+        login_user(logged_user, True)
+        flash('Login effettuato', 'success')
+        app.logger.info('\n\n* * * LOGIN EFFETTUATO CORRETTAMENTE * * *\n')
+    else:
+        flash('Login non effettuato, dati inseriti erronei', 'danger')
+        app.logger.error('\n\n* * * LOGIN NON EFFETTUATO * * *\n')
+
+    app.logger.info(' --> Username: ' + str(username) )
+
+    return redirect(url_for('index'))
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash('Logout effettuato', 'info')
     return redirect(url_for('index'))
 
 @app.route('/post/<int:id>')
@@ -221,14 +249,20 @@ def new_post():
         db.add_post(post)
         flash('Post creato correttamente', 'success')
         app.logger.info('* * * POST CREATO CORRETTAMENTE * * *')
-        app.logger.info(' --> post_id:'+str(post['id'])+', user_id:'+str(post['user_id']))
     else:
         flash('Dati inseriti erronei, post non creato', 'danger')
         app.logger.error('* * * POST NON CREATO * * *')
 
-    return redirect(url_for('index'))
+    return redirect(url_for('index'))  
 
 # Other functions
+@login_manager.user_loader
+def load_user(user_id):
+    db_user = db.get_user_by_id(user_id)
+
+    user = User(id=db_user['id'], username=db_user['username'], password=db_user['password'], name=db_user['name'], surname=db_user['surname'])
+
+    return user 
 
 # Functions to add new data to post dict
 def add_user_to_posts(posts, users):
