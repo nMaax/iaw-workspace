@@ -10,12 +10,12 @@ import data_utils.access_data as db
 # Flask libraries
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_bootstrap import Bootstrap5
 from flask_session import Session
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 # Defining an utils dict to be used whenever is needed
-
 iso_day_format  = '%Y-%m-%d'
 
 #Today day value
@@ -27,16 +27,21 @@ utils = {'today': sNow}
 # Defining app
 app = Flask(__name__)
 
-# Generating objects for Flask extra libraries (Server-side sessions and Bootstrap)
-bootstrap = Bootstrap5(app)
-
-# Defining app attributes
+# Defining app attributes and other setups
 UPLOAD_FOLDER = './static/images/uploads/'
+SECRET_KEY = 'Z2KRu#3+5Ps?ngrxT&!icMR?pC$krH'
+SESSION_TYPE = 'filesystem'
+SESSION_PERMANENT = False
 
+app.config['SECRET_KEY'] = SECRET_KEY
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_TYPE'] = SESSION_TYPE
+app.config['SESSION_PERMANENT'] = SESSION_PERMANENT
 
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+#login_manager.init_app(app)
+bootstrap = Bootstrap5(app)
 Session(app)
 
 # Main routes
@@ -59,6 +64,16 @@ def contacts():
     users=db.get_users()
     return render_template('contacts.html', users=users, utils=utils)
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+# No-html route, used only for elaboratig data
+@app.route('/post_signup', methods=['POST'])
+def post_signup():
+    #TODO post_signup
+    return redirect(url_for('index'))
+
 # No-html route, used only for elaboratig data
 @app.route('/login', methods = ['POST'])
 def login():
@@ -78,6 +93,12 @@ def login():
         flash('Login non effetto, dati inseriti erronei', 'danger')
         app.logger.error('\n\n* * * LOGIN NON EFFETTUATO * * *\n')
 
+    return redirect(url_for('index'))
+
+# No-html route, used only for elaboratig data
+@app.route('/post_login', methods=['POST'])
+def post_login():
+    #TODO post_login
     return redirect(url_for('index'))
 
 @app.route('/post/<int:id>')

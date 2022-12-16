@@ -57,12 +57,14 @@
                 <div class="modal-content">
                     <!-- Modal header: Title and Close button X -->
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Chi sei?</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <!-- Form for login -->
                     <div class="modal-body">
-                        <form action="{{ url_for('login') }}" method="POST">
+
+                        <!-- Old form -->
+                        <form action="{{ url_for('login') }}" method="POST" class="border-bottom pb-4">
                             <!-- Select of accounts -->
                             <select name='logged_username' class="form-select mb-3" aria-label="Scelta admin">
                                 {% for user in users %}
@@ -70,8 +72,35 @@
                                 {% endfor %}
                             </select>
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary">Conferma</button>
+                            <button type="submit" class="btn btn-primary">Accedi</button>
                         </form>
+                        
+                        <br>
+                        <br>
+                        
+                        <!-- New form -->
+                        <form action="{{ url_for('post_login') }}" method="POST">
+                            
+                            <!-- Username input -->
+                            <div class="form-outline mb-4">
+                              <input type="text" id="username" class="form-control" required/>
+                              <label class="form-label" for="username">Username</label>
+                            </div>
+                          
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                              <input type="password" id="password" class="form-control" required/>
+                              <label class="form-label" for="password">Password</label>
+                            </div>
+                          
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-4">Accedi</button>
+                              
+                          </form>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <p>Non hai un account? <a href="{{url_for('signup')}}">Registrati</a></p>
+                        <button type="button" class="btn btn-secondary">Esci</button>
                     </div>
                 </div>
             </div> 

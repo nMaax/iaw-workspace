@@ -1,5 +1,5 @@
 import sqlite3
-import data_utils.DATA_CONSTANTS as CONST
+import DATA_CONSTANTS as CONST
 
 DB_PATH = CONST.DB_PATH
 ERR_MSG = CONST.ERR_MSG
