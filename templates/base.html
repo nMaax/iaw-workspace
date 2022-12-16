@@ -43,8 +43,8 @@
                 </ul>
                 <!-- Login button, redirects to modal define outisde the navbar -->
                 <button type="button" class="btn btn-light mx-3" style="border-color: black; background-color: #babab5;" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    {% if session.logged_username %}
-                        {{ session.logged_username }}
+                    {% if current_user.username %}
+                        {{ current_user.username }}
                     {% else %}
                         Accedi
                     {% endif %}

@@ -57,7 +57,7 @@
 
     </div>
 
-    {% if session.logged_username %}
+    {% if current_user.username %}
         <!-- Plus button -->
         <button class="plus-button" data-bs-toggle="modal" data-bs-target="#new-post-modal">+</button>
         
@@ -76,7 +76,7 @@
                         <!-- Username -->
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-at-char">@</span>
-                            <input name="username" type="text" class="form-control" value="{{session.logged_username}}" aria-label="Username" aria-describedby="basic-at-char" required readonly>
+                            <input name="username" type="text" class="form-control" value="{{current_user.username}}" aria-label="Username" aria-describedby="basic-at-char" required readonly>
                         </div>                          
                         <!-- Text -->
                         <div class="mb-3">
