@@ -76,8 +76,6 @@ def signup():
 
 # TODO list
 # [ ] Resolve same image in different post bug
-# [ ] Make the Logout button work
-# [ ] Automatically login after signup  
 
 # No-html route, used only for elaboratig data
 @app.route('/post_signup', methods=['POST'])
@@ -108,7 +106,8 @@ def post_signup():
         print(propic)
         flash('Iscrizione effettuata', 'success')
         app.logger.info('\n\n* * * ISCRIZIONE EFFETTUATA CORRETTAMENTE * * *\n')
-        
+        # Automatic login
+        post_login()
     else:
         flash('Iscrizione non effettuata, dati inseriti erronei', 'warning')
         app.logger.error('\n\n* * * ISCRIZIONE NON EFFETTUATA * * *\n')
