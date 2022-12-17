@@ -178,9 +178,14 @@ def new_post():
     img = request.files.get('img')
     
     # Default post values
-    id = posts[-1].get('id')+1
+    #id = posts[-1].get('id')+1
+    id = db.get_last_post().get('id')+1
     post = {'id': id, 'user_id': -1, 'date': -1, 'text': 'NO_TEXT', 'img': 'NO_IMG'}
     abort = False
+
+    app.logger.info(id)
+    for post in posts:
+        app.logger.info(post)
 
     # Searching for the user in the data structure
     trovato = False
@@ -217,11 +222,13 @@ def new_post():
     if img:
         # Rename the image in order to don't have problems
         filename = 'post'+str(id)+'.jpg'
+        app.logger.info(filename)
         # Save it in the right place with os.path.join()
         img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     else:
         # Default image in case it is not defined
         filename = 'logo.png'
+
     # Add it to the data structure    
     post['img'] = filename
     

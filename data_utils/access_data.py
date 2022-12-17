@@ -24,6 +24,26 @@ def get_post(post_id):
 
     return posts
 
+def get_last_post():
+
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = dict_factory #sqlite3.Row
+    cursor = conn.cursor()
+    posts = False
+
+    try:
+        sql = "SELECT * FROM POSTS ORDER BY id DESC"
+        cursor.execute(sql)
+        posts = cursor.fetchone()
+    except:
+        print("Failed to retrive data in access_data.get_posts()")
+        conn.rollback()
+
+    cursor.close()
+    conn.close()
+
+    return posts
+
 def get_posts():
 
     conn = sqlite3.connect(DB_PATH)
@@ -32,7 +52,7 @@ def get_posts():
     posts = False
 
     try:
-        sql = "SELECT * FROM POSTS ORDER BY date DESC"
+        sql = "SELECT * FROM POSTS ORDER BY date DESC, id DESC"
         cursor.execute(sql)
         posts = cursor.fetchall()
     except:
