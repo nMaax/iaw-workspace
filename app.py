@@ -74,10 +74,14 @@ def contacts():
 def signup():
     return render_template('signup.html')
 
+# TODO list
+# [ ] Resolve same image in different post bug
+# [ ] Make the Logout button work
+# [ ] Automatically login after signup  
+
 # No-html route, used only for elaboratig data
 @app.route('/post_signup', methods=['POST'])
 def post_signup():
-    #TODO post_signup
     username = request.form.get('username')
     name = request.form.get('name')
     surname = request.form.get('surname')
