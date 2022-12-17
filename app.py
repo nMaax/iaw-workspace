@@ -150,20 +150,26 @@ def post(id):
     add_user_to_posts(posts=posts, users=users)
     for post_ in posts:
         if post_['id'] == id:
-            post = post_
+                post = post_
     add_comments_to_post(post)
     return render_template('post.html', post=post, users=users, utils=utils)
 
-@app.route('/post/<int:post_id>/new_comment/<username>', methods=['POST'])
-def add_comment(post_id, username):
-    new_comment = request.form.to_dict()
-    new_comment['post_id'] = post_id
-    new_comment['username'] = username
+@app.route('/post/<int:post_id>/new_comment_<username>', methods=['POST'])
+def new_comment(post_id, username):
+    
+    comment_to_add = {}
+    
+    comment_to_add['text'] = request.form.get('text')
+    comment_to_add['post_id'] = post_id
+    comment_to_add['username'] = username
+
     for user in db.get_users():
         if user.get('username') == username:
-            new_comment['user_id'] = user.get('id')
-    new_comment['date'] = utils.get('today')
-    db.add_comment(new_comment)
+            comment_to_add['user_id'] = user.get('id')
+    comment_to_add['date'] = utils.get('today')
+
+    db.add_comment(comment_to_add)
+
     return redirect(url_for('post', id=post_id))
 
 # No-html route, used only for elaboratig data

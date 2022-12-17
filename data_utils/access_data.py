@@ -71,7 +71,7 @@ def get_comments(post_id):
     comments = False
 
     try:
-        sql = "SELECT * FROM COMMENTS WHERE post_id = ? ORDER BY date DESC"
+        sql = "SELECT * FROM COMMENTS WHERE post_id = ? ORDER BY date DESC, id DESC"
         cursor.execute(sql, (post_id,))
         comments = cursor.fetchall()
     except:

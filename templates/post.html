@@ -43,10 +43,10 @@
                             
                             <div class="card-body p-4">
 
-                                {% if session.logged_username %}
+                                {% if current_user.username %}
                             
                                 <div class="form-outline mb-4">
-                                    <form action="{{url_for('add_comment', post_id=post.id, username=session.logged_username)}}" method="POST">
+                                    <form action="{{ url_for('new_comment', post_id=post.id, username=current_user.username) }}" method="POST">
                                         <label class="form-label" for="addComment">Aggiungi un commento:</label>
                                         <input name="text" type="text" id="addComment" class="form-control" placeholder="Il tuo commento..." />
                                         <button type="submit" class="btn btn-primary mt-2">Pubblica</button>
