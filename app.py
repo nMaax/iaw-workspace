@@ -74,9 +74,6 @@ def contacts():
 def signup():
     return render_template('signup.html')
 
-# TODO list
-# [ ] Resolve same image in different post bug
-
 # No-html route, used only for elaboratig data
 @app.route('/post_signup', methods=['POST'])
 def post_signup():
