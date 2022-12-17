@@ -33,7 +33,7 @@
 
                 <div class="col-12 col-md">
 
-                    <div class="row justify-content-between rounded-2 py-2" {% if post.user.username == session['logged_username'] %} style="background-color: #e1e1d6" {% endif %}>
+                    <div class="row justify-content-between rounded-2 py-2" {% if post.user.username == current_user.username %} style="background-color: #e1e1d6" {% endif %}>
                         <div class="col-8 col-md-10 col-lg-8 col-xl-7 col-xxl-6 row">
                             <div class="col-3 col-md-2 d-flex justify-content-center align-items-center ps-1"><img class="img-fluid rounded-3" src="{{ url_for('static', filename='images/propics/'+post.user.propic) }}" alt="Immagine del profilo dell'utente"></div>
                             <div class="col"><h5><b>@{{ post.user.username }}</b></h5></div>
