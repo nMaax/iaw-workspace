@@ -62,21 +62,6 @@
                     </div>
                     <!-- Form for login -->
                     <div class="modal-body">
-
-                        <!-- Old form -->
-                        <form action="{{ url_for('login') }}" method="POST" class="border-bottom pb-4">
-                            <!-- Select of accounts -->
-                            <select name='logged_username' class="form-select mb-3" aria-label="Scelta admin">
-                                {% for user in users %}
-                                    <option value="{{user.username}}">{{user.username}}</option>
-                                {% endfor %}
-                            </select>
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary">Accedi</button>
-                        </form>
-                        
-                        <br>
-                        <br>
                         
                         <!-- New form -->
                         <form action="{{ url_for('post_login') }}" method="POST">

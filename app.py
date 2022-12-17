@@ -113,28 +113,6 @@ def post_signup():
     return redirect(url_for('index'))
 
 # No-html route, used only for elaboratig data
-@app.route('/login', methods = ['POST'])
-def login():
-    admin_data = request.form.to_dict()
-
-    usernames = []
-    users=db.get_users()
-    for user in users:
-        usernames.append(user.get('username'))
-
-    if admin_data['logged_username'] in usernames:
-        session['logged_username'] = admin_data.get('logged_username')
-        flash('Login effettuato', 'success')
-        app.logger.info('\n\n* * * LOGIN EFFETTUATO CORRETTAMENTE * * *\n')
-    else:
-        flash('Login non effettuato, dati inseriti erronei', 'danger')
-        app.logger.error('\n\n* * * LOGIN NON EFFETTUATO * * *\n')
-
-    app.logger.info(' --> Username: ' + str(admin_data['logged_username']) )
-
-    return redirect(url_for('index'))
-
-# No-html route, used only for elaboratig data
 @app.route('/post_login', methods=['POST'])
 def post_login():
     username = request.form.get('username') 

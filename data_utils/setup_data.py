@@ -28,15 +28,15 @@ except:
     conn.rollback()
 
 # Inserting standard users
-#try:
-#    sql = "INSERT INTO users(username, name, surname, propic) VALUES (?, ?, ?, ?)"
-#    for user in NON_ADMINS:
-#        data = (user.get('username'), user.get('name'), user.get('surname'), user.get('propic'))
-#        cursor.execute(sql, data)
-#        conn.commit()
-#except:
-#    print(ERR_MSG+" - setup_data.py")
-#    conn.rollback()
+try:
+    sql = "INSERT INTO users(username, password, name, surname, propic) VALUES (?, ?, ?, ?, ?)"
+    for user in NON_ADMINS:
+        data = (user.get('username'), user.get('password'), user.get('name'), user.get('surname'), user.get('propic'))
+        cursor.execute(sql, data)
+        conn.commit()
+except:
+    print(ERR_MSG+" - setup_data.py")
+    conn.rollback()
 
 # Inserting posts
 try:

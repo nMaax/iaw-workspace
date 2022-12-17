@@ -1,5 +1,8 @@
+from werkzeug.security import generate_password_hash, check_password_hash
+
 DB_PATH = './static/data/data.db'
 ERR_MSG = "Errore nell'accesso al database"
+DEFAULT_PASSWORD_SHA = generate_password_hash('admin', method='sha256')
 
 LOREM = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum architecto ratione vero? Non quas quisquam tenetur repellendus nam, numquam velit accusantium voluptate animi? Blanditiis voluptas consectetur, nostrum quidem mollitia velit. "
 
@@ -15,10 +18,10 @@ NON_ADMINS = [
 ]
 
 for admin in ADMINS:
-    admin['password'] = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
+    admin['password'] = DEFAULT_PASSWORD_SHA
 
 for user in NON_ADMINS:
-    user['password'] = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
+    user['password'] = DEFAULT_PASSWORD_SHA
 
 
 POSTS = [
