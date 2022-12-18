@@ -254,9 +254,3 @@ def daysago(sDate):
 - For other extra programs and stuff you don't know where to put use the *misc* (miscellaneous) folder and, eventually, various specific sub-folder, every of them called as sub-folder-name_misc
 
 [![immagine.png](https://i.postimg.cc/wv86ScvP/immagine.png)](https://postimg.cc/DW6kGG1d)
-
-### Useful tips
-
-- Always prefer (if possible) a ```d-flex``` option (```justify, alig-item,``` ...) instead of a "manual" ```padding/margin``` style
-- Use *Emmet* and *Flask Snippets* in *VS-Code*!
-- If posible use the ```col-auto``` class to make one of the columns in certain row automatically responsive to the changes during breakpoint-switches
