@@ -118,7 +118,9 @@ element {
 ### Format of Python/Flask files
 
 ```python
-/* IMPORTS */
+
+# IMPORTS
+
 # Vanilla Python libraries
 import os
 
@@ -133,18 +135,18 @@ from flask_bootstrap import Bootstrap5
 from flask_session import Session
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
-/* CONSTANTS */
+# CONSTANTS
 
 CONSTANT_1 = 'Hi, mom'
 CONSTANT_2 = 'NONE'
 ISO_DATE = 'YYYY-MM-DD'
 UPLOAD_PATH = 'images/uploads'
 
-/* DEFINE FLASK APP */
+# DEFINE FLASK APP
 
 app = Flask(__name__)
 
-/* CONFING APP */
+# CONFING APP
 
 app.secret_key = '?c-xoV-Vkn2&E$q@-tQbX5kCZvve^5'
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -161,7 +163,7 @@ login_manager.init_app(app)
 
 Session(app)
 
-/* MAIN ROUTES */
+# MAIN ROUTES
 
 @app.route('/')
 def index():
@@ -176,7 +178,13 @@ def post_signup():
    
 ...
 
-/* OTHER FUNCTIONS */
+# OTHER ROUTES
+
+@app.route('/test')
+def test():
+   pass
+
+# OTHER FUNCTIONS
 
 def daysago(sDate):
     if sDate != None and sDate != "":
@@ -192,12 +200,25 @@ def daysago(sDate):
 ### Format of Jinja statements in HTML Files
 
 ```html
+<!-- Always start with an extend, if needed -->
+{% extends 'base.html' %} 
 
-<!-- Always put some spaces in the inner part of the brakets -->
-{{ url_for('index') }}
+<!-- You can both have multi-line blocks or define them in one line, as you prefer -->
 {% block content %}
    
+   <!-- Aways indent (except for really short statements), if you dont do it flask will correct it anyway -->
    <div>Hello, world!</div>
+
+   <button>
+      {% if current_user.username %}
+         {{ current_user.username }}
+      {% else %}
+         Accedi
+      {% endif %}
+   </button>
+
+   <!-- Always put some spaces in the inner part of the brakets -->
+   <a href="{{ url_for('index') }}" >Look at this link!</a>
    
 {% endblock %}
 
