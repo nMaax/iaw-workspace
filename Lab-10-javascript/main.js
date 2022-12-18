@@ -102,7 +102,6 @@ function Libreria() {
     }
 
     this.ritardaPubblicazione = function(n) {
-        //TODO implementa Dates etc.
         for (let libro of this.libri) {
             libro.date = libro.date.add(n, "day")
         };

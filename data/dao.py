@@ -1,10 +1,8 @@
 import sqlite3
-import data_utils.DATA_CONSTANTS as CONST
-
-#TODO: questi file non devono essere in static?
-DB_PATH = CONST.DB_PATH
+from data.constants import DB_PATH
 
 def get_post(post_id):
+    
     
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = dict_factory #sqlite3.Row
@@ -16,7 +14,7 @@ def get_post(post_id):
         cursor.execute(sql, (post_id,))
         posts = cursor.fetchall()
     except:
-        print("Failed to retrive data in access_data.get_post(post_id)")
+        print("Failed to retrive data in dao.get_post(post_id)")
         conn.rollback()
 
     cursor.close()
@@ -36,7 +34,7 @@ def get_last_post():
         cursor.execute(sql)
         posts = cursor.fetchone()
     except:
-        print("Failed to retrive data in access_data.get_posts()")
+        print("Failed to retrive data in dao.get_posts()")
         conn.rollback()
 
     cursor.close()
@@ -56,7 +54,8 @@ def get_posts():
         cursor.execute(sql)
         posts = cursor.fetchall()
     except:
-        print("Failed to retrive data in access_data.get_posts()")
+        print("path:" + DB_PATH)
+        print("Failed to retrive data in dao.get_posts()")
         conn.rollback()
 
     cursor.close()
@@ -75,7 +74,7 @@ def get_comments(post_id):
         cursor.execute(sql, (post_id,))
         comments = cursor.fetchall()
     except:
-        print("Failed to retrive data in access_data.get_comments(post_id)")
+        print("Failed to retrive data in dao.get_comments(post_id)")
         conn.rollback()
 
     cursor.close()
@@ -94,7 +93,7 @@ def get_user_by_username(username):
         cursor.execute(sql, (username,))
         user = cursor.fetchone()
     except Exception as e:
-        print("Failed to retrive data in access_data.get_user_by_username(username)")
+        print("Failed to retrive data in dao.get_user_by_username(username)")
         conn.rollback()
 
     cursor.close()
@@ -113,7 +112,7 @@ def get_user_by_id(id):
         cursor.execute(sql, (id,))
         user = cursor.fetchone()
     except Exception as e:
-        print("Failed to retrive data in access_data.get_user_by_id(id)")
+        print("Failed to retrive data in dao.get_user_by_id(id)")
         conn.rollback()
 
     cursor.close()
@@ -139,7 +138,7 @@ def get_users(admin=False):
         cursor.execute(sql)
         users = cursor.fetchall()
     except:
-        print("Failed to retrive data in access_data.get_users(admin)")
+        print("Failed to retrive data in dao.get_users(admin)")
         conn.rollback()
 
     cursor.close()
@@ -182,7 +181,7 @@ def get_user(user_id):
         cursor.execute(sql, (user_id,))
         user = cursor.fetchone()
     except:
-        print("Failed to retrive data in access_data.get_users(admin)")
+        print("Failed to retrive data in dao.get_users(admin)")
         conn.rollback()
 
     cursor.close()

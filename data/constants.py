@@ -1,6 +1,7 @@
+import os
 from werkzeug.security import generate_password_hash, check_password_hash
 
-DB_PATH = './static/data/data.db'
+DB_PATH = 'data/data.db'
 ERR_MSG = "Errore nell'accesso al database"
 DEFAULT_PASSWORD_SHA = generate_password_hash('admin', method='sha256')
 
