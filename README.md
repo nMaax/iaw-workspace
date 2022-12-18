@@ -253,6 +253,8 @@ def daysago(sDate):
   - Inside data declare a sub-folder named 'utils'  which will contains all the utils files used by dao.py and other various stuff
 - For other extra programs and stuff you don't know where to put use the *misc* (miscellaneous) folder and, eventually, various specific sub-folder, every of them called as sub-folder-name_misc
 
+[![immagine.png](https://i.postimg.cc/wv86ScvP/immagine.png)](https://postimg.cc/DW6kGG1d)
+
 ### Useful tips
 
 - Always prefer (if possible) a ```d-flex``` option (```justify, alig-item,``` ...) instead of a "manual" ```padding/margin``` style
