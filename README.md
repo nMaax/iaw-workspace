@@ -118,12 +118,88 @@ element {
 ### Format of Python/Flask files
 
 ```python
+/* IMPORTS */
+# Vanilla Python libraries
+import os
+
+# External files
+from models import User
+
+# Flask libraries
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_bootstrap import Bootstrap5
+from flask_session import Session
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+
+/* CONSTANTS */
+
+CONSTANT_1 = 'Hi, mom'
+CONSTANT_2 = 'NONE'
+ISO_DATE = 'YYYY-MM-DD'
+UPLOAD_PATH = 'images/uploads'
+
+/* DEFINE FLASK APP */
+
+app = Flask(__name__)
+
+/* CONFING APP */
+
+app.secret_key = '?c-xoV-Vkn2&E$q@-tQbX5kCZvve^5'
+app.config['SECRET_KEY'] = SECRET_KEY
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['PROPIC_FOLDER'] = PROPIC_FOLDER
+app.config['SESSION_TYPE'] = SESSION_TYPE
+app.config['SESSION_PERMANENT'] = SESSION_PERMANENT
+
+bootstrap = Bootstrap5(app)
+
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.init_app(app)
+
+Session(app)
+
+/* MAIN ROUTES */
+
+@app.route('/')
+def index():
+   pass
+   
+...
+
+# Always comment no-html routes, used only for elaboratig data
+@app.route('/post_signup', methods=['POST'])
+def post_signup():
+   pass
+   
+...
+
+/* OTHER FUNCTIONS */
+
+def daysago(sDate):
+    if sDate != None and sDate != "":
+        dDate = datetime.strptime(sDate, iso_day_format)
+        daysago = (datetime.today() - dDate).days
+    else:
+        daysago = 0
+
+    return daysago
 
 ```
 
 ### Format of Jinja statements in HTML Files
 
 ```html
+
+<!-- Always put some spaces in the inner part of the brakets -->
+{{ url_for('index') }}
+{% block content %}
+   
+   <div>Hello, world!</div>
+   
+{% endblock %}
 
 ```
 
