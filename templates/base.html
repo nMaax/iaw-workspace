@@ -118,5 +118,9 @@
     {% block personal_scripts %}{% endblock %}
 {% endblock %}
 
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+<script>dayjs().format()</script>
+<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+
 </body>
 </html>

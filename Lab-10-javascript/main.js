@@ -2,7 +2,7 @@
 
 /* ESERCIZIO 1 */
 
-/*
+
 
 const voti = [20, 20, 30, 25, 29, 27, 26, 24, 30];
 
@@ -46,7 +46,7 @@ print("Array originale: "+voti)
 print("Array copia 1: "+voti_copia1)
 print("Array copia 2: "+voti_copia2)
 
-*/
+
 
 /* ESERCIZIO 2 */
 
