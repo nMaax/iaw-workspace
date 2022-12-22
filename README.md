@@ -235,11 +235,13 @@ def daysago(sDate):
 
 - Put html files in the *templates* folder
   - The base html file should be called ```base.html``` or ```layout.html```
+  - The default-route html file should be called ```index.html``` 
 - Use the *static* folder only for content that **is not server-generated** but will eventually need to be sent to the client
   - This means that this folder will only manage:
     1. Files that are loaded by the html pages (such as images, videos, gifs etc.)
     2. CSS Stylesheets / Sass files
     3. JavaScript scripts
+    > Since browsers can only elaborate these files and html pages
   - Put images in *static/images*
     - Define a specific sub-folder for every category of file: propics, uploads, ...
   - Put stylesheets in *static/styles*
@@ -248,9 +250,10 @@ def daysago(sDate):
     - Define a specific sub-folder for every category of file: ...
   - Put scripts in *static/scripts*
     - Define a specific sub-folder for every category of script: ...
-- Use the *data* folder for database storage and call the main database as ```data.db```
-  - Name the main program to access data.db as ```dao.py``` (Data Access Object)
-  - Inside data declare a sub-folder named 'utils'  which will contains all the utils files used by dao.py and other various stuff
+- Use the *data* folder for database files such as dbs and programs related to them
+  - Call the main database ```data.db```
+  - Name the main program to access data.db ```dao.py``` (Data Access Object)
+  - If needed, pu all the utils files used by dao.py and other various stuff inside a sub-folder named 'utils' 
 - For other extra programs and stuff you don't know where to put use the *misc* (miscellaneous) folder and, eventually, various specific sub-folder, every of them called as sub-folder-name_misc
 
 [![immagine.png](https://i.postimg.cc/wv86ScvP/immagine.png)](https://postimg.cc/DW6kGG1d)
