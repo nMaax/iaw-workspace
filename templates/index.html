@@ -10,12 +10,19 @@
         
         <!-- Aside bar -->
         <aside class="col-12 col-lg-2">
-        {% block aside %}    
+        {% block aside %}
+
             <div class="py-3 row">
                 <div class="col col-lg-12"><p class="aside-paragraph"><a href="#" id="todayBtn">Oggi</a></p></div>
                 <div class="col col-lg-12"><p class="aside-paragraph"><a href="#" id="thisWeekBtn">Questa settimana</a></p></div>
                 <div class="col col-lg-12"><p class="aside-paragraph"><a href="#" id="thisMonthBtn">Questo mese</a></p></div>
             </div>
+
+            <div class="py-3 row">
+                <div class="col col-lg-12"><p class="aside-paragraph"><a href="#" id="mostRecent">Dal piú recente</a></p></div>
+                <div class="col col-lg-12"><p class="aside-paragraph"><a href="#" id="lessRecent">Dal meno recente</a></p></div>
+            </div>
+            
         {% endblock %}
         </aside>
 

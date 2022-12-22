@@ -49,6 +49,16 @@ function resetDisplayOfAllPosts(posts) {
     };
 }
 
+function pushPostById(postsAsNodes, id) {
+    for (let i=0; i < postsAsNodes.length; i++) {
+        //console.log(postsAsNodes[i]);
+        if (postsAsNodes[i].id == id) {
+            let main = document.querySelector('main');
+            main.appendChild(postsAsNodes[i]);
+        };
+    };
+}
+
 /* ******************************** */
 
 /* MAIN */
@@ -57,10 +67,10 @@ function resetDisplayOfAllPosts(posts) {
 
 // Imposto un id ad ogni post
 
-let posts = document.querySelectorAll('a > article');
+let postsAsNodes = document.querySelectorAll('a > article');
 
 let id = 1;
-for (let post of posts) {
+for (let post of postsAsNodes) {
     post.id = "post-"+id;
     id++;
 };
@@ -92,24 +102,64 @@ for (let singleDaysago of multiDaysago) {
 */
 
 // Predo i dati appena estratti e li condenso tutti in un array di oggetti Post chiamato "posts" (riutilizzo il vecchio riferimento)
-let posts_ = [];
-for (let i=0; i < posts.length; i++) {
+let posts = [];
+for (let i=0; i < postsAsNodes.length; i++) {
     //console.log(posts[i].id);
     //console.log(daysagoList[i])
-    posts_.push(new Post(posts[i].id, daysagoList[i]));
+    posts.push(new Post(postsAsNodes[i].id, daysagoList[i]));
 };  
-posts = posts_;
 console.log("Post in questa pagina: " + posts);
 
 /* Gestione degli eventi sui bottoni */
 
 // Estraggo i vari nodi dei "bottoni"
 
-todayBtn = document.querySelector('#todayBtn');
-thisWeekBtn = document.querySelector('#thisWeekBtn');
-thisMonthBtn = document.querySelector('#thisMonthBtn');
+let todayBtn = document.querySelector('#todayBtn');
+let thisWeekBtn = document.querySelector('#thisWeekBtn');
+let thisMonthBtn = document.querySelector('#thisMonthBtn');
+
+let mostRecentSortBtn = document.querySelector('#mostRecent') 
+let lessRecentSortBtn = document.querySelector('#lessRecent')
 
 //Imposto dei listener sui vari bottoni
+
+/* Listener di click sul bottone "Dal piú recente" */
+mostRecentSortBtn.addEventListener('click', e => {
+    console.log('Click on most recent button');
+
+    let ascPosts = posts.sort(postComparator);
+    //console.log(ascPosts);
+
+    let main = document.querySelector('main');
+    while (main.firstChild) {
+        main.removeChild(main.lastChild);
+    };
+
+    for (let post of ascPosts) {
+        pushPostById(postsAsNodes, post.id);
+    };
+    
+});
+
+
+/* Listener di click sul bottone "Dal meno recente" */
+lessRecentSortBtn.addEventListener('click', e => {
+    console.log('Click on less recent button');
+
+    let descPosts = posts.sort(descPostComparator);
+    //console.log(ascPosts);
+
+    let main = document.querySelector('main');
+    while (main.firstChild) {
+        main.removeChild(main.lastChild);
+    };
+
+    for (let post of descPosts) {
+        //console.log(post.id);
+        pushPostById(postsAsNodes, post.id);
+    };
+    
+});
 
 /* Listener di click sul bottone "Oggi" */
 let resetTodayButton = false;
