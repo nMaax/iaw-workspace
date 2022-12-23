@@ -47,8 +47,10 @@ Use the following guidelines to make a clean code, so everyone else will be able
 
 > ***Note***
 >
-> In **html and css** files: Pretty much i use only kebab-case, except for some ids where i prefer #cammelCaseNotation
+> In **html and css** files: I use pretty much only kebab-case, except for some ids where i prefer #cammelCaseNotation
+>
 > In **python** files: I use prevalently a snake_notation and hungarian notation (hNotation) when needed
+>
 > In **javascript** files: I go for a cammelCase notation and eventually CapitalizedCammelNotation for Classes
 
 ### Documentation of tools used
