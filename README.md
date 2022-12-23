@@ -1,6 +1,6 @@
 # How to install
 
-## Requisites
+## Required stuff
 
 - [Python3](https://www.python.org/) or above
 - [A web browser](https://www.mozilla.org/it/firefox/new/)
@@ -57,7 +57,7 @@ Use the following guidelines to make a clean code, so everyone else will be able
 - [Flask Documentation](https://flask.palletsprojects.com/en/2.2.x/)
   - [Flask Session](https://flask-session.readthedocs.io/en/latest/)
   - [Flask Login](https://openbase.com/python/Flask-Login/documentation)
-  - [~Bootstrap Flask~ descoraged](https://bootstrap-flask.readthedocs.io/en/stable/index.html)
+  - [~Bootstrap Flask~ descouraged](https://bootstrap-flask.readthedocs.io/en/stable/index.html)
 - [Jinja Documentation](https://jinja.palletsprojects.com/)
 - [Dayjs Documentation](https://day.js.org/docs/en/installation/installation)
 
