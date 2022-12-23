@@ -53,13 +53,15 @@ Use the following guidelines to make a clean code, so everyone else will be able
 
 ### Documentation of tools used
 
-- [Emmet Documentation](https://docs.emmet.io/)
+- [Bootstrap Documentation](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 - [Flask Documentation](https://flask.palletsprojects.com/en/2.2.x/)
   - [Flask Session](https://flask-session.readthedocs.io/en/latest/)
   - [Flask Login](https://openbase.com/python/Flask-Login/documentation)
   - [~Bootstrap Flask~ descouraged](https://bootstrap-flask.readthedocs.io/en/stable/index.html)
 - [Jinja Documentation](https://jinja.palletsprojects.com/)
 - [Dayjs Documentation](https://day.js.org/docs/en/installation/installation)
+
+> ***Note*** If you use VS Code have a look at [Emmet](https://docs.emmet.io/)
 
 ### Format of HTML/Bootstrap files
 
