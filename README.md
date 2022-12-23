@@ -17,7 +17,7 @@ Copy the following code to complete the step 2 in one shot :rocket:
 
 > For Mac and Linux machines:
 
-```terminal
+```console
 python3 -m venv venv 
 . venv/bin/activate 
 pip install Flask, Flask-Session, Bootstrap-Flask
@@ -26,11 +26,17 @@ flask --debug run
 
 > For Windows machines:
 
-```terminal
+```console
 python3 -m venv venv 
 . venv/bin/activate 
 pip install Flask, Flask-Session, Bootstrap-Flask
 flask --debug run
+```
+
+Usually those commands should install the *werkzeug* library automatically, if it doesn't (maybe the script isn't running since it's not finding it) enter the following command in the terminal
+
+```console
+pip install werkzeug
 ```
 
 ***
@@ -40,15 +46,20 @@ flask --debug run
 Use the following guidelines to make a clean code, so everyone else will be able to read it better and quickly
 
 > ***Note***
+>
 > In **html and css** files: Pretty much i use only kebab-case, except for some ids where i prefer #cammelCaseNotation
 > In **python** files: I use prevalently a snake_notation and hungarian notation (hNotation) when needed
+> In **javascript** files: I go for a cammelCase notation and eventually CapitalizedCammelNotation for Classes
 
 ### Documentation of tools used
 
 - [Emmet Documentation](https://docs.emmet.io/)
-- [Bootstrap Documentation](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 - [Flask Documentation](https://flask.palletsprojects.com/en/2.2.x/)
+  - [Flask Session](https://flask-session.readthedocs.io/en/latest/)
+  - [Flask Login](https://openbase.com/python/Flask-Login/documentation)
+  - [~Bootstrap Flask~ descoraged](https://bootstrap-flask.readthedocs.io/en/stable/index.html)
 - [Jinja Documentation](https://jinja.palletsprojects.com/)
+- [Dayjs Documentation](https://day.js.org/docs/en/installation/installation)
 
 ### Format of HTML/Bootstrap files
 
