@@ -228,6 +228,80 @@ def daysago(sDate):
 
 ```javascript
 
+"use strict"
+
+/* Follow the Google style guide: https://google.github.io/styleguide/jsguide.html */
+
+/* OBJECTS */
+
+/* IObject Name */
+function Post(id, daysago) { //(node) --> node.id, node.daysago
+
+   // Attributes should be all disposed line by line in a sigle block
+   this.id = id;
+   this.daysago = daysago;
+
+   // Methods should have a void line between them
+   this.toString = function(){
+      let output = "" + `Post [id: ${this.id}, daysago: ${this.daysago}]`;
+      return output;
+   }
+
+   this.compareTo = function(other) {
+      return this.daysago - other.daysago;
+   };
+
+   this.equals = function(other) {
+      if (!(other instanceof Post)) {
+         return false;
+      };
+      let output = true;
+      for (let att in this) {
+         output = output && this['att']==+other['att']
+      };
+      return output
+   };
+}
+
+/* FUNCTIONS */
+
+function postComparator(a, b) {
+    return a.compareTo(b) > 0;
+}
+
+
+/* MAIN */
+
+console.log("Here your main code starts...");
+
+let posts = [];
+for (let i=0; i < postsAsNodes.length; i++) {
+    posts.push(new Post(postsAsNodes[i].id, daysagoList[i]));
+};
+
+/* EVENT LISTENERS */
+
+console.log("If possibile always put stuff relative to EventListeners at the end of the main section")
+
+/* Define the node where you wanna put the listener */
+let btn = document.querySelector('#mostRecent') 
+
+/* Brief description of this event listener */
+btn.addEventListener('click', e => {
+    console.log('Click on most recent button');
+
+    let ascPosts = posts.sort(postComparator);
+
+    let main = document.querySelector('main');
+    while (main.firstChild) {
+        main.removeChild(main.lastChild);
+    };
+
+    for (let post of ascPosts) {
+        pushPostById(postsAsNodes, post.id);
+    };
+    
+});
 
 ```
 
@@ -235,7 +309,7 @@ def daysago(sDate):
 
 - Put html files in the *templates* folder
   - The base html file should be called ```base.html``` or ```layout.html```
-  - The default-route html file should be called ```index.html``` 
+  - The default-route html file should be called ```index.html```
 - Use the *static* folder only for content that **is not server-generated** but will eventually need to be sent to the client
   - This means that this folder will only manage:
     1. Files that are loaded by the html pages (such as images, videos, gifs etc.)
@@ -253,7 +327,7 @@ def daysago(sDate):
 - Use the *data* folder for database files such as dbs and programs related to them
   - Call the main database ```data.db```
   - Name the main program to access data.db ```dao.py``` (Data Access Object)
-  - If needed, pu all the utils files used by dao.py and other various stuff inside a sub-folder named 'utils' 
+  - If needed, pu all the utils files used by dao.py and other various stuff inside a sub-folder named 'utils'
 - For other extra programs and stuff you don't know where to put use the *misc* (miscellaneous) folder and, eventually, various specific sub-folder, every of them called as sub-folder-name_misc
 
 [![immagine.png](https://i.postimg.cc/wv86ScvP/immagine.png)](https://postimg.cc/DW6kGG1d)
