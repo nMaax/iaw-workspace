@@ -224,7 +224,7 @@ def daysago(sDate):
 
 ```
 
-## Format of JavaScripts programs
+### Format of JavaScript scripts
 
 ```javascript
 
@@ -305,17 +305,17 @@ btn.addEventListener('click', e => {
 
 ```
 
-### How to organize files and folders
+## How to organize files and folders
 
 - Put html files in the *templates* folder
   - The base html file should be called ```base.html``` or ```layout.html```
   - The default-route html file should be called ```index.html```
 - Use the *static* folder only for content that **is not server-generated** but will eventually need to be sent to the client
+  > ***Note*** Since browsers can only elaborate html, css and javascritps you **cannot** put other stuff
   - This means that this folder will only manage:
     1. Files that are loaded by the html pages (such as images, videos, gifs etc.)
     2. CSS Stylesheets / Sass files
     3. JavaScript scripts
-    > Since browsers can only elaborate these files and html pages
   - Put images in *static/images*
     - Define a specific sub-folder for every category of file: propics, uploads, ...
   - Put stylesheets in *static/styles*
