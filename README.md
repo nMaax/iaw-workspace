@@ -269,7 +269,6 @@ function postComparator(a, b) {
     return a.compareTo(b) > 0;
 }
 
-
 /* MAIN */
 
 console.log("Here your main code starts...");
