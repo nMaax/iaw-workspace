@@ -1,6 +1,6 @@
 # How to install
 
-## Prerequisites
+## Requisites
 
 - [Python3](https://www.python.org/) or above
 - [A web browser](https://www.mozilla.org/it/firefox/new/)
